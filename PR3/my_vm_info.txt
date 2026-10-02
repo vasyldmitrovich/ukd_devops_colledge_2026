@@ -1,0 +1,6 @@
+Name: Грицюк Дмитро Ігорович
+Hostname: ubuntu
+IP: 10.0.2.15
+OS: Ubuntu 24.04 LTS
+CPU: 2
+RAM: 4.0 GB
