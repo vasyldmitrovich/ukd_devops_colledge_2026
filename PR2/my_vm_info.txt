@@ -1,6 +1,6 @@
-Name: Томащук Софія Тарасівна
-Hostname: skiwzkill
+Name: Скаловци Володимир Васильович 
+Hostname: student
 IP: 10.0.2.15
-OS: Ubuntu 26.04.1 LTS
-CPU: 2
-RAM: 1.6 GiB
+OS: Ubuntu 24.04.5 LTS
+CPU: 13th Gen Intel(R) Core(TM) i7-13620H (12+4) @ 4.90 GHz
+RAM: 2048 MB
