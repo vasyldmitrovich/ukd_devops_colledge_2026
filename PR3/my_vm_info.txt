@@ -1,0 +1,6 @@
+Name: Цибух Адріан Михайлович
+Hostname: bubuntu
+IP: 10.0.2.15
+OS: Ubuntu 24.04.5 LTS x86_64
+CPU: Intel i5-6600 (1) @ 3.312GHz
+RAM: 3820MiB
