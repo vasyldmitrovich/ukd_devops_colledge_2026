@@ -1,0 +1,6 @@
+Name: Скаловци Володимир Васильович 
+Hostname: student
+IP: 10.0.2.15
+OS: Ubuntu 24.04.5 LTS
+CPU: 2 
+RAM: 2048 MB
