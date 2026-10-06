@@ -1,6 +1,6 @@
-Name: Томащук Софія Тарасівна
-Hostname: skiwzkill
+Name: Kuznetsov Maksym
+Hostname: Ubuntu-Server
 IP: 10.0.2.15
 OS: Ubuntu 26.04.1 LTS
 CPU: 2
-RAM: 1.6 GiB
+RAM: 3.3 GiB
