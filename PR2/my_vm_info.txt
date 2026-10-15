@@ -1,4 +1,4 @@
-Name: Kuznetsov Maksym
+Name: Demianyk Oleksandr
 Hostname: Ubuntu-Server
 IP: 10.0.2.15
 OS: Ubuntu 26.04.1 LTS
