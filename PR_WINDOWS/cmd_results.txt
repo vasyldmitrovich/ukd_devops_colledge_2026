@@ -1,0 +1,25 @@
+CMD commands executed 
+Name: Dmytro Hrytsiuk Igorovych 
+
+
+--- CMD LOG ---
+C:\>mkdir PR_WINDOWS
+
+C:\>cd PR_WINDOWS
+
+C:\PR_WINDOWS>echo CMD commands executed > cmd_results.txt
+
+C:\PR_WINDOWS>Name: Dmytro Hrytsiuk Igorovych >> cmd_results.txt
+'Name:' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\PR_WINDOWS>echo Name: Dmytro Hrytsiuk Igorovych >> cmd_results.txt
+
+C:\PR_WINDOWS>echo test > test.txt
+
+C:\PR_WINDOWS>mkdir C:\backup\
+
+C:\PR_WINDOWS>copy test.txt C:\backup\
+        1 file(s) copied.
+
+C:\PR_WINDOWS>del test.txt
