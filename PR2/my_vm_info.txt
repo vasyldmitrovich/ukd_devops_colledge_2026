@@ -1,4 +1,4 @@
-Name: Дученко Вероніка
+Name: Petryliak Davyd
 Hostname: kwaidix
 IP: 10.0.2.15
 OS: Ubuntu 26.04.1 LTS
