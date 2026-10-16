@@ -1,6 +1,6 @@
-Name: Kuznetsov Maksym
-Hostname: Ubuntu-Server
+Name: Дученко Вероніка
+Hostname: kwaidix
 IP: 10.0.2.15
 OS: Ubuntu 26.04.1 LTS
-CPU: 2
+CPU: 13th Gen Intel(R) Core(TM) i5-13450HX
 RAM: 3.3 GiB
