@@ -1,0 +1,5 @@
+Були знайдені процеси:
+chrome
+msedge
+explorer
+Я завершив процес msedge
