@@ -1,0 +1,6 @@
+Name: Dmytro Mykolayovich Vitiuk
+Hostname: desktop322
+IP: 10.0.2.15
+OS: Ubuntu 22.04.3 LTS
+CPU: AMD Ryzen 7 7800X3D
+RAM: 3.3Gi
