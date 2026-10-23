@@ -1,0 +1,71 @@
+   64  pwd
+   65  ls
+   66  cd \
+   67  cd /
+   68  ls
+   69  ls /bin
+   70  ls /etc
+   71  /home
+   72  ls /home
+   3012  mkdir lab_linux
+   3013  cd lab_linux
+   3014  touch file1.txt
+   3015  ll
+   3016  echo "Linux basics completed" > result.txt
+   73  ls /var
+   74  ls -i file1.txt
+   75  echo "Hello Linux"
+   76  ls -l | grep ".txt"
+   77  echo "Linux basics completed" > result.txt
+   78  git add .
+   79  git commit -m "Linux CLI basics"
+   80  git push
+   47  chmod 755 file1.txt
+   48  chmod 644 file1.txt
+   49  ps aux | grep bash
+   50  stat file1.txt
+   51  echo $SHELL
+   52  name="Student"
+   53  echo $name
+   54  today=$(date)
+   55  echo $today
+   60  echo -e "apple\nbanana\napricot" | grep "^a"
+   21  echo $HOME~
+   22  echo $HOME
+   23  echo $USER
+   24  export MY_VAR="DevOps Linux"
+   25  echo $MY_VAR
+   26  groups
+   27  sodu useradd testuser
+   28  sudo useradd testuser
+   29  sudo passwd testuser
+   3032  ls | grep ".txt"
+   3033  nvim
+   3034  echo "Hello" > out.txt
+   3035  cat out.txt
+   3036  ll
+   3037  echo "Next line" >> out.txt
+   3038  kk
+   3039  ll
+   3040  nvim out.txt
+   3041  echo "Next line" > out.txt
+   3042  nvim out.txt
+   3043  ll
+   3044  echo "Pipes and environment done" > level4.txt
+   3045  git status
+   3046  ..
+   3047  git status
+   3048  git add .
+   3049  git commit -m "Linux pipes and env"
+   3050  gut push origin SkalovVolod
+   3052  ll
+   3053  whoami
+   3054  cd lab_linux
+   3055  ll
+   3056  echo "Users, permissions, pipes advanced" > level5.txt
+   3057  cat level5.txt
+   3058  cd ..
+   3059  git status
+   3060  git add .
+   3061  git commit -m "Linux advanced lab"
+   3062  git push origin SkalovVolod
