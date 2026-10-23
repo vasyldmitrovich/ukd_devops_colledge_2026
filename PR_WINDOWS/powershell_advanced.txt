@@ -1,0 +1,18 @@
+PowerShell advanced commands completed
+
+Commands tested:
+- Get-Process
+- Get-Process | Where-Object {$_.CPU -gt 10}
+- Get-Service
+- function Say-Hello
+- Get-Process notepad
+- Start-Process notepad
+
+
+Additional task:
+- Listed three processes using Get-Process | Select-Object -First 3
+- Identified Notepad using Get-Process notepad
+- Terminated Notepad using Stop-Process -Name notepad
+- Verified process termination using Get-Process notepad -ErrorAction SilentlyContinue
+
+Name: Дученко Вероніка Андріївна
