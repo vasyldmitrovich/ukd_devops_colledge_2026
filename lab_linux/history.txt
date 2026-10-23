@@ -1,0 +1,85 @@
+ 100  git clone -b AdrianTsybukh https://github.com/vasyldmitrovich/ukd_devops_colledge_2026
+  101  cd ukd_devops_colledge_2026/
+  102  git branch
+  103  pwd
+  104  ls
+  105  cd/
+  106  cd  /
+  107  ls
+  108  ls /bin
+  109  ls /etc
+  110  ls /home
+  111  ls /var
+  112  ls
+  113  cd
+  114  cd ukd_devops_colledge_2026/
+  115  ls
+  116  mkdir lab_linux
+  117  cd lab_linux/
+  118  touch file1.txt
+  119  ls -i file1.txt
+  120  echo "Linux basics completed" > result.txt
+  121  ls
+  122  cd ..
+  123  git status
+  124  git add .
+  125  git commit -m "Linux CLI basics"
+  126  git push
+  127  ls -l
+  128  ls -l | grep ".txt"
+  129  cd lab_linux/
+  130  ls -l | grep ".txt"
+  131  echo "Hello" > out.txt
+  132  cat out.txt
+  133  echo "Next line" >> out.txt
+  134  ls
+  135  cat out.txt
+  136  echo $HOME
+  137  echo $USER
+  138  echo $SHELL
+  139  echo $EDITOR
+  140  export MY_VAR="DevOps Linux"
+  141  echo $MY_VAR
+  142  echo "Pipes and environment done" > level4.txt
+  143  ls
+  144  git add .
+  145  git commit -m "Linux pipes and env"
+  146  git push
+  147  whoami
+  148  groups
+  149  sudo useradd testuser
+  150  sudo passwd testuser
+  151  ls -l
+  152  chmod 755 file1.txt
+  153  ls -l
+  154  chmod 644 file1.txt
+  155  ls -l
+  156  ps aux | grep bash
+  157  stat file1.txt
+  158  echo "Users, permissions, pipes advanced" > level5.txt
+  159  git add .
+  160  git commit -m "Linux advanced lab"
+  161  git push
+  162  users
+  163  sudo useradd -m user1
+  164  sudo useradd -m user2
+  165  sudo passwd user1
+  166  sudo passwd user2
+  167  ls /home
+  168  users
+  169  ls
+  170  cat .
+  171  ls
+  172  ls
+  173  ls | cat
+  174  ls out.txt
+  175  cat out.txt
+  176  ls -l
+  177  sudo setfacl -m u:user1:r-- out.txt
+  178  sudo setfacl -m u:user2:r-- out.txt
+  179  sudo apt install setfacl
+  180  sudo apt install facl
+  181  sudo apt install acl
+  182  sudo setfacl -m u:user1:r-- out.txt
+  183  sudo setfacl -m u:user2:r-- out.txt
+  184  getfacl out.txt
