@@ -1,0 +1,14 @@
+Pipes and environment done
+vagrant@machine:~/ukd_devops_colledge_2026/PR_LINUX$ ls -l | grep ".txt"
+-rw-rw-r-- 1 vagrant vagrant    0 Oct 27 17:49 file1.txt
+-rw-rw-r-- 1 vagrant vagrant 4271 Oct 27 18:06 result.txt
+vagrant@machine:~/ukd_devops_colledge_2026/PR_LINUX$ echo "Hello" > out.txt
+vagrant@machine:~/ukd_devops_colledge_2026/PR_LINUX$ echo "Next Line" >> out.txt
+vagrant@machine:~/ukd_devops_colledge_2026/PR_LINUX$ echo $HOME
+/home/vagrant
+vagrant@machine:~/ukd_devops_colledge_2026/PR_LINUX$ echo $USER
+vagrant
+vagrant@machine:~/ukd_devops_colledge_2026/PR_LINUX$ export MY_VAR="DevOps Linux"
+vagrant@machine:~/ukd_devops_colledge_2026/PR_LINUX$ echo $MY_VAR
+DevOps Linux
+vagrant@machine:~/ukd_devops_colledge_2026/PR_LINUX$ echo "Pipes and environment done" > level4.txt
