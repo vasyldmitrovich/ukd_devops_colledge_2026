@@ -1,1 +1,71 @@
 Linux basics completed
+vagrant@machine:~$ pwd
+/home/vagrant
+vagrant@machine:~$ ls
+vagrant@machine:~$ ls /bin /etc /home /var
+/bin:
+'['                                   perl5.34-x86_64-linux-gnu
+ aa-enabled                           perlbug
+ aa-exec                              perldoc
+ aa-features-abi                      perlivp
+...
+ perl                                 zstdless
+ perl5.34.0                           zstdmt
+
+/etc:
+adduser.conf            fwupd            logcheck             passwd         subgid
+alternatives            gai.conf         login.defs           passwd-        subgid-
+apache2                 groff            logrotate.conf       perl           subuid
+apm                     group            logrotate.d          pki            subuid-
+apparmor                group-           lsb-release          pm             sudo.conf
+apparmor.d              grub.d           lvm                  polkit-1       sudoers
+apport                  gshadow          machine-id           pollinate      sudoers.d
+apt                     gshadow-         magic                profile        sudo_logsrvd.conf
+bash.bashrc             gss              magic.mime           profile.d      sysctl.conf
+bash_completion         hdparm.conf      mailname             protocols      sysctl.d
+bash_completion.d       host.conf        manpath.config       python3        sysstat
+bindresvport.blacklist  hostname         mdadm                python3.10     systemd
+binfmt.d                hosts            mime.types           rc0.d          terminfo
+byobu                   hosts.allow      mke2fs.conf          rc1.d          thermald
+ca-certificates         hosts.deny       ModemManager         rc2.d          timezone
+ca-certificates.conf    ifplugd          modprobe.d           rc3.d          tmpfiles.d
+console-setup           init             modules              rc4.d          ubuntu-advantage
+cron.d                  init.d           modules-load.d       rc5.d          ucf.conf
+cron.daily              initramfs-tools  motd                 rc6.d          udev
+cron.hourly             inputrc          mtab                 rcS.d          udisks2
+cron.monthly            iproute2         multipath            resolv.conf    ufw
+crontab                 iscsi            multipath.conf       rmt            updatedb.conf
+cron.weekly             issue            nanorc               rpc            update-manager
+cryptsetup-initramfs    issue.net        needrestart          rsyslog.conf   update-motd.d
+crypttab                kernel           netconfig            rsyslog.d      update-notifier
+dbus-1                  landscape        netplan              screenrc       UPower
+debconf.conf            ldap             network              security       usb_modeswitch.conf
+debian_version          ld.so.cache      networkd-dispatcher  selinux        usb_modeswitch.d
+default                 ld.so.conf       networks             sensors3.conf  vagrant_box_build_time
+deluser.conf            ld.so.conf.d     newt                 sensors.d      vim
+depmod.d                legal            nftables.conf        services       vmware-tools
+dhcp                    libaudit.conf    nsswitch.conf        shadow         vtrgb
+dpkg                    libblockdev      opt                  shadow-        wgetrc
+e2scrub.conf            libnl-3          os-release           shells         X11
+environment             lighttpd         overlayroot.conf     skel           xattr.conf
+ethertypes              locale.alias     PackageKit           sos            xdg
+fstab                   locale.gen       pam.conf             ssh            zsh_command_not_found
+fuse.conf               localtime        pam.d                ssl
+
+/home:
+vagrant
+
+/var:
+backups  cache  crash  lib  local  lock  log  mail  opt  run  snap  spool  tmp
+vagrant@machine:~$ cd ~
+vagrant@machine:~$ mkdir lab_linux
+vagrant@machine:~$ cd lab_linux
+vagrant@machine:~/lab_linux$ touch file1.txt
+vagrant@machine:~/lab_linux$ ls -l
+total 0
+-rw-rw-r-- 1 vagrant vagrant 0 Oct 27 17:49 file1.txt
+vagrant@machine:~/lab_linux$ ls -i file1.txt
+655373 file1.txt
+vagrant@machine:~/lab_linux$ echo "Hello Linux"
+Hello Linux
+vagrant@machine:~/lab_linux$ echo "Linux basics completed" > result.txt
