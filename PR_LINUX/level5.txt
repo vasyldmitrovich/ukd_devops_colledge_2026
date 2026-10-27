@@ -1,0 +1,31 @@
+Users, permissions, pipe advanced
+vagrant@machine:~/ukd_devops_colledge_2026/PR_LINUX$ whoami
+vagrant
+vagrant@machine:~/ukd_devops_colledge_2026/PR_LINUX$ groups
+vagrant
+vagrant@machine:~/ukd_devops_colledge_2026/PR_LINUX$  sudo useradd testuser
+vagrant@machine:~/ukd_devops_colledge_2026/PR_LINUX$ sudo passwd testuser
+New password:
+Retype new password:
+passwd: password updated successfully
+vagrant@machine:~/ukd_devops_colledge_2026/PR_LINUX$ ls -l
+total 16
+-rw-rw-r-- 1 vagrant vagrant    0 Oct 27 17:49 file1.txt
+-rw-rw-r-- 1 vagrant vagrant  783 Oct 27 18:09 level4.txt
+-rw-rw-r-- 1 vagrant vagrant   16 Oct 27 18:07 out.txt
+-rw-rw-r-- 1 vagrant vagrant 4271 Oct 27 18:06 result.txt
+vagrant@machine:~/ukd_devops_colledge_2026/PR_LINUX$ chmod 755 file1.txt
+vagrant@machine:~/ukd_devops_colledge_2026/PR_LINUX$ chmod 644 file1.txt
+vagrant@machine:~/ukd_devops_colledge_2026/PR_LINUX$ ps aux | grep bash
+vagrant     3519  0.0  0.3   9964  6696 pts/0    Ss   17:47   0:00 -bash
+vagrant     3753  0.0  0.1   6480  2248 pts/0    S+   18:11   0:00 grep --color=auto bash
+vagrant@machine:~/ukd_devops_colledge_2026/PR_LINUX$ stat file1.txt
+  File: file1.txt
+  Size: 0               Blocks: 0          IO Block: 4096   regular empty file
+Device: fd00h/64768d    Inode: 655373      Links: 1
+Access: (0644/-rw-r--r--)  Uid: ( 1000/ vagrant)   Gid: ( 1000/ vagrant)
+Access: 2026-10-27 17:49:22.688115842 +0000
+Modify: 2026-10-27 17:49:22.688115842 +0000
+Change: 2026-10-27 18:11:33.688344126 +0000
+ Birth: 2026-10-27 17:49:22.688115842 +0000
+vagrant@machine:~/ukd_devops_colledge_2026/PR_LINUX$ echo "Users, permissions, pipe advanced" > level5.txt
