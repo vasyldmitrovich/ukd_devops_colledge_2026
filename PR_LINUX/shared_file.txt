@@ -1,0 +1,19 @@
+hello
+vagrant@machine:~/ukd_devops_colledge_2026/PR_LINUX$ sudo useradd userA
+vagrant@machine:~/ukd_devops_colledge_2026/PR_LINUX$ sudo useradd userB
+vagrant@machine:~/ukd_devops_colledge_2026/PR_LINUX$ sudo passwd userA
+New password:
+Retype new password:
+passwd: password updated successfully
+vagrant@machine:~/ukd_devops_colledge_2026/PR_LINUX$ sudo passwd userB
+New password:
+Retype new password:
+passwd: password updated successfully
+vagrant@machine:~/ukd_devops_colledge_2026/PR_LINUX$ touch shared_file.txt
+vagrant@machine:~/ukd_devops_colledge_2026/PR_LINUX$ chmod 640 shared_file.txt
+vagrant@machine:~/ukd_devops_colledge_2026/PR_LINUX$ sudo chown userA:userB shared_file.txt
+vagrant@machine:~/ukd_devops_colledge_2026/PR_LINUX$ su userA -c "echo 'hello' > shared_file.txt"
+Password:
+vagrant@machine:~/ukd_devops_colledge_2026/PR_LINUX$ su userB -c "echo 'hack' > shared_file.txt"
+Password:
+sh: 1: cannot create shared_file.txt: Permission denied
