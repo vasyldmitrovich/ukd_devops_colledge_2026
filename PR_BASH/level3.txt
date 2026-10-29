@@ -1,0 +1,46 @@
+Bash lab level 3 Bash completed
+
+=== TERMINAL LOG ===
+vagrant@machine:~/ukd_devops_colledge_2026/PR_BASH$ echo $SHELL
+/bin/bash
+vagrant@machine:~/ukd_devops_colledge_2026/PR_BASH$ name="Student"
+vagrant@machine:~/ukd_devops_colledge_2026/PR_BASH$ echo $name
+Student
+vagrant@machine:~/ukd_devops_colledge_2026/PR_BASH$ today=$(date)
+vagrant@machine:~/ukd_devops_colledge_2026/PR_BASH$ echo $today
+Thu Oct 29 04:46:37 PM UTC 2026
+vagrant@machine:~/ukd_devops_colledge_2026/PR_BASH$ a=5
+vagrant@machine:~/ukd_devops_colledge_2026/PR_BASH$ b=3
+vagrant@machine:~/ukd_devops_colledge_2026/PR_BASH$ echo $((a + b))
+8
+vagrant@machine:~/ukd_devops_colledge_2026/PR_BASH$ if [ $a -gt $b ]; then
+> ^C
+vagrant@machine:~/ukd_devops_colledge_2026/PR_BASH$ if [ $a -gt $b ]; then
+echo "A greater"
+else
+echo "B greater"
+fi
+A greater
+vagrant@machine:~/ukd_devops_colledge_2026/PR_BASH$ for i in 1 2 3 4 5
+do
+echo $i
+done
+1
+2
+3
+4
+5
+vagrant@machine:~/ukd_devops_colledge_2026/PR_BASH$ arr=("cpu" "ram" "disk")
+vagrant@machine:~/ukd_devops_colledge_2026/PR_BASH$ echo ${arr[0]}
+cpu
+vagrant@machine:~/ukd_devops_colledge_2026/PR_BASH$ hello() {
+echo "Hello DevOps"
+}
+vagrant@machine:~/ukd_devops_colledge_2026/PR_BASH$ hello
+Hello DevOps
+vagrant@machine:~/ukd_devops_colledge_2026/PR_BASH$ ps aux | grep bash
+vagrant     1366  0.0  0.2   9052  5836 pts/0    Ss   16:29   0:00 -bash
+vagrant     3553  0.0  0.1   6612  2236 pts/0    S+   16:48   0:00 grep --color=auto bash
+vagrant@machine:~/ukd_devops_colledge_2026/PR_BASH$ echo -e "apple\nbanana\napricot" | grep "^a"
+apple
+apricot
