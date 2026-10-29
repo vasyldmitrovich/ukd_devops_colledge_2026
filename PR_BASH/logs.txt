@@ -1,0 +1,40 @@
+3537  cd code
+ 3538  ls
+ 3539  cd DevOps
+ 3540  ls
+ 3541  cd ukd_devops_colledge_2026
+ 3542  ls
+ 3543  cd PR_BASH
+ 3544  ls
+ 3545  nvim level3.txt
+ 3546  history
+ 3547  pswh
+ 3548  pwsh
+ 3549  nvim script.sh
+ 3550  pwsh
+ 3551  chmod +x script.sh
+ 3552  pwsh
+ 3553  ..
+ 3554  ls
+ 3555  git status
+ 3556  cd PR_BASH
+ 3557  echo "Level 4 completed" > level4.txt
+ 3558  git add .
+ 3559  git commit -m "Level 4 Bash lab"
+ 3560  git push
+ 3561  nvim task.sh
+ 3562  chmod +x task.sh
+ 3563  pwsh
+ 3564  ..
+ 3565  git status
+ 3566  cd PR_BASH
+ 3567  ls
+ 3568  echo "Bash RegEx lab completed" > level5.txt
+ 3569  cd ..
+ 3570  git add .
+ 3571  git commit -m "Level 5 Bash RegEx"
+ 3572  git push
+ 3573  history
+ 3574  cd PR_BASH
+ 3575  l
+ 3576  nvim logs.txt
