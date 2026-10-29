@@ -1,0 +1,32 @@
+   36  echo $SHELL
+   37  name="Student"; echo $name
+   38  today=$(date); echo $today
+   39  a=5; b=3; echo $((a + b))
+   40  if [ $a -gt $b ]; then echo "A greater"; else echo "B greater"; fi
+   41  for i in 1 2 3 4 5; do echo $i; done
+   42  arr=("cpu" "ram" "disk"); echo ${arr[0]}
+   43  hello() { echo "Hello DevOps"; }; hello
+   44  ps aux | grep bash
+   45  echo -e "apple\nbanana\napricot" | grep "^a"
+   46  echo "Bash lab level 3 completed" > level3.txt
+   47  git add .
+   48  git commit -m "Level 3 Bash lab"
+   49  ls
+   50  git push
+   51  ls
+   52  nvim level4.sh
+   53  chmod +x level4.sh
+   54  ./level4.sh
+   55  echo "Level 4 completed" > level4.txt
+   56  git add .
+   57  git commit -m "Level 4 Bash lab"
+   58  git push
+   59  nvim data.txt
+   60  nvim level5.sh
+   61  chmod +x level5.sh
+   62  ./level5.sh
+   63  echo "Bash RegEx lab completed" > level5.txt
+   64  git add .
+   65  git commit -m "Level 5 Bash RegEx"
+   66  ls
+   67  git push
