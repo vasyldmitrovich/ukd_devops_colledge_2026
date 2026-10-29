@@ -1,0 +1,2 @@
+Here is some text with an email dmytro.i.hrytsiuk@ukd.edu.ua, test@gmail.com and example@mail.com
+Server 1 is at 192.168.1.10, server 2 is at 10.0.0.5, server 3 is at 0.0.0.0

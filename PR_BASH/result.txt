@@ -1,0 +1,6 @@
+192.168.1.10
+10.0.0.5
+0.0.0.0
+dmytro.i.hrytsiuk@ukd.edu.ua
+test@gmail.com
+example@mail.com
