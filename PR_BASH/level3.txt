@@ -1,4 +1,4 @@
-Bash lab level 3 Bash completed
+Bash lab level 3 completed
 
 === TERMINAL LOG ===
 vagrant@machine:~/ukd_devops_colledge_2026/PR_BASH$ echo $SHELL

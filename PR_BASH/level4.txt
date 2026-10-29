@@ -1,0 +1,20 @@
+Bash lab level 4 completed
+
+=== TERMINAL LOG ===
+vagrant@machine:~/ukd_devops_colledge_2026/PR_BASH$ ps aux | grep ssh
+root         762  0.0  0.4  15436  9184 ?        Ss   16:17   0:00 sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups
+root        1304  0.0  0.5  16916 10708 ?        Ss   16:29   0:00 sshd: vagrant [priv]
+vagrant     1365  0.3  0.4  17432  8184 ?        S    16:29   0:04 sshd: vagrant@pts/0
+vagrant     3588  0.0  0.1   6612  2224 pts/0    R+   16:53   0:00 grep --color=auto ssh
+vagrant@machine:~/ukd_devops_colledge_2026/PR_BASH$ my_tools=("docker" "bash" "shell")
+vagrant@machine:~/ukd_devops_colledge_2026/PR_BASH$ echo ${my_tools[1]}
+bash
+vagrant@machine:~/ukd_devops_colledge_2026/PR_BASH$ user_shell() {
+> echo "$USER's shell is $SHELL"
+> }
+vagrant@machine:~/ukd_devops_colledge_2026/PR_BASH$ for i in "${my_tools[@]}"; do
+> if [ "$i" == "shell"]; then
+> user_shell
+> fi
+> done
+vagrant's shell is /bin/bash
