@@ -1,0 +1,12 @@
+=== Права на файл (початково: власник user1, 640) ===
+-rw-r----- 1 user1 team 12 Oct 30 08:59 /tmp/shared.txt
+=== user1 (власник) читає ===
+secret
+test
+=== user2 пише ===
+sh: 1: cannot create /tmp/shared.txt: Permission denied
+=== user2 (група team) читає ===
+secret
+test
+=== user1 пише ===
+(без помилок, запис вдався)
