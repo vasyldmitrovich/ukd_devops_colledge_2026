@@ -1,0 +1,8 @@
+Server IP: 192.168.1.1
+Admin email: admin@example.com
+User IP: 10.0.0.5
+Contact: veronika@gmail.com
+Invalid data: hello_world
+Another IP: 172.16.0.10
+Support: support@devops.org
+Random text: Ubuntu Linux
