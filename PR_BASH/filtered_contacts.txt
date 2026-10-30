@@ -1,0 +1,4 @@
+192.168.1.1
+10.0.0.5
+natalia@gmail.com
+student@ukd.edu.ua
