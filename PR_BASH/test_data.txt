@@ -1,0 +1,8 @@
+Student: Sofiia Tomashchuk
+Server IP: 192.168.1.10
+Website IP: 10.0.0.25
+Invalid IP: 999.999.999.999
+Email: sofia@gmail.com
+Admin: admin@example.com
+Another email: test.user@ukr.net
+This is a regular text line.
