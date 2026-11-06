@@ -1,0 +1,33 @@
+
+Pinging 127.0.0.1 with 32 bytes of data:
+Reply from 127.0.0.1: bytes=32 time<1ms TTL=128
+Reply from 127.0.0.1: bytes=32 time<1ms TTL=128
+Reply from 127.0.0.1: bytes=32 time<1ms TTL=128
+Reply from 127.0.0.1: bytes=32 time<1ms TTL=128
+
+Ping statistics for 127.0.0.1:
+    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 0ms, Maximum = 0ms, Average = 0ms
+
+Pinging 8.8.8.8 with 32 bytes of data:
+Reply from 8.8.8.8: bytes=32 time=19ms TTL=118
+Reply from 8.8.8.8: bytes=32 time=19ms TTL=118
+Reply from 8.8.8.8: bytes=32 time=19ms TTL=118
+Reply from 8.8.8.8: bytes=32 time=19ms TTL=118
+
+Ping statistics for 8.8.8.8:
+    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 19ms, Maximum = 19ms, Average = 19ms
+
+Pinging google.com [142.250.120.101] with 32 bytes of data:
+Reply from 142.250.120.101: bytes=32 time=18ms TTL=114
+Reply from 142.250.120.101: bytes=32 time=17ms TTL=114
+Reply from 142.250.120.101: bytes=32 time=17ms TTL=114
+Reply from 142.250.120.101: bytes=32 time=17ms TTL=114
+
+Ping statistics for 142.250.120.101:
+    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 17ms, Maximum = 18ms, Average = 17ms
