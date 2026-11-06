@@ -1,0 +1,4 @@
+Server 1: 192.168.1.10, admin: admin@example.com
+Server 2: 10.0.0.5, support: help@test.org
+Bad IP: 999.1.1.1 and wrong mail: user@@mail
+Contact: john.doe@company.ua, gateway 172.16.0.1

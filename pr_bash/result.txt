@@ -1,0 +1,6 @@
+IP: 192.168.1.10
+EMAIL: admin@example.com
+IP: 10.0.0.5
+EMAIL: help@test.org
+EMAIL: john.doe@company.ua
+IP: 172.16.0.1
