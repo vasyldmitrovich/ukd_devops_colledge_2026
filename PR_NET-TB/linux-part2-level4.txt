@@ -1,0 +1,170 @@
+Linux part 2, level4 done
+
+=== TERMINAL LOG ===
+vagrant@machine:~$ neofetch
+            .-/+oossssoo+/-.               vagrant@machine
+        `:+ssssssssssssssssss+:`           ---------------
+      -+ssssssssssssssssssyyssss+-         OS: Ubuntu 22.04.3 LTS x86_64
+    .ossssssssssssssssssdMMMNysssso.       Host: VirtualBox 1.2
+   /ssssssssssshdmmNNmmyNMMMMhssssss/      Kernel: 5.15.0-91-generic
+  +ssssssssshmydMMMMMMMNddddyssssssss+     Uptime: 23 mins
+ /sssssssshNMMMyhhyyyyhmNMMMNhssssssss/    Packages: 722 (dpkg), 4 (snap)
+.ssssssssdMMMNhsssssssssshNMMMdssssssss.   Shell: bash 5.1.16
++sssshhhyNMMNyssssssssssssyNMMMysssssss+   Resolution: 1024x768
+ossyNMMMNyMMhsssssssssssssshmmmhssssssso   Terminal: /dev/pts/0
+ossyNMMMNyMMhsssssssssssssshmmmhssssssso   CPU: 12th Gen Intel i5-12450HX (2) @ 2.688GHz
++sssshhhyNMMNyssssssssssssyNMMMysssssss+   GPU: VirtualBox Graphics Adapter
+.ssssssssdMMMNhsssssssssshNMMMdssssssss.   Memory: 190MiB / 1963MiB
+ /sssssssshNMMMyhhyyyyhdNMMMNhssssssss/
+  +sssssssssdmydMMMMMMMMddddyssssssss+
+   /ssssssssssshdmNNNNmyNMMMMhssssss/
+    .ossssssssssssssssssdMMMNysssso.
+      -+sssssssssssssssssyyyssss+-
+        `:+ssssssssssssssssss+:`
+            .-/+oossssoo+/-.
+
+vagrant@machine:~$ ping 127.0.0.1 -c 4
+PING 127.0.0.1 (127.0.0.1) 56(84) bytes of data.
+64 bytes from 127.0.0.1: icmp_seq=1 ttl=64 time=0.236 ms
+64 bytes from 127.0.0.1: icmp_seq=2 ttl=64 time=0.041 ms
+64 bytes from 127.0.0.1: icmp_seq=3 ttl=64 time=0.071 ms
+64 bytes from 127.0.0.1: icmp_seq=4 ttl=64 time=0.051 ms
+
+--- 127.0.0.1 ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 4070ms
+rtt min/avg/max/mdev = 0.041/0.099/0.236/0.079 ms
+vagrant@machine:~$ ping 8.8.8.8 -c 4
+PING 8.8.8.8 (8.8.8.8) 56(84) bytes of data.
+64 bytes from 8.8.8.8: icmp_seq=1 ttl=116 time=46.3 ms
+64 bytes from 8.8.8.8: icmp_seq=2 ttl=116 time=49.9 ms
+64 bytes from 8.8.8.8: icmp_seq=3 ttl=116 time=31.8 ms
+64 bytes from 8.8.8.8: icmp_seq=4 ttl=116 time=33.4 ms
+
+--- 8.8.8.8 ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 3319ms
+rtt min/avg/max/mdev = 31.762/40.343/49.943/7.911 ms
+vagrant@machine:~$ ping google.com -c 4
+PING google.com (142.250.130.138) 56(84) bytes of data.
+64 bytes from zq-in-f138.1e100.net (142.250.130.138): icmp_seq=1 ttl=112 time=42.6 ms
+64 bytes from zq-in-f138.1e100.net (142.250.130.138): icmp_seq=2 ttl=112 time=31.9 ms
+64 bytes from zq-in-f138.1e100.net (142.250.130.138): icmp_seq=3 ttl=112 time=32.0 ms
+64 bytes from zq-in-f138.1e100.net (142.250.130.138): icmp_seq=4 ttl=112 time=32.3 ms
+
+--- google.com ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 4139ms
+rtt min/avg/max/mdev = 31.907/34.680/42.555/4.548 ms
+vagrant@machine:~$ sudo apt update
+Hit:1 https://mirrors.edge.kernel.org/ubuntu jammy InRelease
+Get:2 https://mirrors.edge.kernel.org/ubuntu jammy-updates InRelease [128 kB]
+Get:3 https://mirrors.edge.kernel.org/ubuntu jammy-backports InRelease [127 kB]
+Get:4 https://mirrors.edge.kernel.org/ubuntu jammy-security InRelease [129 kB]
+Get:5 https://mirrors.edge.kernel.org/ubuntu jammy-updates/main amd64 Packages [3,963 kB]
+Get:6 https://mirrors.edge.kernel.org/ubuntu jammy-updates/main Translation-en [582 kB]
+Get:7 https://mirrors.edge.kernel.org/ubuntu jammy-updates/restricted amd64 Packages [6,815 kB]
+Get:8 https://mirrors.edge.kernel.org/ubuntu jammy-updates/restricted Translation-en [1,310 kB]
+Get:9 https://mirrors.edge.kernel.org/ubuntu jammy-updates/universe amd64 Packages [1,291 kB]
+Get:10 https://mirrors.edge.kernel.org/ubuntu jammy-updates/universe Translation-en [327 kB]
+Get:11 https://mirrors.edge.kernel.org/ubuntu jammy-updates/multiverse amd64 Packages [86.1 kB]
+Get:12 https://mirrors.edge.kernel.org/ubuntu jammy-updates/multiverse Translation-en [16.5 kB]
+Get:13 https://mirrors.edge.kernel.org/ubuntu jammy-security/main amd64 Packages [3,675 kB]
+Get:14 https://mirrors.edge.kernel.org/ubuntu jammy-security/main Translation-en [513 kB]
+Get:15 https://mirrors.edge.kernel.org/ubuntu jammy-security/restricted amd64 Packages [6,545 kB]
+Get:16 https://mirrors.edge.kernel.org/ubuntu jammy-security/restricted Translation-en [1,257 kB]
+Get:17 https://mirrors.edge.kernel.org/ubuntu jammy-security/universe amd64 Packages [1,057 kB]
+Get:18 https://mirrors.edge.kernel.org/ubuntu jammy-security/universe Translation-en [238 kB]
+Get:19 https://mirrors.edge.kernel.org/ubuntu jammy-security/multiverse amd64 Packages [79.6 kB]
+Get:20 https://mirrors.edge.kernel.org/ubuntu jammy-security/multiverse Translation-en [13.6 kB]
+Fetched 28.2 MB in 26s (1,064 kB/s)
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+292 packages can be upgraded. Run 'apt list --upgradable' to see them.
+vagrant@machine:~$ sudo apt install net-tools dnsutils -y
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+The following NEW packages will be installed:
+  dnsutils net-tools
+0 upgraded, 2 newly installed, 0 to remove and 292 not upgraded.
+Need to get 208 kB of archives.
+After this operation, 886 kB of additional disk space will be used.
+Get:1 https://mirrors.edge.kernel.org/ubuntu jammy-updates/universe amd64 dnsutils all 1:9.18.39-0ubuntu0.22.04.8 [3,928 B]
+Get:2 https://mirrors.edge.kernel.org/ubuntu jammy-updates/main amd64 net-tools amd64 1.60+git20181103.0eebece-1ubuntu5.4 [204 kB]
+Fetched 208 kB in 1s (193 kB/s)
+Selecting previously unselected package dnsutils.
+(Reading database ... 79563 files and directories currently installed.)
+Preparing to unpack .../dnsutils_1%3a9.18.39-0ubuntu0.22.04.8_all.deb ...
+Unpacking dnsutils (1:9.18.39-0ubuntu0.22.04.8) ...
+Selecting previously unselected package net-tools.
+Preparing to unpack .../net-tools_1.60+git20181103.0eebece-1ubuntu5.4_amd64.deb ...
+Unpacking net-tools (1.60+git20181103.0eebece-1ubuntu5.4) ...
+Setting up net-tools (1.60+git20181103.0eebece-1ubuntu5.4) ...
+Setting up dnsutils (1:9.18.39-0ubuntu0.22.04.8) ...
+Processing triggers for man-db (2.10.2-1) ...
+Scanning processes...
+Scanning linux images...
+
+Running kernel seems to be up-to-date.
+
+No services need to be restarted.
+
+No containers need to be restarted.
+
+No user sessions are running outdated binaries.
+
+No VM guests are running outdated hypervisor (qemu) binaries on this host.
+vagrant@machine:~$ ifconfig
+eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 10.0.2.15  netmask 255.255.255.0  broadcast 10.0.2.255
+        inet6 fd17:625c:f037:2:a00:27ff:fe8c:6941  prefixlen 64  scopeid 0x0<global>
+        inet6 fe80::a00:27ff:fe8c:6941  prefixlen 64  scopeid 0x20<link>
+        ether 08:00:27:8c:69:41  txqueuelen 1000  (Ethernet)
+        RX packets 22955  bytes 30619365 (30.6 MB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 3787  bytes 331988 (331.9 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+eth1: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.56.10  netmask 255.255.255.0  broadcast 192.168.56.255
+        inet6 fe80::a00:27ff:fe1f:aba6  prefixlen 64  scopeid 0x20<link>
+        ether 08:00:27:1f:ab:a6  txqueuelen 1000  (Ethernet)
+        RX packets 79  bytes 6876 (6.8 KB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 22  bytes 1716 (1.7 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 8  bytes 672 (672.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 8  bytes 672 (672.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+vagrant@machine:~$ nslookup google.com
+Server:         8.8.8.8
+Address:        8.8.8.8#53
+
+Non-authoritative answer:
+Name:   google.com
+Address: 142.250.120.139
+Name:   google.com
+Address: 142.250.120.113
+Name:   google.com
+Address: 142.250.120.138
+Name:   google.com
+Address: 142.250.120.102
+Name:   google.com
+Address: 142.250.120.100
+Name:   google.com
+Address: 142.250.120.101
+Name:   google.com
+Address: 2a00:1450:4025:804::8a
+Name:   google.com
+Address: 2a00:1450:4025:804::64
+Name:   google.com
+Address: 2a00:1450:4025:804::8b
+Name:   google.com
+Address: 2a00:1450:4025:804::65
+
+vagrant@machine:~$
