@@ -1,0 +1,59 @@
+Linux part2, level 5 done
+
+=== TERMINAL LOG ===
+vagrant@machine:~/ukd_devops_colledge_2026/PR_NET-TB$ sudo apt install tcpdump -y
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+The following packages will be upgraded:
+  tcpdump
+1 upgraded, 0 newly installed, 0 to remove and 291 not upgraded.
+Need to get 501 kB of archives.
+After this operation, 0 B of additional disk space will be used.
+Get:1 https://mirrors.edge.kernel.org/ubuntu jammy-updates/main amd64 tcpdump amd64 4.99.1-3ubuntu0.2 [501 kB]
+Fetched 501 kB in 1s (546 kB/s)
+(Reading database ... 79616 files and directories currently installed.)
+Preparing to unpack .../tcpdump_4.99.1-3ubuntu0.2_amd64.deb ...
+Unpacking tcpdump (4.99.1-3ubuntu0.2) over (4.99.1-3ubuntu0.1) ...
+Setting up tcpdump (4.99.1-3ubuntu0.2) ...
+Installing new version of config file /etc/apparmor.d/usr.bin.tcpdump ...
+Processing triggers for man-db (2.10.2-1) ...
+Scanning processes...
+Scanning linux images...
+
+Running kernel seems to be up-to-date.
+
+No services need to be restarted.
+
+No containers need to be restarted.
+
+No user sessions are running outdated binaries.
+
+No VM guests are running outdated hypervisor (qemu) binaries on this host.
+vagrant@machine:~/ukd_devops_colledge_2026/PR_NET-TB$ ping google.com -c 2
+PING google.com (142.250.130.139) 56(84) bytes of data.
+64 bytes from zq-in-f139.1e100.net (142.250.130.139): icmp_seq=1 ttl=112 time=33.1 ms
+64 bytes from zq-in-f139.1e100.net (142.250.130.139): icmp_seq=2 ttl=112 time=32.3 ms
+
+--- google.com ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1002ms
+rtt min/avg/max/mdev = 32.309/32.688/33.067/0.379 ms
+vagrant@machine:~/ukd_devops_colledge_2026/PR_NET-TB$ 
+
+=== TCPDUMP LOG ===
+vagrant@machine:~$ sudo tcpdump -i any imp
+tcpdump: data link type LINUX_SLL2
+tcpdump: can't parse filter expression: syntax error
+vagrant@machine:~$ sudo tcpdump -i any icmp
+tcpdump: data link type LINUX_SLL2
+tcpdump: verbose output suppressed, use -v[v]... for full protocol decode
+listening on any, link-type LINUX_SLL2 (Linux cooked v2), snapshot length 262144 bytes
+15:26:21.904690 eth0  Out IP 10.0.2.15 > zq-in-f139.1e100.net: ICMP echo request, id 4, seq 1, length 64
+15:26:21.937143 eth0  In  IP zq-in-f139.1e100.net > 10.0.2.15: ICMP echo reply, id 4, seq 1, length 64
+15:26:22.904947 eth0  Out IP 10.0.2.15 > zq-in-f139.1e100.net: ICMP echo request, id 4, seq 2, length 64
+15:26:22.937220 eth0  In  IP zq-in-f139.1e100.net > 10.0.2.15: ICMP echo reply, id 4, seq 2, length 64
+^C
+4 packets captured
+6 packets received by filter
+0 packets dropped by kernel
+vagrant@machine:~$
