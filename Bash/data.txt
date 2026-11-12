@@ -1,0 +1,3 @@
+Admin: admin@devops.com, Server: 192.168.1.10
+User: test_user@gmail.com, DB: 10.0.0.5
+Just some random text without important info.
