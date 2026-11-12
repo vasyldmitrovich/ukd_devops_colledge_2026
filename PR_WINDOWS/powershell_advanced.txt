@@ -1,0 +1,13 @@
+﻿PowerShell advanced completed
+Name: Кузьмін Артур
+Top 3 processes:
+
+Name                              Id       CPU
+----                              --       ---
+ACCStd                         22368 36,734375
+ACCSvc                          5128          
+AcerRegistrationBackGroundTask 15148          
+
+
+
+Stopped process: notepad.exe
