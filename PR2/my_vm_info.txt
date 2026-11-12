@@ -1,0 +1,6 @@
+Name: Кузьмін Артур
+Hostname: machine
+IP: 10.0.2.15 192.168.56.10 fd17:625c:f037:2:a00:27ff:fe8c:6941 
+OS: Ubuntu 22.04.3 LTS
+CPU: 2 cores
+RAM: 3.7Gi
