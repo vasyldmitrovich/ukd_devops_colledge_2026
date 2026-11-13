@@ -1,0 +1,5 @@
+WebServer1: 192.168.1.15 - admin@ukd.edu.ua
+Database01: 10.0.5.42 - db.support@company.org
+System log: service restarted successfully
+GatewayRouter: 172.16.0.1 - netops_team@devops.io
+Invalid entry without address
