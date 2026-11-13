@@ -1,0 +1,125 @@
+sort@sortserver:~$ sudo mysql
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 31
+Server version: 10.11.14-MariaDB-0ubuntu0.24.04.1 Ubuntu 24.04
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> CREATE DATABASE students_db;
+Query OK, 1 row affected (0.000 sec)
+
+MariaDB [(none)]> USE students_db;
+Database changed
+MariaDB [students_db]> CREATE TABLE students (
+    ->     id INT AUTO_INCREMENT PRIMARY KEY,
+    ->     name VARCHAR(50),
+    ->     age INT
+    ->
+    ->
+    ->
+    ->
+    ->
+    ->
+    ->
+    ->
+    ->
+    -> ^C
+MariaDB [students_db]> CREATE TABLE students (
+    ->     id INT AUTO_INCREMENT PRIMARY KEY,
+    ->     name VARCHAR(50),
+    ->     age INT
+    -> );
+Query OK, 0 rows affected (0.056 sec)
+
+MariaDB [students_db]> INSERT INTO students (name, age) VALUES ('Ivan', 20);
+Query OK, 1 row affected (0.008 sec)
+
+MariaDB [students_db]> INSERT INTO students (name, age) VALUES ('Oksana', 19);
+Query OK, 1 row affected (0.007 sec)
+
+MariaDB [students_db]> SELECT * FROM students;
++----+--------+------+
+| id | name   | age  |
++----+--------+------+
+|  1 | Ivan   |   20 |
+|  2 | Oksana |   19 |
++----+--------+------+
+2 rows in set (0.001 sec)
+
+MariaDB [students_db]> ^V^C^C
+MariaDB [students_db]> ^C
+MariaDB [students_db]> INSERT INTO students (name, age) VALUES
+    -> ('Mykola', 21),
+    -> ('Anna', 18),
+    -> ('Dmytro', 20);
+Query OK, 3 rows affected (0.021 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+MariaDB [students_db]> SELECT * FROM students;
++----+--------+------+
+| id | name   | age  |
++----+--------+------+
+|  1 | Ivan   |   20 |
+|  2 | Oksana |   19 |
+|  3 | Mykola |   21 |
+|  4 | Anna   |   18 |
+|  5 | Dmytro |   20 |
++----+--------+------+
+5 rows in set (0.001 sec)
+
+MariaDB [students_db]> SELECT * FROM students WHERE age > 19;
++----+--------+------+
+| id | name   | age  |
++----+--------+------+
+|  1 | Ivan   |   20 |
+|  3 | Mykola |   21 |
+|  5 | Dmytro |   20 |
++----+--------+------+
+3 rows in set (0.001 sec)
+
+MariaDB [students_db]> UPDATE students SET age = 22 WHERE name = 'Ivan';
+Query OK, 1 row affected (0.007 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [students_db]> DELETE FROM students WHERE name = 'Oksana';
+Query OK, 1 row affected (0.006 sec)
+
+MariaDB [students_db]> CREATE TABLE courses (
+    ->     id INT AUTO_INCREMENT PRIMARY KEY,
+    ->     title VARCHAR(100) NOT NULL,
+    ->     teacher VARCHAR(100) NOT NULL
+    -> );
+Query OK, 0 rows affected (0.081 sec)
+
+MariaDB [students_db]> INSERT INTO courses (title, teacher) VALUES 
+    -> ('DevOps', 'Бажан Василь'),
+    -> ('Серверне програмування', 'Рибак Юрій'),
+    -> ('Бази даних', 'Головчук Петро');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'VALUES 
+('DevOps', 'Бажан Василь'),
+('Серверне прогр...' at line 1
+MariaDB [students_db]> INSERT INTO courses (title, teacher) VALUES ('DevOps', 'Бажан Василь'), ('Серверне програмування', 'Рибак Юрій'), ('Бази даних', 'Головчук Петро');
+Query OK, 3 rows affected (0.047 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+MariaDB [students_db]> SELECT * FROM courses WHERE teacher = 'Головчук Петро';
++----+---------------------+-----------------------------+
+| id | title               | teacher                     |
++----+---------------------+-----------------------------+
+|  3 | Бази даних          | Головчук Петро              |
++----+---------------------+-----------------------------+
+1 row in set (0.000 sec)
+
+MariaDB [students_db]> SELECT * FROM courses ORDER BY title ASC;
++----+---------------------------------------------+-----------------------------+
+| id | title                                       | teacher                     |
++----+---------------------------------------------+-----------------------------+
+|  1 | DevOps                                      | Бажан Василь                |
+|  3 | Бази даних                                  | Головчук Петро              |
+|  2 | Серверне програмування                      | Рибак Юрій                  |
++----+---------------------------------------------+-----------------------------+
+3 rows in set (0.001 sec)
+
+MariaDB [students_db]> ^DBye
