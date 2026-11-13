@@ -1,0 +1,168 @@
+~/code/ukd_devops_colledge_2026/mongodb_lab: docker compose up -d
+[+] up 14/14
+ ✔ Image mongo:latest          Pulled                                              55.2s
+ ✔ Network mongodb_lab_default Created                                              0.0s
+ ✔ Container my-mongodb        Started                                              0.3s
+~/code/ukd_devops_colledge_2026/mongodb_lab: uptime
+15:22  up 1 day, 18:05, 2 users, load averages: 4.64 3.32 3.33
+~/code/ukd_devops_colledge_2026/mongodb_lab: docker exec -it my-mongodb mongosh
+Current Mongosh Log ID:	6af70f11c7949c75cbe2af96
+Connecting to:		mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.14.2
+Using MongoDB:		9.0.8
+Using Mongosh:		2.14.2
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+
+To help improve our products, pseudo-anonymous usage data is collected from interactive and agentic sessions only, and sent to MongoDB periodically (https://www.mongodb.com/legal/privacy-policy).
+You can opt-out by running the disableTelemetry() command.
+
+------
+   The server generated these startup warnings when booting
+   2026-11-13T13:21:20.472+00:00: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+   2026-11-13T13:21:20.516+00:00: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+   2026-11-13T13:21:20.517+00:00: For customers running the current memory allocator, we suggest changing the contents of the following sysfsFile
+   2026-11-13T13:21:20.517+00:00: We suggest setting the contents of sysfsFile to 0.
+   2026-11-13T13:21:20.517+00:00: We suggest setting swappiness to 0 or 1, as swapping can cause performance problems.
+------
+
+test> use students_db
+| 
+| db.students.insertOne({
+|   name: "Ivan",
+|   age: 20
+| })
+| 
+| db.students.find()
+switched to db students_db
+students_db> db.students.find()
+
+students_db> // 1. Додати ще 2–3 документи
+| db.students.insertMany([
+|   { name: "Олена", age: 19 },
+|   { name: "Андрій", age: 21 },
+|   { name: "Марія", age: 22 }
+| ])
+| 
+| db.students.find()
+| 
+| db.students.find({ age: { $gt: 19 } })
+| 
+| db.students.updateOne(
+|   { name: "Ivan" }, 
+|   { $set: { age: 21 } }
+| )
+| 
+| db.students.deleteOne({ name: "Олена" })
+{ acknowledged: true, deletedCount: 1 }
+students_db> db.courses.insertMany([
+|   {
+|     course_name: "Системне програмування на C",
+|     instructor: { first_name: "Олексій", last_name: "Іванов" },
+|     students_enrolled: ["Ivan", "Андрій"],
+|     credits: 4,
+|     is_active: true
+|   },
+|   {
+|     course_name: "Розробка на Go",
+|     instructor: { first_name: "Іван", last_name: "Петренко" },
+|     students_enrolled: ["Ivan", "Марія"],
+|     credits: 5,
+|     is_active: true
+|   },
+|   {
+|     course_name: "Бази даних",
+|     instructor: { first_name: "Олена", last_name: "Коваленко" },
+|     students_enrolled: ["Андрій"],
+|     credits: 3,
+|     is_active: false
+|   }
+| ])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('6af70f9ec7949c75cbe2af9a'),
+    '1': ObjectId('6af70f9ec7949c75cbe2af9b'),
+    '2': ObjectId('6af70f9ec7949c75cbe2af9c')
+  }
+}
+students_db> db.courses.find({ "instructor.last_name": "Петренко" })
+[
+  {
+    _id: ObjectId('6af70f9ec7949c75cbe2af9b'),
+    course_name: 'Розробка на Go',
+    instructor: { first_name: 'Іван', last_name: 'Петренко' },
+    students_enrolled: [ 'Ivan', 'Марія' ],
+    credits: 5,
+    is_active: true
+  }
+]
+students_db> db.courses.find({ students_enrolled: "Ivan" })
+[
+  {
+    _id: ObjectId('6af70f9ec7949c75cbe2af9a'),
+    course_name: 'Системне програмування на C',
+    instructor: { first_name: 'Олексій', last_name: 'Іванов' },
+    students_enrolled: [ 'Ivan', 'Андрій' ],
+    credits: 4,
+    is_active: true
+  },
+  {
+    _id: ObjectId('6af70f9ec7949c75cbe2af9b'),
+    course_name: 'Розробка на Go',
+    instructor: { first_name: 'Іван', last_name: 'Петренко' },
+    students_enrolled: [ 'Ivan', 'Марія' ],
+    credits: 5,
+    is_active: true
+  }
+]
+students_db> db.courses.find({ 
+|   is_active: true, 
+|   credits: { $gte: 4 } 
+| })
+[
+  {
+    _id: ObjectId('6af70f9ec7949c75cbe2af9a'),
+    course_name: 'Системне програмування на C',
+    instructor: { first_name: 'Олексій', last_name: 'Іванов' },
+    students_enrolled: [ 'Ivan', 'Андрій' ],
+    credits: 4,
+    is_active: true
+  },
+  {
+    _id: ObjectId('6af70f9ec7949c75cbe2af9b'),
+    course_name: 'Розробка на Go',
+    instructor: { first_name: 'Іван', last_name: 'Петренко' },
+    students_enrolled: [ 'Ivan', 'Марія' ],
+    credits: 5,
+    is_active: true
+  }
+]
+students_db> db.courses.find().sort({ credits: -1 })
+[
+  {
+    _id: ObjectId('6af70f9ec7949c75cbe2af9b'),
+    course_name: 'Розробка на Go',
+    instructor: { first_name: 'Іван', last_name: 'Петренко' },
+    students_enrolled: [ 'Ivan', 'Марія' ],
+    credits: 5,
+    is_active: true
+  },
+  {
+    _id: ObjectId('6af70f9ec7949c75cbe2af9a'),
+    course_name: 'Системне програмування на C',
+    instructor: { first_name: 'Олексій', last_name: 'Іванов' },
+    students_enrolled: [ 'Ivan', 'Андрій' ],
+    credits: 4,
+    is_active: true
+  },
+  {
+    _id: ObjectId('6af70f9ec7949c75cbe2af9c'),
+    course_name: 'Бази даних',
+    instructor: { first_name: 'Олена', last_name: 'Коваленко' },
+    students_enrolled: [ 'Андрій' ],
+    credits: 3,
+    is_active: false
+  }
+]
+students_db> 
