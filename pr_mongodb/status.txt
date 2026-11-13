@@ -1,0 +1,9 @@
+● mongod.service - MongoDB Database Server
+     Loaded: loaded (/lib/systemd/system/mongod.service; enabled; vendor preset: enabled)
+     Active: active (running) since Fri 2026-11-13 12:17:15 UTC; 15min ago
+       Docs: https://docs.mongodb.org/manual
+   Main PID: 6036 (mongod)
+     Memory: 65.1M
+        CPU: 8.372s
+     CGroup: /system.slice/mongod.service
+             └─6036 /usr/bin/mongod --config /etc/mongod.conf
