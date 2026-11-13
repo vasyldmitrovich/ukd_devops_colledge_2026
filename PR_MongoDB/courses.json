@@ -1,0 +1,48 @@
+{
+	"_id": {
+		"$oid": "6af6f9d9fd11a4867f091610"
+	},
+	"title": "DevOps",
+	"credits": 5,
+	"teacher": {
+		"name": "Vasyl",
+		"room": 305
+	},
+	"topics": [
+		"Linux",
+		"Docker",
+		"MongoDB"
+	]
+}
+{
+	"_id": {
+		"$oid": "6af6f9d9fd11a4867f091611"
+	},
+	"title": "Databases",
+	"credits": 4,
+	"teacher": {
+		"name": "Olena",
+		"room": 201
+	},
+	"topics": [
+		"SQL",
+		"NoSQL",
+		"Indexes"
+	]
+}
+{
+	"_id": {
+		"$oid": "6af6f9d9fd11a4867f091612"
+	},
+	"title": "Networking",
+	"credits": 3,
+	"teacher": {
+		"name": "Andriy",
+		"room": 104
+	},
+	"topics": [
+		"TCP/IP",
+		"DNS",
+		"Routing"
+	]
+}

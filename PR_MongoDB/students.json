@@ -1,0 +1,36 @@
+{
+	"_id": {
+		"$oid": "6af6f993fd11a4867f09160c"
+	},
+	"name": "Ivan",
+	"age": 23
+}
+{
+	"_id": {
+		"$oid": "6af6f9a4fd11a4867f09160e"
+	},
+	"name": "Taras",
+	"age": 21
+}
+{
+	"_id": {
+		"$oid": "6af6f9a4fd11a4867f09160f"
+	},
+	"name": "Oleh",
+	"age": 22
+}
+{
+	"_id": {
+		"$oid": "6af6f9ebfd11a4867f091613"
+	},
+	"name": "Marta",
+	"age": 21,
+	"courses": [
+		"DevOps",
+		"Databases"
+	],
+	"contacts": {
+		"city": "Ivano-Frankivsk",
+		"phone": "+380991112233"
+	}
+}
