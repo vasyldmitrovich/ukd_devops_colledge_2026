@@ -1,0 +1,240 @@
+test> use students_db
+switched to db students_db
+students_db> db.students.insertOne({
+|   name: "Ivan",
+|   age: 20
+| })
+{
+  acknowledged: true,
+  insertedId: ObjectId('6af70168b28cd1bb42e8de14')
+}
+students_db> db.students.find()
+[
+  { _id: ObjectId('6af70168b28cd1bb42e8de14'), name: 'Ivan', age: 20 }
+]
+students_db>
+
+students_db> db.students.insertMany([
+|   { name: "Olena", age: 19 },
+|   { name: "Petro", age: 22 },
+|   { name: "Maria", age: 21 }
+| ])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('6af70176b28cd1bb42e8de15'),
+    '1': ObjectId('6af70176b28cd1bb42e8de16'),
+    '2': ObjectId('6af70176b28cd1bb42e8de17')
+  }
+}
+students_db> db.students.find()
+[
+  { _id: ObjectId('6af70168b28cd1bb42e8de14'), name: 'Ivan', age: 20 },
+  { _id: ObjectId('6af70176b28cd1bb42e8de15'), name: 'Olena', age: 19 },
+  { _id: ObjectId('6af70176b28cd1bb42e8de16'), name: 'Petro', age: 22 },
+  { _id: ObjectId('6af70176b28cd1bb42e8de17'), name: 'Maria', age: 21 }
+]
+students_db> db.students.find({ age: { $gt: 19 } })
+[
+  { _id: ObjectId('6af70168b28cd1bb42e8de14'), name: 'Ivan', age: 20 },
+  { _id: ObjectId('6af70176b28cd1bb42e8de16'), name: 'Petro', age: 22 },
+  { _id: ObjectId('6af70176b28cd1bb42e8de17'), name: 'Maria', age: 21 }
+]
+students_db> db.students.updateOne(
+|   { name: "Ivan" },
+|   { $set: { age: 21 } }
+| )
+| db.students.find({ name: "Ivan" })
+[
+  { _id: ObjectId('6af70168b28cd1bb42e8de14'), name: 'Ivan', age: 21 }
+]
+students_db> db.students.deleteOne({ name: "Petro" })
+| db.students.find()
+[
+  { _id: ObjectId('6af70168b28cd1bb42e8de14'), name: 'Ivan', age: 21 },
+  { _id: ObjectId('6af70176b28cd1bb42e8de15'), name: 'Olena', age: 19 },
+  { _id: ObjectId('6af70176b28cd1bb42e8de17'), name: 'Maria', age: 21 }
+]
+students_db> db.courses.insertMany([
+|   {
+|     title: "Databases",
+|     hours: 60,
+|     teacher: { name: "Petrenko", department: "IT" },
+|     tags: ["sql", "nosql", "mongodb"]
+|   },
+|   {
+|     title: "Algorithms",
+|     hours: 45,
+|     teacher: { name: "Koval", department: "IT" },
+|     tags: ["sorting", "graphs"]
+|   },
+|   {
+|     title: "Mathematics",
+|     hours: 80,
+|     teacher: { name: "Shevchenko", department: "Math" },
+|     tags: ["algebra", "calculus"]
+|   }
+| ])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('6af70192b28cd1bb42e8de18'),
+    '1': ObjectId('6af70192b28cd1bb42e8de19'),
+    '2': ObjectId('6af70192b28cd1bb42e8de1a')
+  }
+}
+students_db> db.courses.find({ hours: { $gt: 50 } })
+[
+  {
+    _id: ObjectId('6af70192b28cd1bb42e8de18'),
+    title: 'Databases',
+    hours: 60,
+    teacher: { name: 'Petrenko', department: 'IT' },
+    tags: [ 'sql', 'nosql', 'mongodb' ]
+  },
+  {
+    _id: ObjectId('6af70192b28cd1bb42e8de1a'),
+    title: 'Mathematics',
+    hours: 80,
+    teacher: { name: 'Shevchenko', department: 'Math' },
+    tags: [ 'algebra', 'calculus' ]
+  }
+]
+students_db> db.courses.find().sort({ hours: -1 })
+[
+  {
+    _id: ObjectId('6af70192b28cd1bb42e8de1a'),
+    title: 'Mathematics',
+    hours: 80,
+    teacher: { name: 'Shevchenko', department: 'Math' },
+    tags: [ 'algebra', 'calculus' ]
+  },
+  {
+    _id: ObjectId('6af70192b28cd1bb42e8de18'),
+    title: 'Databases',
+    hours: 60,
+    teacher: { name: 'Petrenko', department: 'IT' },
+    tags: [ 'sql', 'nosql', 'mongodb' ]
+  },
+  {
+    _id: ObjectId('6af70192b28cd1bb42e8de19'),
+    title: 'Algorithms',
+    hours: 45,
+    teacher: { name: 'Koval', department: 'IT' },
+    tags: [ 'sorting', 'graphs' ]
+  }
+]
+students_db> db.students.updateOne(
+|   { name: "Ivan" },
+|   { $set: { courses: ["Databases", "Algorithms"] } }
+| )
+| db.students.updateOne(
+|   { name: "Olena" },
+|   { $set: { courses: ["Mathematics", "Databases"] } }
+| )
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+students_db> db.students.find({ courses: "Databases" })
+[
+  {
+    _id: ObjectId('6af70168b28cd1bb42e8de14'),
+    name: 'Ivan',
+    age: 21,
+    courses: [ 'Databases', 'Algorithms' ]
+  },
+  {
+    _id: ObjectId('6af70176b28cd1bb42e8de15'),
+    name: 'Olena',
+    age: 19,
+    courses: [ 'Mathematics', 'Databases' ]
+  }
+]
+students_db> db.courses.find({ "teacher.department": "IT" })
+[
+  {
+    _id: ObjectId('6af70192b28cd1bb42e8de18'),
+    title: 'Databases',
+    hours: 60,
+    teacher: { name: 'Petrenko', department: 'IT' },
+    tags: [ 'sql', 'nosql', 'mongodb' ]
+  },
+  {
+    _id: ObjectId('6af70192b28cd1bb42e8de19'),
+    title: 'Algorithms',
+    hours: 45,
+    teacher: { name: 'Koval', department: 'IT' },
+    tags: [ 'sorting', 'graphs' ]
+  }
+]
+students_db> db.courses.find({
+|   hours: { $gte: 45 },
+|   "teacher.department": "IT",
+|   tags: "nosql"
+| })
+[
+  {
+    _id: ObjectId('6af70192b28cd1bb42e8de18'),
+    title: 'Databases',
+    hours: 60,
+    teacher: { name: 'Petrenko', department: 'IT' },
+    tags: [ 'sql', 'nosql', 'mongodb' ]
+  }
+]
+students_db> db.courses.find({
+|   $or: [ { hours: { $gt: 70 } }, { tags: "graphs" } ]
+| })
+[
+  {
+    _id: ObjectId('6af70192b28cd1bb42e8de19'),
+    title: 'Algorithms',
+    hours: 45,
+    teacher: { name: 'Koval', department: 'IT' },
+    tags: [ 'sorting', 'graphs' ]
+  },
+  {
+    _id: ObjectId('6af70192b28cd1bb42e8de1a'),
+    title: 'Mathematics',
+    hours: 80,
+    teacher: { name: 'Shevchenko', department: 'Math' },
+    tags: [ 'algebra', 'calculus' ]
+  }
+]
+students_db> console.table(db.students.find().toArray())
+┌─────────┬──────────────────────────────────────┬─────────┬─────┬────────────────────────────────┐
+│ (index) │ _id                                  │ name    │ age │ courses                        │
+├─────────┼──────────────────────────────────────┼─────────┼─────┼────────────────────────────────┤
+│ 0       │ ObjectId('6af70168b28cd1bb42e8de14') │ 'Ivan'  │ 21  │ [ 'Databases', 'Algorithms' ]  │
+│ 1       │ ObjectId('6af70176b28cd1bb42e8de15') │ 'Olena' │ 19  │ [ 'Mathematics', 'Databases' ] │
+│ 2       │ ObjectId('6af70176b28cd1bb42e8de17') │ 'Maria' │ 21  │                                │
+└─────────┴──────────────────────────────────────┴─────────┴─────┴────────────────────────────────┘
+
+students_db> show dbs
+admin         40.00 KiB
+config        12.00 KiB
+local         40.00 KiB
+students_db  112.00 KiB
+students_db> use students_db
+| db.students.find()
+already on db students_db
+students_db> db.students.find().pretty()
+[
+  {
+    _id: ObjectId('6af70168b28cd1bb42e8de14'),
+    name: 'Ivan',
+    age: 21,
+    courses: [ 'Databases', 'Algorithms' ]
+  },
+  {
+    _id: ObjectId('6af70176b28cd1bb42e8de15'),
+    name: 'Olena',
+    age: 19,
+    courses: [ 'Mathematics', 'Databases' ]
+  },
+  { _id: ObjectId('6af70176b28cd1bb42e8de17'), name: 'Maria', age: 21 }
+]
+students_db>
