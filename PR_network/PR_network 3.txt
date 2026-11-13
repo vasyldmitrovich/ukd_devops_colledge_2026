@@ -1,0 +1,10 @@
+erikz@skitiat:~$ ping -c 4 google.com
+PING google.com (142.250.120.138) 56(84) bytes of data.
+64 bytes from zo-in-f138.1e100.net (142.250.120.138): icmp_seq=1 ttl=112 time=39.5 ms
+64 bytes from zo-in-f138.1e100.net (142.250.120.138): icmp_seq=2 ttl=112 time=39.3 ms
+64 bytes from zo-in-f138.1e100.net (142.250.120.138): icmp_seq=3 ttl=112 time=39.5 ms
+64 bytes from zo-in-f138.1e100.net (142.250.120.138): icmp_seq=4 ttl=112 time=39.5 ms
+
+--- google.com ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 3004ms
+rtt min/avg/max/mdev = 39.347/39.436/39.477/0.052 ms
