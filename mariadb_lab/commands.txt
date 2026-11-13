@@ -1,0 +1,2 @@
+запустив mariadb в докері командою docker compose up -d
+підключився до бази даних за допомогою sql клієнта usql командою usql mysql://root:larp@127.0.0.1:3306/students_db

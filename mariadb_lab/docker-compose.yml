@@ -1,0 +1,9 @@
+services:
+  mariadb:
+    image: mariadb:latest
+    container_name: mariadb
+    environment:
+      MARIADB_ROOT_PASSWORD: larp
+      MARIADB_DATABASE: students_db
+    ports:
+      - "127.0.0.1:3306:3306"
