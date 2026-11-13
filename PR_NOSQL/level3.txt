@@ -1,0 +1,218 @@
+PR_NOSQL level 3 completed
+
+=== TERMINAL LOG ===
+vagrant@machine:~/ukd_devops_colledge_2026/PR_NOSQL$ sudo apt update
+Hit:1 https://mirrors.edge.kernel.org/ubuntu jammy InRelease
+Hit:2 https://mirrors.edge.kernel.org/ubuntu jammy-updates InRelease
+Hit:3 https://mirrors.edge.kernel.org/ubuntu jammy-backports InRelease
+Hit:4 https://mirrors.edge.kernel.org/ubuntu jammy-security InRelease
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+293 packages can be upgraded. Run 'apt list --upgradable' to see them.
+vagrant@machine:~/ukd_devops_colledge_2026/PR_NOSQL$ sudo apt install mongodb -y
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+Package mongodb is not available, but is referred to by another package.
+This may mean that the package is missing, has been obsoleted, or
+is only available from another source
+
+E: Package 'mongodb' has no installation candidate
+vagrant@machine:~/ukd_devops_colledge_2026/PR_NOSQL$ curl -fsSL https://www.mongodb.org/static/pgp/server-7.0.asc | sudo gpg --dearmor -o /usr/share/keyrings/mongodb-server-7.0.gpg
+vagrant@machine:~/ukd_devops_colledge_2026/PR_NOSQL$ echo "deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-7.0.gpg ] https://repo.mongodb.org/apt/ubuntu $(lsb_release -cs)/mongodb-org/7.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-7.0.list
+deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-7.0.gpg ] https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/7.0 multiverse
+vagrant@machine:~/ukd_devops_colledge_2026/PR_NOSQL$ sudo apt update
+Hit:1 https://mirrors.edge.kernel.org/ubuntu jammy InRelease
+Get:2 https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/7.0 InRelease [3,005 B]
+Hit:3 https://mirrors.edge.kernel.org/ubuntu jammy-updates InRelease
+Hit:4 https://mirrors.edge.kernel.org/ubuntu jammy-backports InRelease
+Hit:5 https://mirrors.edge.kernel.org/ubuntu jammy-security InRelease
+Get:6 https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/7.0/multiverse amd64 Packages [142 kB]
+Get:7 https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/7.0/multiverse arm64 Packages [141 kB]
+Fetched 286 kB in 4s (78.4 kB/s)
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+293 packages can be upgraded. Run 'apt list --upgradable' to see them.
+vagrant@machine:~/ukd_devops_colledge_2026/PR_NOSQL$ sudo apt install -y mongodb-org
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+The following additional packages will be installed:
+  mongodb-database-tools mongodb-mongosh mongodb-org-database mongodb-org-database-tools-extra
+  mongodb-org-mongos mongodb-org-server mongodb-org-shell mongodb-org-tools
+The following NEW packages will be installed:
+  mongodb-database-tools mongodb-mongosh mongodb-org mongodb-org-database
+  mongodb-org-database-tools-extra mongodb-org-mongos mongodb-org-server mongodb-org-shell
+  mongodb-org-tools
+0 upgraded, 9 newly installed, 0 to remove and 293 not upgraded.
+Need to get 195 MB of archives.
+After this operation, 616 MB of additional disk space will be used.
+Get:1 https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/7.0/multiverse amd64 mongodb-database-tools amd64 100.20.1 [69.2 MB]
+Get:2 https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/7.0/multiverse amd64 mongodb-mongosh amd64 2.14.2 [61.8 MB]
+Get:3 https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/7.0/multiverse amd64 mongodb-org-shell amd64 7.0.48 [2,986 B]
+Get:4 https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/7.0/multiverse amd64 mongodb-org-server amd64 7.0.48 [37.5 MB]
+Get:5 https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/7.0/multiverse amd64 mongodb-org-mongos amd64 7.0.48 [26.3 MB]
+Get:6 https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/7.0/multiverse amd64 mongodb-org-database-tools-extra amd64 7.0.48 [7,784 B]
+Get:7 https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/7.0/multiverse amd64 mongodb-org-database amd64 7.0.48 [3,426 B]
+Get:8 https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/7.0/multiverse amd64 mongodb-org-tools amd64 7.0.48 [2,772 B]
+Get:9 https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/7.0/multiverse amd64 mongodb-org amd64 7.0.48 [2,804 B]
+Fetched 195 MB in 24s (8,100 kB/s)
+Selecting previously unselected package mongodb-database-tools.
+(Reading database ... 80507 files and directories currently installed.)
+Preparing to unpack .../0-mongodb-database-tools_100.20.1_amd64.deb ...
+Unpacking mongodb-database-tools (100.20.1) ...
+Selecting previously unselected package mongodb-mongosh.
+Preparing to unpack .../1-mongodb-mongosh_2.14.2_amd64.deb ...
+Unpacking mongodb-mongosh (2.14.2) ...
+Selecting previously unselected package mongodb-org-shell.
+Preparing to unpack .../2-mongodb-org-shell_7.0.48_amd64.deb ...
+Unpacking mongodb-org-shell (7.0.48) ...
+Selecting previously unselected package mongodb-org-server.
+Preparing to unpack .../3-mongodb-org-server_7.0.48_amd64.deb ...
+Unpacking mongodb-org-server (7.0.48) ...
+Selecting previously unselected package mongodb-org-mongos.
+Preparing to unpack .../4-mongodb-org-mongos_7.0.48_amd64.deb ...
+Unpacking mongodb-org-mongos (7.0.48) ...
+Selecting previously unselected package mongodb-org-database-tools-extra.
+Preparing to unpack .../5-mongodb-org-database-tools-extra_7.0.48_amd64.deb ...
+Unpacking mongodb-org-database-tools-extra (7.0.48) ...
+Selecting previously unselected package mongodb-org-database.
+Preparing to unpack .../6-mongodb-org-database_7.0.48_amd64.deb ...
+Unpacking mongodb-org-database (7.0.48) ...
+Selecting previously unselected package mongodb-org-tools.
+Preparing to unpack .../7-mongodb-org-tools_7.0.48_amd64.deb ...
+Unpacking mongodb-org-tools (7.0.48) ...
+Selecting previously unselected package mongodb-org.
+Preparing to unpack .../8-mongodb-org_7.0.48_amd64.deb ...
+Unpacking mongodb-org (7.0.48) ...
+Setting up mongodb-mongosh (2.14.2) ...
+Setting up mongodb-org-server (7.0.48) ...
+Adding system user `mongodb' (UID 115) ...
+Adding new user `mongodb' (UID 115) with group `nogroup' ...
+Not creating home directory `/home/mongodb'.
+Adding group `mongodb' (GID 123) ...
+Done.
+Adding user `mongodb' to group `mongodb' ...
+Adding user mongodb to group mongodb
+Done.
+Setting up mongodb-org-shell (7.0.48) ...
+Setting up mongodb-database-tools (100.20.1) ...
+Setting up mongodb-org-mongos (7.0.48) ...
+Setting up mongodb-org-database-tools-extra (7.0.48) ...
+Setting up mongodb-org-database (7.0.48) ...
+Setting up mongodb-org-tools (7.0.48) ...
+Setting up mongodb-org (7.0.48) ...
+Processing triggers for man-db (2.10.2-1) ...
+Scanning processes...
+Scanning linux images...
+
+Running kernel seems to be up-to-date.
+
+No services need to be restarted.
+
+No containers need to be restarted.
+
+No user sessions are running outdated binaries.
+
+No VM guests are running outdated hypervisor (qemu) binaries on this host.
+vagrant@machine:~/ukd_devops_colledge_2026/PR_NOSQL$ sudo systemctl start mongod
+vagrant@machine:~/ukd_devops_colledge_2026/PR_NOSQL$ sudo systemctl enable mongod
+Created symlink /etc/systemd/system/multi-user.target.wants/mongod.service → /lib/systemd/system/mongod.service.
+vagrant@machine:~/ukd_devops_colledge_2026/PR_NOSQL$ sudo systemctl status mongod
+● mongod.service - MongoDB Database Server
+     Loaded: loaded (/lib/systemd/system/mongod.service; enabled; vendor preset: enabled)
+     Active: active (running) since Fri 2026-11-13 14:19:08 UTC; 18s ago
+       Docs: https://docs.mongodb.org/manual
+   Main PID: 4008 (mongod)
+     Memory: 75.3M
+        CPU: 2.809s
+     CGroup: /system.slice/mongod.service
+             └─4008 /usr/bin/mongod --config /etc/mongod.conf
+
+Nov 13 14:19:08 machine systemd[1]: Started MongoDB Database Server.
+Nov 13 14:19:09 machine mongod[4008]: {"t":{"$date":"2026-11-13T14:19:09.348Z"},"s":"I",  "c":"CONTRO>
+ ESCOC
+
+vice; enabled; vendor preset: enabled)
+14:19:08 UTC; 18s ago
+
+
+
+
+
+ongod.conf
+
+ Database Server.
+:"2026-11-13T14:19:09.348Z"},"s":"I",  "c":"CONTROL",  "id":7484500, "ctx":"main","msg":"Environment >
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+lines 1-12/12 (END)
+vagrant@machine:~/ukd_devops_colledge_2026/PR_NOSQL$ mongosh
+Current Mongosh Log ID: 6af71c94b5d1ba035bf88f45
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.14.2
+Using MongoDB:          7.0.48
+Using Mongosh:          2.14.2
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+
+To help improve our products, pseudo-anonymous usage data is collected from interactive and agentic sessions only, and sent to MongoDB periodically (https://www.mongodb.com/legal/privacy-policy).
+You can opt-out by running the disableTelemetry() command.
+
+------
+   The server generated these startup warnings when booting
+   2026-11-13T14:19:10.997+00:00: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+   2026-11-13T14:19:12.224+00:00: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+test> use students_db
+switched to db students_db
+students_db> db.students.insertOne({ name: "Ivan", age: 20 })
+{
+  acknowledged: true,
+  insertedId: ObjectId('6af71cb0b5d1ba035bf88f46')
+}
+students_db> db.students.find()
+[
+  { _id: ObjectId('6af71cb0b5d1ba035bf88f46'), name: 'Ivan', age: 20 }
+]
+students_db> exit
+vagrant@machine:~/ukd_devops_colledge_2026/PR_NOSQL$
