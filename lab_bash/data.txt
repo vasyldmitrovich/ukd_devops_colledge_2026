@@ -1,0 +1,4 @@
+Server alpha IP: 192.168.1.10 admin: erik@ukd.edu.ua
+Error connection from 10.0.0.45 user: test.dev@gmail.com
+Backup node 172.16.254.1 status OK
+Invalid line without contacts
