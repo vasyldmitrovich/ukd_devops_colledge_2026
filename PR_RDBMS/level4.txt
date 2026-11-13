@@ -1,0 +1,56 @@
+PR_RDBMS level 4 complete
+
+=== TERMINAL LOG ===
+
+vagrant@machine:~/ukd_devops_colledge_2026/PR_RDBMS$ sudo mysql
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 32
+Server version: 10.6.23-MariaDB-0ubuntu0.22.04.1 Ubuntu 22.04
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> INSERT INTO students (name, age) VALUES ('Dmytro', 18), ('Anna', 21), ('Oleg', 19);
+ERROR 1046 (3D000): No database selected
+MariaDB [(none)]> USE students;
+ERROR 1049 (42000): Unknown database 'students'
+MariaDB [(none)]> USE students_db;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+MariaDB [students_db]> INSERT INTO students (name, age) VALUES ('Dmytro', 18), ('Anna', 21), ('Oleg', 19);
+Query OK, 3 rows affected (0.021 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+MariaDB [students_db]> SELECT * FROM students;
++----+--------+------+
+| id | name   | age  |
++----+--------+------+
+|  1 | Ivan   |   20 |
+|  2 | Oksana |   19 |
+|  3 | Dmytro |   18 |
+|  4 | Anna   |   21 |
+|  5 | Oleg   |   19 |
++----+--------+------+
+5 rows in set (0.001 sec)
+
+MariaDB [students_db]> SELECT * FROM students WHERE age > 19;
++----+------+------+
+| id | name | age  |
++----+------+------+
+|  1 | Ivan |   20 |
+|  4 | Anna |   21 |
++----+------+------+
+2 rows in set (0.003 sec)
+
+MariaDB [students_db]> UPDATE students SET age = 21 WHERE name = 'Ivan';
+Query OK, 1 row affected (0.011 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [students_db]> DELETE FROM students WHERE name = 'Oleg';
+Query OK, 1 row affected (0.015 sec)
+
+MariaDB [students_db]> exit
+Bye
