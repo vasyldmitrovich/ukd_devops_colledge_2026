@@ -1,0 +1,52 @@
+PR_NOSQL level 4 completed
+
+=== TERMINAL LOG ===
+vagrant@machine:~/ukd_devops_colledge_2026/PR_NOSQL$ mongosh
+Current Mongosh Log ID: 6af71d9a29290a94b271fbff
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.14.2
+Using MongoDB:          7.0.48
+Using Mongosh:          2.14.2
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2026-11-13T14:19:10.997+00:00: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+   2026-11-13T14:19:12.224+00:00: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+test> db.students.insertMany([
+|   { name: "Dmytro", age: 18 },
+|   { name: "Anna", age: 21 },
+|   { name: "Oleg", age: 19 }
+| ])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('6af71da629290a94b271fc00'),
+    '1': ObjectId('6af71da629290a94b271fc01'),
+    '2': ObjectId('6af71da629290a94b271fc02')
+  }
+}
+test> db.students.find()
+[
+  { _id: ObjectId('6af71da629290a94b271fc00'), name: 'Dmytro', age: 18 },
+  { _id: ObjectId('6af71da629290a94b271fc01'), name: 'Anna', age: 21 },
+  { _id: ObjectId('6af71da629290a94b271fc02'), name: 'Oleg', age: 19 }
+]
+test> db.students.find({ age: { $gt: 19 } })
+[
+  { _id: ObjectId('6af71da629290a94b271fc01'), name: 'Anna', age: 21 }
+]
+test> db.students.updateOne({ name: "Ivan" }, { $set: { age: 21 } })
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 0,
+  modifiedCount: 0,
+  upsertedCount: 0
+}
+test> db.students.deleteOne({ name: "Oleg" })
+{ acknowledged: true, deletedCount: 1 }
+test> exit
+vagrant@machine:~/ukd_devops_colledge_2026/PR_NOSQL$
