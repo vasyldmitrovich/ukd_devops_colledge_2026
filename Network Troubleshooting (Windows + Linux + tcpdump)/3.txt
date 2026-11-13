@@ -1,0 +1,38 @@
+C:\Users\mrcub>ping 127.0.0.1
+
+Pinging 127.0.0.1 with 32 bytes of data:
+Reply from 127.0.0.1: bytes=32 time<1ms TTL=128
+Reply from 127.0.0.1: bytes=32 time<1ms TTL=128
+Reply from 127.0.0.1: bytes=32 time<1ms TTL=128
+Reply from 127.0.0.1: bytes=32 time<1ms TTL=128
+
+Ping statistics for 127.0.0.1:
+    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 0ms, Maximum = 0ms, Average = 0ms
+
+C:\Users\mrcub>ping 8.8.8.8
+
+Pinging 8.8.8.8 with 32 bytes of data:
+Reply from 8.8.8.8: bytes=32 time=49ms TTL=118
+Reply from 8.8.8.8: bytes=32 time=29ms TTL=118
+Reply from 8.8.8.8: bytes=32 time=28ms TTL=118
+Reply from 8.8.8.8: bytes=32 time=29ms TTL=118
+
+Ping statistics for 8.8.8.8:
+    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 28ms, Maximum = 49ms, Average = 33ms
+
+C:\Users\mrcub>ping google.com
+
+Pinging google.com [142.250.130.139] with 32 bytes of data:
+Reply from 142.250.130.139: bytes=32 time=48ms TTL=110
+Reply from 142.250.130.139: bytes=32 time=42ms TTL=110
+Reply from 142.250.130.139: bytes=32 time=46ms TTL=110
+Reply from 142.250.130.139: bytes=32 time=42ms TTL=110
+
+Ping statistics for 142.250.130.139:
+    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 42ms, Maximum = 48ms, Average = 44ms
