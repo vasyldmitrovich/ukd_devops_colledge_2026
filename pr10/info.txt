@@ -1,0 +1,28 @@
+● mariadb.service - MariaDB 10.6.23 database server
+     Loaded: loaded (/lib/systemd/system/mariadb.service; enabled; vendor preset: enabled)
+     Active: active (running) since Fri 2026-11-13 10:30:48 UTC; 34min ago
+       Docs: man:mariadbd(8)
+             https://mariadb.com/kb/en/library/systemd/
+    Process: 3078 ExecStartPre=/usr/bin/install -m 755 -o mysql -g root -d /var/run/mysqld (code=exited, status=0/SUCCESS)
+    Process: 3079 ExecStartPre=/bin/sh -c systemctl unset-environment _WSREP_START_POSITION (code=exited, status=0/SUCCESS)
+    Process: 3081 ExecStartPre=/bin/sh -c [ ! -e /usr/bin/galera_recovery ] && VAR= ||   VAR=`/usr/bin/galera_recovery`; [ $? -eq 0 ]   && systemctl set-environment _WSREP_START_POSITION=$VAR || exit 1 (code=exited, status=0/SUCCESS)
+    Process: 3120 ExecStartPost=/bin/sh -c systemctl unset-environment _WSREP_START_POSITION (code=exited, status=0/SUCCESS)
+    Process: 3122 ExecStartPost=/etc/mysql/debian-start (code=exited, status=0/SUCCESS)
+   Main PID: 3110 (mariadbd)
+     Status: "Taking your SQL requests now..."
+      Tasks: 8 (limit: 14656)
+     Memory: 62.3M
+        CPU: 1.640s
+     CGroup: /system.slice/mariadb.service
+             └─3110 /usr/sbin/mariadbd
+
+Nov 13 10:30:48 ubuntu2204.localdomain mariadbd[3110]: Version: '10.6.23-MariaDB-0ubuntu0.22.04.1'  socket: '/run/mysqld/mysqld.sock'  port: 3306  Ubuntu 22.04
+Nov 13 10:30:48 ubuntu2204.localdomain systemd[1]: Started MariaDB 10.6.23 database server.
+Nov 13 10:30:48 ubuntu2204.localdomain /etc/mysql/debian-start[3124]: Upgrading MySQL tables if necessary.
+Nov 13 10:30:49 ubuntu2204.localdomain /etc/mysql/debian-start[3127]: Looking for 'mariadb' as: /usr/bin/mariadb
+Nov 13 10:30:49 ubuntu2204.localdomain /etc/mysql/debian-start[3127]: Looking for 'mariadb-check' as: /usr/bin/mariadb-check
+Nov 13 10:30:49 ubuntu2204.localdomain /etc/mysql/debian-start[3127]: This installation of MariaDB is already upgraded to 10.6.23-MariaDB.
+Nov 13 10:30:49 ubuntu2204.localdomain /etc/mysql/debian-start[3127]: There is no need to run mysql_upgrade again.
+Nov 13 10:30:49 ubuntu2204.localdomain /etc/mysql/debian-start[3127]: You can use --force if you still want to run mysql_upgrade
+Nov 13 10:30:49 ubuntu2204.localdomain /etc/mysql/debian-start[3135]: Checking for insecure root accounts.
+Nov 13 10:30:49 ubuntu2204.localdomain /etc/mysql/debian-start[3139]: Triggering myisam-recover for all MyISAM tables and aria-recover for all Aria tables
