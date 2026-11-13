@@ -1,0 +1,23 @@
+● mariadb.service - MariaDB 10.6.23 database server
+     Loaded: loaded (/lib/systemd/system/mariadb.service; enabled; vendor preset: enabled)
+     Active: active (running) since Fri 2026-11-13 11:02:36 UTC; 6min ago
+       Docs: man:mariadbd(8)
+             https://mariadb.com/kb/en/library/systemd/
+   Main PID: 3072 (mariadbd)
+     Status: "Taking your SQL requests now..."
+      Tasks: 9 (limit: 29326)
+     Memory: 62.2M
+        CPU: 765ms
+     CGroup: /system.slice/mariadb.service
+             └─3072 /usr/sbin/mariadbd
+
+Nov 13 11:02:36 database mariadbd[3072]: Version: '10.6.23-MariaDB-0ubuntu0.22.04.1'  socket: '/run/mysqld/mysqld.sock'  port: 3306  Ubuntu 22.04
+Nov 13 11:02:36 database /etc/mysql/debian-start[3087]: Upgrading MySQL tables if necessary.
+Nov 13 11:02:36 database systemd[1]: Started MariaDB 10.6.23 database server.
+Nov 13 11:02:36 database /etc/mysql/debian-start[3090]: Looking for 'mariadb' as: /usr/bin/mariadb
+Nov 13 11:02:36 database /etc/mysql/debian-start[3090]: Looking for 'mariadb-check' as: /usr/bin/mariadb-check
+Nov 13 11:02:36 database /etc/mysql/debian-start[3090]: This installation of MariaDB is already upgraded to 10.6.23-MariaDB.
+Nov 13 11:02:36 database /etc/mysql/debian-start[3090]: There is no need to run mysql_upgrade again.
+Nov 13 11:02:36 database /etc/mysql/debian-start[3090]: You can use --force if you still want to run mysql_upgrade
+Nov 13 11:02:36 database /etc/mysql/debian-start[3098]: Checking for insecure root accounts.
+Nov 13 11:02:36 database /etc/mysql/debian-start[3102]: Triggering myisam-recover for all MyISAM tables and aria-recover for all Aria tables
