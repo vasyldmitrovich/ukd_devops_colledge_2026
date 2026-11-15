@@ -1,0 +1,245 @@
+sort@sortserver:~$ curl -fsSL https://www.mongodb.org/static/pgp/server-8.0.asc | sudo gpg --yes --dearmor -o /usr/share/keyrings/mongodb-server-8.0.gpg
+sort@sortserver:~$ echo "deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-8.0.gpg ] https://repo.mongodb.org/apt/ubuntu noble/mongodb-org/8.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-8.0.list
+deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-8.0.gpg ] https://repo.mongodb.org/apt/ubuntu noble/mongodb-org/8.0 multiverse
+sort@sortserver:~$ sudo apt update
+sudo apt install -y mongodb-org
+Hit:1 http://ua.archive.ubuntu.com/ubuntu noble InRelease
+Hit:2 http://ua.archive.ubuntu.com/ubuntu noble-updates InRelease
+Hit:3 http://ua.archive.ubuntu.com/ubuntu noble-backports InRelease
+Hit:4 http://security.ubuntu.com/ubuntu noble-security InRelease
+Get:5 https://repo.mongodb.org/apt/ubuntu noble/mongodb-org/8.0 InRelease [3,005 B]
+Get:6 https://repo.mongodb.org/apt/ubuntu noble/mongodb-org/8.0/multiverse arm64 Packages [101 kB]
+Get:7 https://repo.mongodb.org/apt/ubuntu noble/mongodb-org/8.0/multiverse amd64 Packages [101 kB]
+Fetched 202 kB in 1s (159 kB/s)
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+2 packages can be upgraded. Run 'apt list --upgradable' to see them.
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+The following additional packages will be installed:
+  mongodb-database-tools mongodb-mongosh mongodb-org-database mongodb-org-database-tools-extra mongodb-org-mongos mongodb-org-server mongodb-org-shell mongodb-org-tools
+The following NEW packages will be installed:
+  mongodb-database-tools mongodb-mongosh mongodb-org mongodb-org-database mongodb-org-database-tools-extra mongodb-org-mongos mongodb-org-server mongodb-org-shell mongodb-org-tools
+0 upgraded, 9 newly installed, 0 to remove and 2 not upgraded.
+Need to get 207 MB of archives.
+After this operation, 693 MB of additional disk space will be used.
+Get:1 https://repo.mongodb.org/apt/ubuntu noble/mongodb-org/8.0/multiverse amd64 mongodb-database-tools amd64 100.20.1 [69.1 MB]
+Get:2 https://repo.mongodb.org/apt/ubuntu noble/mongodb-org/8.0/multiverse amd64 mongodb-mongosh amd64 2.14.2 [61.8 MB]
+Get:3 https://repo.mongodb.org/apt/ubuntu noble/mongodb-org/8.0/multiverse amd64 mongodb-org-shell amd64 8.0.38 [2,602 B]
+Get:4 https://repo.mongodb.org/apt/ubuntu noble/mongodb-org/8.0/multiverse amd64 mongodb-org-server amd64 8.0.38 [43.4 MB]
+Get:5 https://repo.mongodb.org/apt/ubuntu noble/mongodb-org/8.0/multiverse amd64 mongodb-org-mongos amd64 8.0.38 [32.5 MB]
+Get:6 https://repo.mongodb.org/apt/ubuntu noble/mongodb-org/8.0/multiverse amd64 mongodb-org-database-tools-extra amd64 8.0.38 [7,398 B]
+Get:7 https://repo.mongodb.org/apt/ubuntu noble/mongodb-org/8.0/multiverse amd64 mongodb-org-database amd64 8.0.38 [3,062 B]
+Get:8 https://repo.mongodb.org/apt/ubuntu noble/mongodb-org/8.0/multiverse amd64 mongodb-org-tools amd64 8.0.38 [2,402 B]
+Get:9 https://repo.mongodb.org/apt/ubuntu noble/mongodb-org/8.0/multiverse amd64 mongodb-org amd64 8.0.38 [2,428 B]
+Fetched 207 MB in 5s (39.1 MB/s)
+Selecting previously unselected package mongodb-database-tools.
+(Reading database ... 89458 files and directories currently installed.)
+Preparing to unpack .../0-mongodb-database-tools_100.20.1_amd64.deb ...
+Unpacking mongodb-database-tools (100.20.1) ...
+Selecting previously unselected package mongodb-mongosh.
+Preparing to unpack .../1-mongodb-mongosh_2.14.2_amd64.deb ...
+Unpacking mongodb-mongosh (2.14.2) ...
+Selecting previously unselected package mongodb-org-shell.
+Preparing to unpack .../2-mongodb-org-shell_8.0.38_amd64.deb ...
+Unpacking mongodb-org-shell (8.0.38) ...
+Selecting previously unselected package mongodb-org-server.
+Preparing to unpack .../3-mongodb-org-server_8.0.38_amd64.deb ...
+Unpacking mongodb-org-server (8.0.38) ...
+Selecting previously unselected package mongodb-org-mongos.
+Preparing to unpack .../4-mongodb-org-mongos_8.0.38_amd64.deb ...
+Unpacking mongodb-org-mongos (8.0.38) ...
+Selecting previously unselected package mongodb-org-database-tools-extra.
+Preparing to unpack .../5-mongodb-org-database-tools-extra_8.0.38_amd64.deb ...
+Unpacking mongodb-org-database-tools-extra (8.0.38) ...
+Selecting previously unselected package mongodb-org-database.
+Preparing to unpack .../6-mongodb-org-database_8.0.38_amd64.deb ...
+Unpacking mongodb-org-database (8.0.38) ...
+Selecting previously unselected package mongodb-org-tools.
+Preparing to unpack .../7-mongodb-org-tools_8.0.38_amd64.deb ...
+Unpacking mongodb-org-tools (8.0.38) ...
+Selecting previously unselected package mongodb-org.
+Preparing to unpack .../8-mongodb-org_8.0.38_amd64.deb ...
+Unpacking mongodb-org (8.0.38) ...
+Setting up mongodb-mongosh (2.14.2) ...
+Setting up mongodb-org-server (8.0.38) ...
+info: Selecting UID from range 100 to 999 ...
+
+info: Adding system user `mongodb' (UID 112) ...
+info: Adding new user `mongodb' (UID 112) with group `nogroup' ...
+info: Not creating `/nonexistent'.
+info: Selecting GID from range 100 to 999 ...
+info: Adding group `mongodb' (GID 111) ...
+info: Adding user `mongodb' to group `mongodb' ...
+Setting up mongodb-org-shell (8.0.38) ...
+Setting up mongodb-database-tools (100.20.1) ...
+Setting up mongodb-org-mongos (8.0.38) ...
+Setting up mongodb-org-database-tools-extra (8.0.38) ...
+Setting up mongodb-org-database (8.0.38) ...
+Setting up mongodb-org-tools (8.0.38) ...
+Setting up mongodb-org (8.0.38) ...
+Processing triggers for man-db (2.12.0-4build2) ...
+Scanning processes...
+Scanning linux images...
+
+Running kernel seems to be up-to-date.
+
+No services need to be restarted.
+
+No containers need to be restarted.
+
+No user sessions are running outdated binaries.
+
+No VM guests are running outdated hypervisor (qemu) binaries on this host.
+sort@sortserver:~$ sudo systemctl start mongod
+sudo systemctl enable mongod
+Created symlink /etc/systemd/system/multi-user.target.wants/mongod.service → /usr/lib/systemd/system/mongod.service.
+sort@sortserver:~$ sudo systemctl status mongod
+● mongod.service - MongoDB Database Server
+     Loaded: loaded (/usr/lib/systemd/system/mongod.service; enabled; preset: enabled)
+     Active: active (running) since Sun 2026-11-15 20:25:34 UTC; 6s ago
+       Docs: https://docs.mongodb.org/manual
+   Main PID: 2243 (mongod)
+     Memory: 91.6M (peak: 91.9M)
+        CPU: 451ms
+     CGroup: /system.slice/mongod.service
+             └─2243 /usr/bin/mongod --config /etc/mongod.conf
+
+Nov 15 20:25:34 sortserver systemd[1]: Started mongod.service - MongoDB Database Server.
+Nov 15 20:25:34 sortserver mongod[2243]: {"t":{"$date":"2026-11-15T20:25:34.402Z"},"s":"I",  "c":"CONTROL",  "id":7484500, "ctx":"main","msg":"Environment variable MONGODB_CONFIG_OVERRIDE_NOFORK == 1>
+
+sort@sortserver:~$ ^C
+sort@sortserver:~$ ^C
+sort@sortserver:~$ mongo
+Command 'mongo' not found, did you mean:
+  command 'mono' from deb mono-runtime (6.8.0.105+dfsg-3.5ubuntu1)
+Try: sudo apt install <deb name>
+sort@sortserver:~$ mongosh
+Current Mongosh Log ID:	6afa157e217e376d9c81ff1d
+Connecting to:		mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.14.2
+Using MongoDB:		8.0.38
+Using Mongosh:		2.14.2
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+
+To help improve our products, pseudo-anonymous usage data is collected from interactive and agentic sessions only, and sent to MongoDB periodically (https://www.mongodb.com/legal/privacy-policy).
+You can opt-out by running the disableTelemetry() command.
+
+------
+   The server generated these startup warnings when booting
+   2026-11-15T20:25:34.884+00:00: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+   2026-11-15T20:25:35.304+00:00: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+   2026-11-15T20:25:35.305+00:00: For customers running the current memory allocator, we suggest changing the contents of the following sysfsFile
+   2026-11-15T20:25:35.305+00:00: For customers running the current memory allocator, we suggest changing the contents of the following sysfsFile
+   2026-11-15T20:25:35.305+00:00: We suggest setting the contents of sysfsFile to 0.
+   2026-11-15T20:25:35.305+00:00: We suggest setting swappiness to 0 or 1, as swapping can cause performance problems.
+------
+
+test> use students_db
+switched to db students_db
+students_db> db.students.insertOne({
+|   name: "Ivan",
+|   age: 20
+| })
+{
+  acknowledged: true,
+  insertedId: ObjectId('6afa1596217e376d9c81ff1e')
+}
+students_db> db.students.find()
+[
+  { _id: ObjectId('6afa1596217e376d9c81ff1e'), name: 'Ivan', age: 20 }
+]
+students_db> db.students.insertMany([
+|   { name: "Mykola", age: 21 },
+|   { name: "Anna", age: 18 },
+|   { name: "Dmytro", age: 20 }
+| ])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('6afa15ab217e376d9c81ff1f'),
+    '1': ObjectId('6afa15ab217e376d9c81ff20'),
+    '2': ObjectId('6afa15ab217e376d9c81ff21')
+  }
+}
+students_db> db.students.find()
+[
+  { _id: ObjectId('6afa1596217e376d9c81ff1e'), name: 'Ivan', age: 20 },
+  { _id: ObjectId('6afa15ab217e376d9c81ff1f'), name: 'Mykola', age: 21 },
+  { _id: ObjectId('6afa15ab217e376d9c81ff20'), name: 'Anna', age: 18 },
+  { _id: ObjectId('6afa15ab217e376d9c81ff21'), name: 'Dmytro', age: 20 }
+]
+students_db> db.students.find({ age: { $gt: 19 } })
+[
+  { _id: ObjectId('6afa1596217e376d9c81ff1e'), name: 'Ivan', age: 20 },
+  { _id: ObjectId('6afa15ab217e376d9c81ff1f'), name: 'Mykola', age: 21 },
+  { _id: ObjectId('6afa15ab217e376d9c81ff21'), name: 'Dmytro', age: 20 }
+]
+students_db> db.students.updateOne({ name: "Ivan" }, { $set: { age: 22 } })
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+students_db> db.students.deleteOne({ name: "Dmytro" })
+{ acknowledged: true, deletedCount: 1 }
+students_db> db.courses.insertMany([
+|   { title: "Основи програмування", teacher: { firstName: "Олександр", lastName: "Іваненко" }, credits: 5 },
+|   { title: "Бази даних", teacher: { firstName: "Марія", lastName: "Коваленко", prefix: "Доцент" }, credits: 4 },
+|   { title: "Комп'ютерні мережі", teacher: { firstName: "Андрій", lastName: "Мельник", degree: "К.т.н." }, credits: 6 }
+| ])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('6afa1654217e376d9c81ff22'),
+    '1': ObjectId('6afa1654217e376d9c81ff23'),
+    '2': ObjectId('6afa1654217e376d9c81ff24')
+  }
+}
+students_db> db.courses.find({ "teacher.firstName": "Олександр" })
+[
+  {
+    _id: ObjectId('6afa1654217e376d9c81ff22'),
+    title: 'Основи програмування',
+    teacher: { firstName: 'Олександр', lastName: 'Іваненко' },
+    credits: 5
+  }
+]
+students_db> db.students.updateOne(
+|   { name: "Mykola" },
+|   { $set: { courses: ["Бази даних", "Комп'ютерні мережі"] } }
+| )
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+students_db> db.students.find({ courses: "Бази даних" })
+[
+  {
+    _id: ObjectId('6afa15ab217e376d9c81ff1f'),
+    name: 'Mykola',
+    age: 21,
+    courses: [ 'Бази даних', "Комп'ютерні мережі" ]
+  }
+]
+students_db> db.students.find({
+|   age: { $gt: 19 },
+|   courses: "Бази даних"
+| })
+[
+  {
+    _id: ObjectId('6afa15ab217e376d9c81ff1f'),
+    name: 'Mykola',
+    age: 21,
+    courses: [ 'Бази даних', "Комп'ютерні мережі" ]
+  }
+]
+students_db>
