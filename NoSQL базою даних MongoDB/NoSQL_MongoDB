@@ -1,0 +1,57 @@
+test> use students_db
+switched to db students_db
+students_db> db.students.insertMany([
+|   { name: "Ivan", age: 20 },
+|   { name: "Oksana", age: 19 }
+| ])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('6afb3aebe8329ee665d3df8e'),
+    '1': ObjectId('6afb3aebe8329ee665d3df8f')
+  }
+}
+students_db> db.students.insertMany([
+|   { name: "Maksym", age: 19 },
+|   { name: "Dmytro", age: 22 },
+|   { name: "Olena", age: 18 }
+| ])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('6afb3af9e8329ee665d3df90'),
+    '1': ObjectId('6afb3af9e8329ee665d3df91'),
+    '2': ObjectId('6afb3af9e8329ee665d3df92')
+  }
+}
+students_db> db.students.find()
+[
+  { _id: ObjectId('6afb3aebe8329ee665d3df8e'), name: 'Ivan', age: 20 },
+  { _id: ObjectId('6afb3aebe8329ee665d3df8f'), name: 'Oksana', age: 19 },
+  { _id: ObjectId('6afb3af9e8329ee665d3df90'), name: 'Maksym', age: 19 },
+  { _id: ObjectId('6afb3af9e8329ee665d3df91'), name: 'Dmytro', age: 22 },
+  { _id: ObjectId('6afb3af9e8329ee665d3df92'), name: 'Olena', age: 18 }
+]
+students_db> db.students.find({ age: { $gt: 19 } })
+[
+  { _id: ObjectId('6afb3aebe8329ee665d3df8e'), name: 'Ivan', age: 20 },
+  { _id: ObjectId('6afb3af9e8329ee665d3df91'), name: 'Dmytro', age: 22 }
+]
+students_db> db.students.updateOne({ name: "Maksym" }, { $set: { age: 20 } })
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+students_db> db.students.deleteOne({ name: "Dmytro" })
+{ acknowledged: true, deletedCount: 1 }
+students_db> db.students.find()
+[
+  { _id: ObjectId('6afb3aebe8329ee665d3df8e'), name: 'Ivan', age: 20 },
+  { _id: ObjectId('6afb3aebe8329ee665d3df8f'), name: 'Oksana', age: 19 },
+  { _id: ObjectId('6afb3af9e8329ee665d3df90'), name: 'Maksym', age: 20 },
+  { _id: ObjectId('6afb3af9e8329ee665d3df92'), name: 'Olena', age: 18 }
+]
+students_db>

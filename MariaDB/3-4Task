@@ -1,0 +1,78 @@
+MariaDB [(none)]> CREATE DATABASE students_db;
+Query OK, 1 row affected (0.021 sec)
+
+MariaDB [(none)]> USE students_db;
+Database changed
+MariaDB [students_db]> CREATE TABLE students (
+    ->     id INT AUTO_INCREMENT PRIMARY KEY,
+    ->     name VARCHAR(50),
+    ->     age INT
+    -> );
+Query OK, 0 rows affected (0.051 sec)
+
+MariaDB [students_db]> INSERT INTO students (name, age) VALUES ('Ivan', 20);
+Query OK, 1 row affected (0.010 sec)
+
+MariaDB [students_db]> INSERT INTO students (name, age) VALUES ('Oksana', 19);
+Query OK, 1 row affected (0.010 sec)
+
+MariaDB [students_db]> SELECT * FROM students;
++----+--------+------+
+| id | name   | age  |
++----+--------+------+
+|  1 | Ivan   |   20 |
+|  2 | Oksana |   19 |
++----+--------+------+
+2 rows in set (0.005 sec)
+
+MariaDB [students_db]> INSERT INTO students (name, age) VALUES ('Maksym', 19);
+Query OK, 1 row affected (0.010 sec)
+
+MariaDB [students_db]> INSERT INTO students (name, age) VALUES ('Dmytro', 22);
+Query OK, 1 row affected (0.006 sec)
+
+MariaDB [students_db]> INSERT INTO students (name, age) VALUES ('Olena', 18);
+Query OK, 1 row affected (0.007 sec)
+
+MariaDB [students_db]> SELECT * FROM students;
++----+--------+------+
+| id | name   | age  |
++----+--------+------+
+|  1 | Ivan   |   20 |
+|  2 | Oksana |   19 |
+|  3 | Maksym |   19 |
+|  4 | Dmytro |   22 |
+|  5 | Olena  |   18 |
++----+--------+------+
+5 rows in set (0.001 sec)
+
+MariaDB [students_db]> SELECT * FROM students WHERE age > 19;
++----+--------+------+
+| id | name   | age  |
++----+--------+------+
+|  1 | Ivan   |   20 |
+|  4 | Dmytro |   22 |
++----+--------+------+
+2 rows in set (0.001 sec)
+
+MariaDB [students_db]> UPDATE students SET age = 20 WHERE name = 'Maksym';
+Query OK, 1 row affected (0.011 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [students_db]> DELETE FROM students WHERE name = 'Dmytro';
+Query OK, 1 row affected (0.013 sec)
+
+MariaDB [students_db]> SELECT * FROM students;
++----+--------+------+
+| id | name   | age  |
++----+--------+------+
+|  1 | Ivan   |   20 |
+|  2 | Oksana |   19 |
+|  3 | Maksym |   20 |
+|  5 | Olena  |   18 |
++----+--------+------+
+4 rows in set (0.001 sec)
+
+MariaDB [students_db]> exit;
+Bye
+student@Ubuntu-Server:~$
