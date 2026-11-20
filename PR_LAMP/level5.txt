@@ -1,0 +1,28 @@
+Рівень 5. Налаштування Nginx як Reverse Proxy для WordPress
+
+1. Налаштовано Apache для роботи на порту 80.
+2. Створено VirtualHost для сайту WordPress:
+   - ServerName: wp.prod.local
+   - DocumentRoot: /var/www/html/wordpress
+3. Створено окрему базу даних для production:
+   - База даних: wp_prod
+   - Користувач: wp_prod_user
+4. Налаштовано Nginx як Reverse Proxy:
+   - Домен: wp.prod.local
+   - Порт: 8080
+   - Backend: Apache на порту 80.
+5. Перевірено конфігурацію Nginx:
+   - nginx -t — syntax is ok.
+   - systemctl is-active nginx — active.
+   - systemctl is-enabled nginx — enabled.
+6. Перевірено доступність сайту:
+   - http://wp.prod.local:8080 — HTTP 200 OK.
+7. Створено резервну копію production-бази даних:
+   - База даних: wp_prod
+   - Користувач: wp_prod_user
+   - Файл: wp_prod_backup.sql
+   - Розмір: 730 КБ
+   - Розташування: ~/wp_backups/
+
+Конфігурацію Apache збережено у файлі wordpress-prod.conf.
+Конфігурацію Nginx збережено у файлі wp-lb.conf.
