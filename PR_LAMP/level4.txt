@@ -1,0 +1,24 @@
+Практична робота №12 — LAMP Stack
+Рівень 4
+
+=== Перевірка конфігурації Apache ===
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 127.0.1.1. Set the 'ServerName' directive globally to suppress this message
+Syntax OK
+
+=== Стан Apache ===
+active
+
+=== Перевірка WordPress ===
+HTTP/1.1 200 OK
+Date: Fri, 20 Nov 2026 12:39:45 GMT
+Server: Apache/2.4.66 (Ubuntu)
+Link: <http://localhost:8080/wordpress/index.php?rest_route=/>; rel="https://api.w.org/"
+Content-Type: text/html; charset=UTF-8
+
+
+=== Резервна копія бази даних ===
+-rw-rw-r-- 1 natalia natalia 720K Nov 20 12:38 /home/natalia/wp_backups/wordpress_backup.sql
+
+База даних: wordpress_db
+VirtualHost: wp.local:8080
+Резервну копію створено за допомогою mariadb-dump.

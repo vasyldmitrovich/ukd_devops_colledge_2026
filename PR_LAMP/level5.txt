@@ -1,0 +1,44 @@
+Практична робота №12
+Тема: LAMP Stack + WordPress
+Рівень: 5 балів
+
+1. Налаштування Apache
+Встановлено та налаштовано Apache.
+Створено VirtualHost wordpress-prod.conf.
+ServerName: wp.prod.local
+DocumentRoot: /var/www/html/wordpress
+Apache працює на порту 80.
+
+2. Налаштування Nginx
+Встановлено Nginx.
+Створено конфігурацію wp-lb.conf.
+Nginx працює на порту 8080 та передає
+HTTP-запити до Apache на порт 80.
+
+3. Налаштування WordPress
+WordPress встановлено у:
+/var/www/html/wordpress
+Назва сайту: Natalia WordPress
+Адреса: http://wp.prod.local:8080/
+
+4. База даних
+СУБД: MariaDB
+База даних: wp_prod
+Користувач: wp_prod_user
+Дані імпортовано з резервної копії.
+
+5. Резервне копіювання
+Створено резервну копію бази даних:
+~/wp_backups/wp_prod_backup.sql
+Розмір: 732 КБ
+
+6. Перевірка роботи
+HTTP/1.1 200 OK
+Server: nginx/1.28.3 (Ubuntu)
+HTML title: Natalia WordPress
+
+7. Результат
+Налаштовано WordPress на Apache з Nginx
+як зворотним проксі-сервером.
+Перевірено доступність вебсайту.
+Створено резервну копію бази даних.
