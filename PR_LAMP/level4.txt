@@ -1,0 +1,20 @@
+Рівень 4. Налаштування Apache та резервне копіювання WordPress
+
+1. Налаштовано Apache для роботи на порту 8080.
+2. Створено VirtualHost для сайту WordPress:
+   - ServerName: wp.local
+   - DocumentRoot: /var/www/html/wordpress
+3. Увімкнено модуль rewrite та налаштовано доступ до каталогу WordPress.
+4. Перевірено конфігурацію Apache:
+   - apache2ctl configtest — Syntax OK.
+   - systemctl is-active apache2 — active.
+5. Перевірено доступність сайту:
+   - http://wp.local:8080 — HTTP 200 OK.
+6. Створено резервну копію бази даних:
+   - База даних: wordpress_db
+   - Користувач: wp_user
+   - Файл: wordpress_backup.sql
+   - Розмір: 732 КБ
+   - Розташування: ~/wp_backups/
+
+Конфігурацію Apache збережено у файлі wordpress.conf.
