@@ -1,5 +1,3 @@
-# Practical Work 12: Production WordPress (LAMP + Nginx Load Balancer)
-
 - **Nginx Load Balancer (port 8080):** `wp-lb.conf`
 - **Apache2 VirtualHost (port 80):** `wordpress-prod.conf`
 - **Database:** MariaDB (`wordpress_db`, user `wp_prod`)
