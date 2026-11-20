@@ -6,3 +6,8 @@ PING google.com (142.250.109.138) 56(84) bytes of data.
 --- google.com ping statistics ---
 2 packets transmitted, 2 received, 0% packet loss, time 1002ms
 rtt min/avg/max/mdev = 18.132/18.777/19.423/0.645 ms
+12:29:07.632236 eth0  Out IP 10.0.2.15 > zr-in-f138.1e100.net: ICMP echo request, id 7, seq 1, length 64
+12:29:07.650357 eth0  In  IP zr-in-f138.1e100.net > 10.0.2.15: ICMP echo reply, id 7, seq 1, length 64
+12:29:08.635088 eth0  Out IP 10.0.2.15 > zr-in-f138.1e100.net: ICMP echo request, id 7, seq 2, length 64
+12:29:08.654482 eth0  In  IP zr-in-f138.1e100.net > 10.0.2.15: ICMP echo reply, id 7, seq 2, length 64
+
