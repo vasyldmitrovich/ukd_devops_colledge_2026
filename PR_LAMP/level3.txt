@@ -1,0 +1,508 @@
+=== OS ===
+Distributor ID:	Ubuntu
+Description:	Ubuntu 22.04.3 LTS
+Release:	22.04
+Codename:	jammy
+=== PHP ===
+PHP 8.1.2-1ubuntu2.29 (cli) (built: Nov 19 2026 10:51:56) (NTS)
+Copyright (c) The PHP Group
+Zend Engine v4.1.2, Copyright (c) Zend Technologies
+    with Zend OPcache v8.1.2-1ubuntu2.29, Copyright (c), by Zend Technologies
+=== APACHE ===
+Server version: Apache/2.4.52 (Ubuntu)
+Server built:   2026-11-12T13:00:12
+=== MARIADB ===
+mariadb  Ver 15.1 Distrib 10.6.23-MariaDB, for debian-linux-gnu (x86_64) using  EditLine wrapper
+=== SERVICES ===
+active
+active
+=== WORDPRESS CHECK ===
+HTTP/1.1 301 Moved Permanently
+Date: Sat, 21 Nov 2026 15:22:51 GMT
+Server: Apache/2.4.52 (Ubuntu)
+Location: http://localhost/wordpress/
+Content-Type: text/html; charset=iso-8859-1
+
+=== NOTES ===
+Created database wordpress_db and user wp_user. WordPress (lamp-page) installed and verified.
+
+
+=== TERMINAL LOG ===
+vagrant@machine:~$ mkdir -p ~/ukd_devops_colledge_2026/PR_LAMP
+vagrant@machine:~$ ls
+lab_linux  ukd_devops_colledge_2026
+vagrant@machine:~$ cd ukd_devops_colledge_2026/
+vagrant@machine:~/ukd_devops_colledge_2026$ cd PR_LAMP
+vagrant@machine:~/ukd_devops_colledge_2026/PR_LAMP$ systemctl status mariadb
+● mariadb.service - MariaDB 10.6.23 database server
+     Loaded: loaded (/lib/systemd/system/mariadb.service; enabled; vendor preset: enabled)
+     Active: active (running) since Sat 2026-11-21 14:13:39 UTC; 5min ago
+       Docs: man:mariadbd(8)
+             https://mariadb.com/kb/en/library/systemd/
+   Main PID: 745 (mariadbd)
+     Status: "Taking your SQL requests now..."
+      Tasks: 8 (limit: 14656)
+     Memory: 95.1M
+        CPU: 3.915s
+     CGroup: /system.slice/mariadb.service
+             └─745 /usr/sbin/mariadbd
+
+Warning: some journal files were not opened due to insufficient permissions.
+vagrant@machine:~/ukd_devops_colledge_2026/PR_LAMP$ sudo apt update
+Hit:1 https://mirrors.edge.kernel.org/ubuntu jammy InRelease
+Get:2 https://mirrors.edge.kernel.org/ubuntu jammy-updates InRelease [128 kB]
+Get:3 https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/7.0 InRelease [3,001 B]
+Get:4 https://mirrors.edge.kernel.org/ubuntu jammy-backports InRelease [127 kB]
+Get:5 https://mirrors.edge.kernel.org/ubuntu jammy-security InRelease [129 kB]
+Get:6 https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/7.0/multiverse arm64 Packages [142 kB]
+Get:7 https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/7.0/multiverse amd64 Packages [143 kB]
+Get:8 https://mirrors.edge.kernel.org/ubuntu jammy-updates/main amd64 Packages [4,012 kB]
+Get:9 https://mirrors.edge.kernel.org/ubuntu jammy-updates/main Translation-en [587 kB]
+Get:10 https://mirrors.edge.kernel.org/ubuntu jammy-updates/restricted amd64 Packages [6,888 kB]
+Get:11 https://mirrors.edge.kernel.org/ubuntu jammy-updates/restricted Translation-en [1,326 kB]
+Get:12 https://mirrors.edge.kernel.org/ubuntu jammy-updates/universe amd64 Packages [1,291 kB]
+Get:13 https://mirrors.edge.kernel.org/ubuntu jammy-updates/universe Translation-en [327 kB]
+Get:14 https://mirrors.edge.kernel.org/ubuntu jammy-security/main amd64 Packages [3,740 kB]
+Get:15 https://mirrors.edge.kernel.org/ubuntu jammy-security/main Translation-en [520 kB]
+Get:16 https://mirrors.edge.kernel.org/ubuntu jammy-security/restricted amd64 Packages [6,635 kB]
+Get:17 https://mirrors.edge.kernel.org/ubuntu jammy-security/restricted Translation-en [1,277 kB]
+Get:18 https://mirrors.edge.kernel.org/ubuntu jammy-security/universe amd64 Packages [1,058 kB]
+Fetched 28.3 MB in 1min 3s (450 kB/s)
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+294 packages can be upgraded. Run 'apt list --upgradable' to see them.
+vagrant@machine:~/ukd_devops_colledge_2026/PR_LAMP$ sudo apt install apache2 mariadb-server php libapache2-mod-php \
+php-mysql php-curl php-gd php-mbstring php-xml php-zip php-intl \
+wget unzip curl -y
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+mariadb-server is already the newest version (1:10.6.23-0ubuntu0.22.04.1).
+The following additional packages will be installed:
+  apache2-bin apache2-data apache2-utils libapache2-mod-php8.1 libapr1 libaprutil1
+  libaprutil1-dbd-sqlite3 libaprutil1-ldap libcurl4 libgd3 liblua5.3-0 libonig5 libxpm4 libzip4
+  mailcap mime-support php-common php8.1 php8.1-cli php8.1-common php8.1-curl php8.1-gd php8.1-intl
+  php8.1-mbstring php8.1-mysql php8.1-opcache php8.1-readline php8.1-xml php8.1-zip ssl-cert
+Suggested packages:
+  apache2-doc apache2-suexec-pristine | apache2-suexec-custom php-pear libgd-tools
+The following NEW packages will be installed:
+  apache2 apache2-bin apache2-data apache2-utils libapache2-mod-php libapache2-mod-php8.1 libapr1
+  libaprutil1 libaprutil1-dbd-sqlite3 libaprutil1-ldap libgd3 liblua5.3-0 libonig5 libxpm4 libzip4
+  mailcap mime-support php php-common php-curl php-gd php-intl php-mbstring php-mysql php-xml
+  php-zip php8.1 php8.1-cli php8.1-common php8.1-curl php8.1-gd php8.1-intl php8.1-mbstring
+  php8.1-mysql php8.1-opcache php8.1-readline php8.1-xml php8.1-zip ssl-cert
+The following packages will be upgraded:
+  curl libcurl4 unzip wget
+4 upgraded, 39 newly installed, 0 to remove and 290 not upgraded.
+Need to get 9,650 kB of archives.
+After this operation, 34.2 MB of additional disk space will be used.
+Get:1 https://mirrors.edge.kernel.org/ubuntu jammy-updates/main amd64 libapr1 amd64 1.7.0-8ubuntu0.22.04.2 [108 kB]
+Get:2 https://mirrors.edge.kernel.org/ubuntu jammy-updates/main amd64 libaprutil1 amd64 1.6.1-5ubuntu4.22.04.3 [93.4 kB]
+Get:3 https://mirrors.edge.kernel.org/ubuntu jammy-updates/main amd64 libaprutil1-dbd-sqlite3 amd64 1.6.1-5ubuntu4.22.04.3 [11.4 kB]
+Get:4 https://mirrors.edge.kernel.org/ubuntu jammy-updates/main amd64 libaprutil1-ldap amd64 1.6.1-5ubuntu4.22.04.3 [9,164 B]
+Get:5 https://mirrors.edge.kernel.org/ubuntu jammy-updates/main amd64 curl amd64 7.81.0-1ubuntu1.30 [194 kB]
+Get:6 https://mirrors.edge.kernel.org/ubuntu jammy-updates/main amd64 libcurl4 amd64 7.81.0-1ubuntu1.30 [293 kB]
+Get:7 https://mirrors.edge.kernel.org/ubuntu jammy/main amd64 liblua5.3-0 amd64 5.3.6-1build1 [140 kB]
+Get:8 https://mirrors.edge.kernel.org/ubuntu jammy-updates/main amd64 apache2-bin amd64 2.4.52-1ubuntu4.27 [1,363 kB]
+Get:9 https://mirrors.edge.kernel.org/ubuntu jammy-updates/main amd64 apache2-data all 2.4.52-1ubuntu4.27 [165 kB]
+Get:10 https://mirrors.edge.kernel.org/ubuntu jammy-updates/main amd64 apache2-utils amd64 2.4.52-1ubuntu4.27 [90.5 kB]
+Get:11 https://mirrors.edge.kernel.org/ubuntu jammy-updates/main amd64 mailcap all 3.70+nmu1ubuntu1.22.04.1 [23.9 kB]
+Get:12 https://mirrors.edge.kernel.org/ubuntu jammy/main amd64 mime-support all 3.66 [3,696 B]
+Get:13 https://mirrors.edge.kernel.org/ubuntu jammy-updates/main amd64 apache2 amd64 2.4.52-1ubuntu4.27 [97.9 kB]
+Get:14 https://mirrors.edge.kernel.org/ubuntu jammy-updates/main amd64 wget amd64 1.21.2-2ubuntu1.5 [339 kB]
+Get:15 https://mirrors.edge.kernel.org/ubuntu jammy/main amd64 php-common all 2:92ubuntu1 [12.4 kB]
+Get:16 https://mirrors.edge.kernel.org/ubuntu jammy-updates/main amd64 php8.1-common amd64 8.1.2-1ubuntu2.29 [1,135 kB]
+Get:17 https://mirrors.edge.kernel.org/ubuntu jammy-updates/main amd64 php8.1-opcache amd64 8.1.2-1ubuntu2.29 [366 kB]
+Get:18 https://mirrors.edge.kernel.org/ubuntu jammy-updates/main amd64 php8.1-readline amd64 8.1.2-1ubuntu2.29 [13.6 kB]
+Get:19 https://mirrors.edge.kernel.org/ubuntu jammy-updates/main amd64 php8.1-cli amd64 8.1.2-1ubuntu2.29 [1,834 kB]
+Get:20 https://mirrors.edge.kernel.org/ubuntu jammy-updates/main amd64 libapache2-mod-php8.1 amd64 8.1.2-1ubuntu2.29 [1,768 kB]
+Get:21 https://mirrors.edge.kernel.org/ubuntu jammy/main amd64 libapache2-mod-php all 2:8.1+92ubuntu1 [2,898 B]
+Get:22 https://mirrors.edge.kernel.org/ubuntu jammy-updates/main amd64 libxpm4 amd64 1:3.5.12-1ubuntu0.22.04.4 [36.5 kB]
+Get:23 https://mirrors.edge.kernel.org/ubuntu jammy-updates/main amd64 libgd3 amd64 2.3.0-2ubuntu2.3 [129 kB]
+Get:24 https://mirrors.edge.kernel.org/ubuntu jammy/main amd64 libonig5 amd64 6.9.7.1-2build1 [172 kB]
+Get:25 https://mirrors.edge.kernel.org/ubuntu jammy/universe amd64 libzip4 amd64 1.7.3-1ubuntu2 [55.0 kB]
+Get:26 https://mirrors.edge.kernel.org/ubuntu jammy-updates/main amd64 php8.1 all 8.1.2-1ubuntu2.29 [9,160 B]
+Get:27 https://mirrors.edge.kernel.org/ubuntu jammy/main amd64 php all 2:8.1+92ubuntu1 [2,756 B]
+Get:28 https://mirrors.edge.kernel.org/ubuntu jammy-updates/main amd64 php8.1-curl amd64 8.1.2-1ubuntu2.29 [38.8 kB]
+Get:29 https://mirrors.edge.kernel.org/ubuntu jammy/main amd64 php-curl all 2:8.1+92ubuntu1 [1,834 B]
+Get:30 https://mirrors.edge.kernel.org/ubuntu jammy-updates/main amd64 php8.1-gd amd64 8.1.2-1ubuntu2.29 [32.6 kB]
+Get:31 https://mirrors.edge.kernel.org/ubuntu jammy/main amd64 php-gd all 2:8.1+92ubuntu1 [1,828 B]
+Get:32 https://mirrors.edge.kernel.org/ubuntu jammy-updates/universe amd64 php8.1-intl amd64 8.1.2-1ubuntu2.29 [142 kB]
+Get:33 https://mirrors.edge.kernel.org/ubuntu jammy/universe amd64 php-intl all 2:8.1+92ubuntu1 [1,840 B]
+Get:34 https://mirrors.edge.kernel.org/ubuntu jammy-updates/main amd64 php8.1-mbstring amd64 8.1.2-1ubuntu2.29 [483 kB]
+Get:35 https://mirrors.edge.kernel.org/ubuntu jammy/universe amd64 php-mbstring all 2:8.1+92ubuntu1 [1,844 B]
+Get:36 https://mirrors.edge.kernel.org/ubuntu jammy-updates/main amd64 php8.1-mysql amd64 8.1.2-1ubuntu2.29 [131 kB]
+Get:37 https://mirrors.edge.kernel.org/ubuntu jammy/main amd64 php-mysql all 2:8.1+92ubuntu1 [1,834 B]
+Get:38 https://mirrors.edge.kernel.org/ubuntu jammy-updates/main amd64 php8.1-xml amd64 8.1.2-1ubuntu2.29 [120 kB]
+Get:39 https://mirrors.edge.kernel.org/ubuntu jammy/main amd64 php-xml all 2:8.1+92ubuntu1 [1,850 B]
+Get:40 https://mirrors.edge.kernel.org/ubuntu jammy-updates/universe amd64 php8.1-zip amd64 8.1.2-1ubuntu2.29 [27.1 kB]
+Get:41 https://mirrors.edge.kernel.org/ubuntu jammy/universe amd64 php-zip all 2:8.1+92ubuntu1 [1,830 B]
+Get:42 https://mirrors.edge.kernel.org/ubuntu jammy/main amd64 ssl-cert all 1.1.2 [17.4 kB]
+Get:43 https://mirrors.edge.kernel.org/ubuntu jammy-updates/main amd64 unzip amd64 6.0-26ubuntu3.2 [175 kB]
+Fetched 9,650 kB in 7s (1,365 kB/s)
+Extracting templates from packages: 100%
+Preconfiguring packages ...
+Selecting previously unselected package libapr1:amd64.
+(Reading database ... 80567 files and directories currently installed.)
+Preparing to unpack .../00-libapr1_1.7.0-8ubuntu0.22.04.2_amd64.deb ...
+Unpacking libapr1:amd64 (1.7.0-8ubuntu0.22.04.2) ...
+Selecting previously unselected package libaprutil1:amd64.
+Preparing to unpack .../01-libaprutil1_1.6.1-5ubuntu4.22.04.3_amd64.deb ...
+Unpacking libaprutil1:amd64 (1.6.1-5ubuntu4.22.04.3) ...
+Selecting previously unselected package libaprutil1-dbd-sqlite3:amd64.
+Preparing to unpack .../02-libaprutil1-dbd-sqlite3_1.6.1-5ubuntu4.22.04.3_amd64.deb ...
+Unpacking libaprutil1-dbd-sqlite3:amd64 (1.6.1-5ubuntu4.22.04.3) ...
+Selecting previously unselected package libaprutil1-ldap:amd64.
+Preparing to unpack .../03-libaprutil1-ldap_1.6.1-5ubuntu4.22.04.3_amd64.deb ...
+Unpacking libaprutil1-ldap:amd64 (1.6.1-5ubuntu4.22.04.3) ...
+Preparing to unpack .../04-curl_7.81.0-1ubuntu1.30_amd64.deb ...
+Unpacking curl (7.81.0-1ubuntu1.30) over (7.81.0-1ubuntu1.15) ...
+Preparing to unpack .../05-libcurl4_7.81.0-1ubuntu1.30_amd64.deb ...
+Unpacking libcurl4:amd64 (7.81.0-1ubuntu1.30) over (7.81.0-1ubuntu1.15) ...
+Selecting previously unselected package liblua5.3-0:amd64.
+Preparing to unpack .../06-liblua5.3-0_5.3.6-1build1_amd64.deb ...
+Unpacking liblua5.3-0:amd64 (5.3.6-1build1) ...
+Selecting previously unselected package apache2-bin.
+Preparing to unpack .../07-apache2-bin_2.4.52-1ubuntu4.27_amd64.deb ...
+Unpacking apache2-bin (2.4.52-1ubuntu4.27) ...
+Selecting previously unselected package apache2-data.
+Preparing to unpack .../08-apache2-data_2.4.52-1ubuntu4.27_all.deb ...
+Unpacking apache2-data (2.4.52-1ubuntu4.27) ...
+Selecting previously unselected package apache2-utils.
+Preparing to unpack .../09-apache2-utils_2.4.52-1ubuntu4.27_amd64.deb ...
+Unpacking apache2-utils (2.4.52-1ubuntu4.27) ...
+Selecting previously unselected package mailcap.
+Preparing to unpack .../10-mailcap_3.70+nmu1ubuntu1.22.04.1_all.deb ...
+Unpacking mailcap (3.70+nmu1ubuntu1.22.04.1) ...
+Selecting previously unselected package mime-support.
+Preparing to unpack .../11-mime-support_3.66_all.deb ...
+Unpacking mime-support (3.66) ...
+Selecting previously unselected package apache2.
+Preparing to unpack .../12-apache2_2.4.52-1ubuntu4.27_amd64.deb ...
+Unpacking apache2 (2.4.52-1ubuntu4.27) ...
+Preparing to unpack .../13-wget_1.21.2-2ubuntu1.5_amd64.deb ...
+Unpacking wget (1.21.2-2ubuntu1.5) over (1.21.2-2ubuntu1) ...
+Selecting previously unselected package php-common.
+Preparing to unpack .../14-php-common_2%3a92ubuntu1_all.deb ...
+Unpacking php-common (2:92ubuntu1) ...
+Selecting previously unselected package php8.1-common.
+Preparing to unpack .../15-php8.1-common_8.1.2-1ubuntu2.29_amd64.deb ...
+Unpacking php8.1-common (8.1.2-1ubuntu2.29) ...
+Selecting previously unselected package php8.1-opcache.
+Preparing to unpack .../16-php8.1-opcache_8.1.2-1ubuntu2.29_amd64.deb ...
+Unpacking php8.1-opcache (8.1.2-1ubuntu2.29) ...
+Selecting previously unselected package php8.1-readline.
+Preparing to unpack .../17-php8.1-readline_8.1.2-1ubuntu2.29_amd64.deb ...
+Unpacking php8.1-readline (8.1.2-1ubuntu2.29) ...
+Selecting previously unselected package php8.1-cli.
+Preparing to unpack .../18-php8.1-cli_8.1.2-1ubuntu2.29_amd64.deb ...
+Unpacking php8.1-cli (8.1.2-1ubuntu2.29) ...
+Selecting previously unselected package libapache2-mod-php8.1.
+Preparing to unpack .../19-libapache2-mod-php8.1_8.1.2-1ubuntu2.29_amd64.deb ...
+Unpacking libapache2-mod-php8.1 (8.1.2-1ubuntu2.29) ...
+Selecting previously unselected package libapache2-mod-php.
+Preparing to unpack .../20-libapache2-mod-php_2%3a8.1+92ubuntu1_all.deb ...
+Unpacking libapache2-mod-php (2:8.1+92ubuntu1) ...
+Selecting previously unselected package libxpm4:amd64.
+Preparing to unpack .../21-libxpm4_1%3a3.5.12-1ubuntu0.22.04.4_amd64.deb ...
+Unpacking libxpm4:amd64 (1:3.5.12-1ubuntu0.22.04.4) ...
+Selecting previously unselected package libgd3:amd64.
+Preparing to unpack .../22-libgd3_2.3.0-2ubuntu2.3_amd64.deb ...
+Unpacking libgd3:amd64 (2.3.0-2ubuntu2.3) ...
+Selecting previously unselected package libonig5:amd64.
+Preparing to unpack .../23-libonig5_6.9.7.1-2build1_amd64.deb ...
+Unpacking libonig5:amd64 (6.9.7.1-2build1) ...
+Selecting previously unselected package libzip4:amd64.
+Preparing to unpack .../24-libzip4_1.7.3-1ubuntu2_amd64.deb ...
+Unpacking libzip4:amd64 (1.7.3-1ubuntu2) ...
+Selecting previously unselected package php8.1.
+Preparing to unpack .../25-php8.1_8.1.2-1ubuntu2.29_all.deb ...
+Unpacking php8.1 (8.1.2-1ubuntu2.29) ...
+Selecting previously unselected package php.
+Preparing to unpack .../26-php_2%3a8.1+92ubuntu1_all.deb ...
+Unpacking php (2:8.1+92ubuntu1) ...
+Selecting previously unselected package php8.1-curl.
+Preparing to unpack .../27-php8.1-curl_8.1.2-1ubuntu2.29_amd64.deb ...
+Unpacking php8.1-curl (8.1.2-1ubuntu2.29) ...
+Selecting previously unselected package php-curl.
+Preparing to unpack .../28-php-curl_2%3a8.1+92ubuntu1_all.deb ...
+Unpacking php-curl (2:8.1+92ubuntu1) ...
+Selecting previously unselected package php8.1-gd.
+Preparing to unpack .../29-php8.1-gd_8.1.2-1ubuntu2.29_amd64.deb ...
+Unpacking php8.1-gd (8.1.2-1ubuntu2.29) ...
+Selecting previously unselected package php-gd.
+Preparing to unpack .../30-php-gd_2%3a8.1+92ubuntu1_all.deb ...
+Unpacking php-gd (2:8.1+92ubuntu1) ...
+Selecting previously unselected package php8.1-intl.
+Preparing to unpack .../31-php8.1-intl_8.1.2-1ubuntu2.29_amd64.deb ...
+Unpacking php8.1-intl (8.1.2-1ubuntu2.29) ...
+Selecting previously unselected package php-intl.
+Preparing to unpack .../32-php-intl_2%3a8.1+92ubuntu1_all.deb ...
+Unpacking php-intl (2:8.1+92ubuntu1) ...
+Selecting previously unselected package php8.1-mbstring.
+Preparing to unpack .../33-php8.1-mbstring_8.1.2-1ubuntu2.29_amd64.deb ...
+Unpacking php8.1-mbstring (8.1.2-1ubuntu2.29) ...
+Selecting previously unselected package php-mbstring.
+Preparing to unpack .../34-php-mbstring_2%3a8.1+92ubuntu1_all.deb ...
+Unpacking php-mbstring (2:8.1+92ubuntu1) ...
+Selecting previously unselected package php8.1-mysql.
+Preparing to unpack .../35-php8.1-mysql_8.1.2-1ubuntu2.29_amd64.deb ...
+Unpacking php8.1-mysql (8.1.2-1ubuntu2.29) ...
+Selecting previously unselected package php-mysql.
+Preparing to unpack .../36-php-mysql_2%3a8.1+92ubuntu1_all.deb ...
+Unpacking php-mysql (2:8.1+92ubuntu1) ...
+Selecting previously unselected package php8.1-xml.
+Preparing to unpack .../37-php8.1-xml_8.1.2-1ubuntu2.29_amd64.deb ...
+Unpacking php8.1-xml (8.1.2-1ubuntu2.29) ...
+Selecting previously unselected package php-xml.
+Preparing to unpack .../38-php-xml_2%3a8.1+92ubuntu1_all.deb ...
+Unpacking php-xml (2:8.1+92ubuntu1) ...
+Selecting previously unselected package php8.1-zip.
+Preparing to unpack .../39-php8.1-zip_8.1.2-1ubuntu2.29_amd64.deb ...
+Unpacking php8.1-zip (8.1.2-1ubuntu2.29) ...
+Selecting previously unselected package php-zip.
+Preparing to unpack .../40-php-zip_2%3a8.1+92ubuntu1_all.deb ...
+Unpacking php-zip (2:8.1+92ubuntu1) ...
+Selecting previously unselected package ssl-cert.
+Preparing to unpack .../41-ssl-cert_1.1.2_all.deb ...
+Unpacking ssl-cert (1.1.2) ...
+Preparing to unpack .../42-unzip_6.0-26ubuntu3.2_amd64.deb ...
+Unpacking unzip (6.0-26ubuntu3.2) over (6.0-26ubuntu3.1) ...
+Setting up php-common (2:92ubuntu1) ...
+Created symlink /etc/systemd/system/timers.target.wants/phpsessionclean.timer → /lib/systemd/system/phpsessionclean.timer.
+Setting up libxpm4:amd64 (1:3.5.12-1ubuntu0.22.04.4) ...
+Setting up wget (1.21.2-2ubuntu1.5) ...
+Setting up php8.1-common (8.1.2-1ubuntu2.29) ...
+
+Creating config file /etc/php/8.1/mods-available/calendar.ini with new version
+
+Creating config file /etc/php/8.1/mods-available/ctype.ini with new version
+
+Creating config file /etc/php/8.1/mods-available/exif.ini with new version
+
+Creating config file /etc/php/8.1/mods-available/fileinfo.ini with new version
+
+Creating config file /etc/php/8.1/mods-available/ffi.ini with new version
+
+Creating config file /etc/php/8.1/mods-available/ftp.ini with new version
+
+Creating config file /etc/php/8.1/mods-available/gettext.ini with new version
+
+Creating config file /etc/php/8.1/mods-available/iconv.ini with new version
+
+Creating config file /etc/php/8.1/mods-available/pdo.ini with new version
+
+Creating config file /etc/php/8.1/mods-available/phar.ini with new version
+
+Creating config file /etc/php/8.1/mods-available/posix.ini with new version
+
+Creating config file /etc/php/8.1/mods-available/shmop.ini with new version
+
+Creating config file /etc/php/8.1/mods-available/sockets.ini with new version
+
+Creating config file /etc/php/8.1/mods-available/sysvmsg.ini with new version
+
+Creating config file /etc/php/8.1/mods-available/sysvsem.ini with new version
+
+Creating config file /etc/php/8.1/mods-available/sysvshm.ini with new version
+
+Creating config file /etc/php/8.1/mods-available/tokenizer.ini with new version
+Setting up libzip4:amd64 (1.7.3-1ubuntu2) ...
+Setting up unzip (6.0-26ubuntu3.2) ...
+Setting up libapr1:amd64 (1.7.0-8ubuntu0.22.04.2) ...
+Setting up php8.1-xml (8.1.2-1ubuntu2.29) ...
+
+Creating config file /etc/php/8.1/mods-available/dom.ini with new version
+
+Creating config file /etc/php/8.1/mods-available/simplexml.ini with new version
+
+Creating config file /etc/php/8.1/mods-available/xml.ini with new version
+
+Creating config file /etc/php/8.1/mods-available/xmlreader.ini with new version
+
+Creating config file /etc/php/8.1/mods-available/xmlwriter.ini with new version
+
+Creating config file /etc/php/8.1/mods-available/xsl.ini with new version
+Setting up php8.1-mysql (8.1.2-1ubuntu2.29) ...
+
+Creating config file /etc/php/8.1/mods-available/mysqlnd.ini with new version
+
+Creating config file /etc/php/8.1/mods-available/mysqli.ini with new version
+
+Creating config file /etc/php/8.1/mods-available/pdo_mysql.ini with new version
+Setting up ssl-cert (1.1.2) ...
+Setting up libgd3:amd64 (2.3.0-2ubuntu2.3) ...
+Setting up php8.1-zip (8.1.2-1ubuntu2.29) ...
+
+Creating config file /etc/php/8.1/mods-available/zip.ini with new version
+Setting up liblua5.3-0:amd64 (5.3.6-1build1) ...
+Setting up libcurl4:amd64 (7.81.0-1ubuntu1.30) ...
+Setting up php8.1-readline (8.1.2-1ubuntu2.29) ...
+
+Creating config file /etc/php/8.1/mods-available/readline.ini with new version
+Setting up apache2-data (2.4.52-1ubuntu4.27) ...
+Setting up curl (7.81.0-1ubuntu1.30) ...
+Setting up mailcap (3.70+nmu1ubuntu1.22.04.1) ...
+Setting up php8.1-opcache (8.1.2-1ubuntu2.29) ...
+
+Creating config file /etc/php/8.1/mods-available/opcache.ini with new version
+Setting up php8.1-intl (8.1.2-1ubuntu2.29) ...
+
+Creating config file /etc/php/8.1/mods-available/intl.ini with new version
+Setting up libonig5:amd64 (6.9.7.1-2build1) ...
+Setting up libaprutil1:amd64 (1.6.1-5ubuntu4.22.04.3) ...
+Setting up php-xml (2:8.1+92ubuntu1) ...
+Setting up php-mysql (2:8.1+92ubuntu1) ...
+Setting up mime-support (3.66) ...
+Setting up php8.1-mbstring (8.1.2-1ubuntu2.29) ...
+
+Creating config file /etc/php/8.1/mods-available/mbstring.ini with new version
+Setting up php8.1-gd (8.1.2-1ubuntu2.29) ...
+
+Creating config file /etc/php/8.1/mods-available/gd.ini with new version
+Setting up libaprutil1-ldap:amd64 (1.6.1-5ubuntu4.22.04.3) ...
+Setting up php-mbstring (2:8.1+92ubuntu1) ...
+Setting up libaprutil1-dbd-sqlite3:amd64 (1.6.1-5ubuntu4.22.04.3) ...
+Setting up php8.1-curl (8.1.2-1ubuntu2.29) ...
+
+Creating config file /etc/php/8.1/mods-available/curl.ini with new version
+Setting up php-intl (2:8.1+92ubuntu1) ...
+Setting up php8.1-cli (8.1.2-1ubuntu2.29) ...
+update-alternatives: using /usr/bin/php8.1 to provide /usr/bin/php (php) in auto mode
+update-alternatives: using /usr/bin/phar8.1 to provide /usr/bin/phar (phar) in auto mode
+update-alternatives: using /usr/bin/phar.phar8.1 to provide /usr/bin/phar.phar (phar.phar) in auto mode
+
+Creating config file /etc/php/8.1/cli/php.ini with new version
+Setting up php-zip (2:8.1+92ubuntu1) ...
+Setting up php-gd (2:8.1+92ubuntu1) ...
+Setting up apache2-utils (2.4.52-1ubuntu4.27) ...
+Setting up php-curl (2:8.1+92ubuntu1) ...
+Setting up apache2-bin (2.4.52-1ubuntu4.27) ...
+Setting up libapache2-mod-php8.1 (8.1.2-1ubuntu2.29) ...
+Package apache2 is not configured yet. Will defer actions by package libapache2-mod-php8.1.
+
+Creating config file /etc/php/8.1/apache2/php.ini with new version
+No module matches
+Setting up apache2 (2.4.52-1ubuntu4.27) ...
+Enabling module mpm_event.
+Enabling module authz_core.
+Enabling module authz_host.
+Enabling module authn_core.
+Enabling module auth_basic.
+Enabling module access_compat.
+Enabling module authn_file.
+Enabling module authz_user.
+Enabling module alias.
+Enabling module dir.
+Enabling module autoindex.
+Enabling module env.
+Enabling module mime.
+Enabling module negotiation.
+Enabling module setenvif.
+Enabling module filter.
+Enabling module deflate.
+Enabling module status.
+Enabling module reqtimeout.
+Enabling conf charset.
+Enabling conf localized-error-pages.
+Enabling conf other-vhosts-access-log.
+Enabling conf security.
+Enabling conf serve-cgi-bin.
+Enabling site 000-default.
+info: Switch to mpm prefork for package libapache2-mod-php8.1
+Module mpm_event disabled.
+Enabling module mpm_prefork.
+info: Executing deferred 'a2enmod php8.1' for package libapache2-mod-php8.1
+Enabling module php8.1.
+Created symlink /etc/systemd/system/multi-user.target.wants/apache2.service → /lib/systemd/system/apache2.service.
+Created symlink /etc/systemd/system/multi-user.target.wants/apache-htcacheclean.service → /lib/systemd/system/apache-htcacheclean.service.
+Setting up php8.1 (8.1.2-1ubuntu2.29) ...
+Setting up libapache2-mod-php (2:8.1+92ubuntu1) ...
+Setting up php (2:8.1+92ubuntu1) ...
+Processing triggers for ufw (0.36.1-4ubuntu0.1) ...
+Processing triggers for man-db (2.10.2-1) ...
+Processing triggers for install-info (6.8-4build1) ...
+Processing triggers for libc-bin (2.35-0ubuntu3.6) ...
+Processing triggers for php8.1-cli (8.1.2-1ubuntu2.29) ...
+Processing triggers for libapache2-mod-php8.1 (8.1.2-1ubuntu2.29) ...
+Scanning processes...
+Scanning candidates...
+Scanning linux images...
+
+Running kernel seems to be up-to-date.
+
+Restarting services...
+ systemctl restart mongod.service
+
+No containers need to be restarted.
+
+No user sessions are running outdated binaries.
+
+No VM guests are running outdated hypervisor (qemu) binaries on this host.
+vagrant@machine:~/ukd_devops_colledge_2026/PR_LAMP$ echo "<?php phpinfo(); ?>" | sudo tee /var/www/html/info.php
+<?php phpinfo(); ?>
+vagrant@machine:~/ukd_devops_colledge_2026/PR_LAMP$ curl -I http://localhost/info.php
+HTTP/1.1 200 OK
+Date: Sat, 21 Nov 2026 15:05:38 GMT
+Server: Apache/2.4.52 (Ubuntu)
+Content-Type: text/html; charset=UTF-8
+
+vagrant@machine:~/ukd_devops_colledge_2026/PR_LAMP$ sudo rm /var/www/html/info.php
+vagrant@machine:~/ukd_devops_colledge_2026/PR_LAMP$ sudo mariadb
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 31
+Server version: 10.6.23-MariaDB-0ubuntu0.22.04.1 Ubuntu 22.04
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> CREATE DATABASE wordpress_db;
+Query OK, 1 row affected (0.007 sec)
+
+MariaDB [(none)]> CREATE USER 'wp_user'@'localhost' IDENTIFIED BY 'StrongPass123!';
+Query OK, 0 rows affected (0.031 sec)
+
+MariaDB [(none)]> GRANT ALL PRIVILEGES ON wordpress_db.* TO 'wp_user'@'localhost';
+Query OK, 0 rows affected (0.017 sec)
+
+MariaDB [(none)]> FLUSH PRIVILEGES;
+Query OK, 0 rows affected (0.004 sec)
+
+MariaDB [(none)]> EXIT;
+Bye
+vagrant@machine:~/ukd_devops_colledge_2026/PR_LAMP$ cd /tmp
+vagrant@machine:/tmp$ wget https://wordpress.org/latest.zip
+--2026-11-21 15:07:52--  https://wordpress.org/latest.zip
+Resolving wordpress.org (wordpress.org)... 66.6.42.252, 2620:109:b00a::4206:2afc
+Connecting to wordpress.org (wordpress.org)|66.6.42.252|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 37245999 (36M) [application/zip]
+Saving to: ‘latest.zip’
+
+latest.zip                100%[===================================>]  35.52M  11.2MB/s    in 3.2s
+
+2026-11-21 15:07:56 (11.2 MB/s) - ‘latest.zip’ saved [37245999/37245999]
+
+vagrant@machine:/tmp$ unzip latest.zip
+Archive:  latest.zip
+   creating: wordpress/
+  inflating: wordpress/wp-trackback.php
+  inflating: wordpress/xmlrpc.php
+   creating: wordpress/wp-content/
+   creating: wordpress/wp-content/plugins/
+   ...
+  inflating: wordpress/wp-settings.php
+  inflating: wordpress/wp-signup.php
+  inflating: wordpress/wp-activate.php
+  inflating: wordpress/wp-blog-header.php
+  inflating: wordpress/wp-comments-post.php
+  inflating: wordpress/index.php
+  inflating: wordpress/wp-load.php
+  inflating: wordpress/wp-login.php
+vagrant@machine:/tmp$ sudo mv wordpress /var/www/html/
+vagrant@machine:/tmp$ sudo chown -R www-data:www-data /var/www/html/wordpress
+vagrant@machine:/tmp$ sudo find /var/www/html/wordpress -type d -exec chmod 755 {} \;
+vagrant@machine:/tmp$ sudo find /var/www/html/wordpress -type f -exec chmod 644 {} +
+vagrant@machine:/tmp$ sudo systemctl restart apache2
