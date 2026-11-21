@@ -1,0 +1,106 @@
+=== CONFIGTEST ===
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 127.0.2.1. Set the 'ServerName' directive globally to suppress this message
+Syntax OK
+=== APACHE STATUS ===
+● apache2.service - The Apache HTTP Server
+     Loaded: loaded (/lib/systemd/system/apache2.service; enabled; vendor preset: enabled)
+     Active: active (running) since Sat 2026-11-21 15:33:38 UTC; 19min ago
+       Docs: https://httpd.apache.org/docs/2.4/
+    Process: 20962 ExecStart=/usr/sbin/apachectl start (code=exited, status=0/SUCCESS)
+   Main PID: 20967 (apache2)
+      Tasks: 10 (limit: 2220)
+     Memory: 52.8M
+        CPU: 8.955s
+     CGroup: /system.slice/apache2.service
+             ├─20967 /usr/sbin/apache2 -k start
+             ├─21065 /usr/sbin/apache2 -k start
+             ├─21067 /usr/sbin/apache2 -k start
+             ├─21068 /usr/sbin/apache2 -k start
+             ├─21069 /usr/sbin/apache2 -k start
+             ├─21075 /usr/sbin/apache2 -k start
+             ├─21078 /usr/sbin/apache2 -k start
+             ├─21079 /usr/sbin/apache2 -k start
+             ├─21080 /usr/sbin/apache2 -k start
+             └─21081 /usr/sbin/apache2 -k start
+
+Nov 21 15:33:38 machine systemd[1]: Starting The Apache HTTP Server...
+Nov 21 15:33:38 machine apachectl[20966]: AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 127.0.2.1. Set the 'ServerName' directive globally to suppress this message
+Nov 21 15:33:38 machine systemd[1]: Started The Apache HTTP Server.
+=== CURL CHECK ===
+HTTP/1.1 200 OK
+Date: Sat, 21 Nov 2026 15:52:58 GMT
+Server: Apache/2.4.52 (Ubuntu)
+Link: <http://wp.local:8080/index.php/wp-json/>; rel="https://api.w.org/"
+Content-Type: text/html; charset=UTF-8
+
+=== BACKUP INFO ===
+-rw-rw-r-- 1 vagrant vagrant 728K Nov 21 15:52 /home/vagrant/wp_backups/wordpress_backup.sql
+
+=== TERMINAL LOG ==
+vagrant@machine:~/ukd_devops_colledge_2026/PR_LAMP$ cd /tmp
+vagrant@machine:/tmp$ sudo nano /etc/apache2/sites-available/wordpress.conf
+vagrant@machine:/tmp$ sudo a2enmod rewrite
+Enabling module rewrite.
+To activate the new configuration, you need to run:
+  systemctl restart apache2
+vagrant@machine:/tmp$ sudo a2ensite wordpress
+Enabling site wordpress.
+To activate the new configuration, you need to run:
+  systemctl reload apache2
+vagrant@machine:/tmp$ sudo a2dissite 000-default
+Site 000-default disabled.
+To activate the new configuration, you need to run:
+  systemctl reload apache2
+vagrant@machine:/tmp$ micro /etc/apache2/ports.conf
+vagrant@machine:/tmp$ sudo micro /etc/apache2/ports.conf
+vagrant@machine:/tmp$ sudo apache2ctl configtest
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 127.0.2.1. Set the 'ServerName' directive globally to suppress this message
+Syntax OK
+vagrant@machine:/tmp$ sudo systemctl restart apache2
+vagrant@machine:/tmp$ echo "127.0.0.1 wp.local" | sudo tee -a /etc/hosts
+127.0.0.1 wp.local
+vagrant@machine:/tmp$ curl -I http://wp.local:8080
+HTTP/1.1 301 Moved Permanently
+Date: Sat, 21 Nov 2026 15:33:52 GMT
+Server: Apache/2.4.52 (Ubuntu)
+X-Redirect-By: WordPress
+Location: http://wp.local/
+Content-Type: text/html; charset=UTF-8
+
+vagrant@machine:/tmp$ sudo mariadb -e "UPDATE wordpress_db.wp_options SET option_value = 'http://wp.local:8080' WHERE option_name IN ('siteurl', 'home');"
+vagrant@machine:/tmp$ curl -I http://wp.local:8080
+HTTP/1.1 200 OK
+Date: Sat, 21 Nov 2026 15:39:50 GMT
+Server: Apache/2.4.52 (Ubuntu)
+Link: <http://wp.local:8080/index.php/wp-json/>; rel="https://api.w.org/"
+Content-Type: text/html; charset=UTF-8
+
+vagrant@machine:/tmp$ sudo mariadb -e "UPDATE wordpress_db.wp_users SET user_pass = MD5('StrongPass123!') WHERE user_login = 'dm';"
+-bash: !': event not found
+vagrant@machine:/tmp$ sudo mariadb -e "UPDATE wordpress_db.wp_users SET user_pass = MD5('StrongPass123'
+) WHERE user_login = 'dm';"
+vagrant@machine:/tmp$ mkdir -p ~/wp_backups
+vagrant@machine:/tmp$ ls
+latest.zip
+mongodb-27017.sock
+snap-private-tmp
+systemd-private-d1170745307d412185910aa49307b761-apache2.service-6MKaXV
+systemd-private-d1170745307d412185910aa49307b761-fwupd.service-Vry8UJ
+systemd-private-d1170745307d412185910aa49307b761-haveged.service-wYg1cb
+systemd-private-d1170745307d412185910aa49307b761-ModemManager.service-n49FiY
+systemd-private-d1170745307d412185910aa49307b761-systemd-logind.service-iaitWu
+systemd-private-d1170745307d412185910aa49307b761-systemd-resolved.service-RnyzKe
+systemd-private-d1170745307d412185910aa49307b761-upower.service-O77Evu
+vagrant@machine:/tmp$ cd ~
+vagrant@machine:~$ ls
+lab_linux  ukd_devops_colledge_2026  wp_backups
+vagrant@machine:~$ ^C
+vagrant@machine:~$ mariadb-dump -u wp_user -p wordpress_db > ~/wp_backups/wordpress_backup.sql
+Enter password:
+mariadb-dump: Got error: 1045: "Access denied for user 'wp_user'@'localhost' (using password: YES)" when trying to connect
+vagrant@machine:~$ mariadb-dump -u wp_user -p wordpress_db > ~/wp_backups/wordpress_backup.sql
+Enter password:
+mariadb-dump: Got error: 1045: "Access denied for user 'wp_user'@'localhost' (using password: YES)" when trying to connect
+vagrant@machine:~$ mariadb-dump -u wp_user -p wordpress_db > ~/wp_backups/wordpress_backup.sql
+Enter password:
+vagrant@machine:~$ cp /etc/apache2/sites-available/wordpress.conf ~/ukd_devops_colledge_2026/PR_LAMP/
