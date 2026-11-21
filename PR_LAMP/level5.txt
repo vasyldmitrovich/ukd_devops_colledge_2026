@@ -1,0 +1,202 @@
+=== APACHE CONFIGTEST ===
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 127.0.2.1. Set the 'ServerName' directive globally to suppress this message
+Syntax OK
+=== NGINX TEST ===
+nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+nginx: configuration file /etc/nginx/nginx.conf test is successful
+=== SERVICES ===
+active
+active
+active
+=== PORTS ===
+tcp   LISTEN 0      511           0.0.0.0:8080       0.0.0.0:*    users:(("nginx",pid=21840,fd=6),("nginx",pid=21839,fd=6),("nginx",pid=21838,fd=6))                                                                                                                                             
+tcp   LISTEN 0      511                 *:80               *:*    users:(("apache2",pid=21914,fd=4),("apache2",pid=21910,fd=4),("apache2",pid=21831,fd=4),("apache2",pid=21830,fd=4),("apache2",pid=21829,fd=4),("apache2",pid=21828,fd=4),("apache2",pid=21827,fd=4),("apache2",pid=21826,fd=4))
+=== CURL CHECK ===
+HTTP/1.1 200 OK
+Server: nginx/1.18.0 (Ubuntu)
+Date: Sat, 21 Nov 2026 16:44:30 GMT
+Content-Type: text/html; charset=UTF-8
+Connection: keep-alive
+Link: <http://wp.prod.local:8080/index.php/wp-json/>; rel="https://api.w.org/"
+
+=== DB & BACKUP ===
+Database: wp_prod
+-rw-rw-r-- 1 vagrant vagrant 728K Nov 21 16:44 /home/vagrant/wp_backups/wp_prod_backup.sql
+
+=== TERMINAL LOG ===
+vagrant@machine:~/ukd_devops_colledge_2026/PR_LAMP$ sudo a2dissite wordpress
+Site wordpress disabled.
+To activate the new configuration, you need to run:
+  systemctl reload apache2
+vagrant@machine:~/ukd_devops_colledge_2026/PR_LAMP$ sudo nano /etc/apache2/sites-available/wordpress-prod.conf
+vagrant@machine:~/ukd_devops_colledge_2026/PR_LAMP$ sudo a2ensite wordpress-prod
+Enabling site wordpress-prod.
+To activate the new configuration, you need to run:
+  systemctl reload apache2
+vagrant@machine:~/ukd_devops_colledge_2026/PR_LAMP$ sudo apache2ctl configtest
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 127.0.2.1. Set the 'ServerName' directive globally to suppress this message
+Syntax OK
+vagrant@machine:~/ukd_devops_colledge_2026/PR_LAMP$ sudo systemctl restart apache2
+vagrant@machine:~/ukd_devops_colledge_2026/PR_LAMP$ sudo mariadb
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 82
+Server version: 10.6.23-MariaDB-0ubuntu0.22.04.1 Ubuntu 22.04
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> CREATE DATABASE wp_prod;
+Query OK, 1 row affected (0.002 sec)
+
+MariaDB [(none)]> CREATE USER 'wp_prod_user'@'localhost' IDENTIFIED BY 'ProdPass123!';
+Query OK, 0 rows affected (0.033 sec)
+
+MariaDB [(none)]> GRANT ALL PRIVILEGES ON wp_prod.* TO 'wp_prod_user'@'localhost';
+Query OK, 0 rows affected (0.013 sec)
+
+MariaDB [(none)]> FLUSH PRIVILEGES;
+Query OK, 0 rows affected (0.007 sec)
+
+MariaDB [(none)]> EXIT;
+Bye
+vagrant@machine:~/ukd_devops_colledge_2026/PR_LAMP$ mariadb -u wp_prod_user -p wp_prod < ~/wp_backups/wordpress_backup.sql
+Enter password:
+ERROR 1045 (28000): Access denied for user 'wp_prod_user'@'localhost' (using password: YES)
+vagrant@machine:~/ukd_devops_colledge_2026/PR_LAMP$ mariadb -u wp_prod_user -p wp_prod < ~/wp_backups/wordpress_backup.sql
+Enter password:
+ERROR 1045 (28000): Access denied for user 'wp_prod_user'@'localhost' (using password: YES)
+vagrant@machine:~/ukd_devops_colledge_2026/PR_LAMP$ sudo mariadb -e "ALTER USER 'wp_prod_user'@'localhost' IDENTIFIED BY 'ProdPass123!'; FLUSH PRIVILEGES;"
+-bash: !': event not found
+vagrant@machine:~/ukd_devops_colledge_2026/PR_LAMP$ ProdPass123!
+ProdPass123!: command not found
+vagrant@machine:~/ukd_devops_colledge_2026/PR_LAMP$ mariadb -u wp_prod_user -p wp_prod < ~/wp_backups/wordpress_backup.sql
+Enter password:
+ERROR 1045 (28000): Access denied for user 'wp_prod_user'@'localhost' (using password: YES)
+vagrant@machine:~/ukd_devops_colledge_2026/PR_LAMP$ ^C
+vagrant@machine:~/ukd_devops_colledge_2026/PR_LAMP$ sudo mariadb -e "ALTER USER 'wp_prod_user'@'localhost' IDENTIFIED BY 'ProdPass123'; FLUSH PRIVILEGES;"
+vagrant@machine:~/ukd_devops_colledge_2026/PR_LAMP$ mariadb -u wp_prod_user -p wp_prod < ~/wp_backups/wordpress_backup.sql
+Enter password:
+vagrant@machine:~/ukd_devops_colledge_2026/PR_LAMP$ sudo micro /var/www/html/wordpress/wp-config.php
+vagrant@machine:~/ukd_devops_colledge_2026/PR_LAMP$ sudo chown www-data:www-data /var/www/html/wordpress/wp-config.php
+vagrant@machine:~/ukd_devops_colledge_2026/PR_LAMP$ sudo chmod 640 /var/www/html/wordpress/wp-config.php
+vagrant@machine:~/ukd_devops_colledge_2026/PR_LAMP$ sudo apt install nginx -y
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+The following additional packages will be installed:
+  libnginx-mod-http-geoip2 libnginx-mod-http-image-filter libnginx-mod-http-xslt-filter
+  libnginx-mod-mail libnginx-mod-stream libnginx-mod-stream-geoip2 nginx-common nginx-core
+Suggested packages:
+  fcgiwrap nginx-doc
+The following NEW packages will be installed:
+  libnginx-mod-http-geoip2 libnginx-mod-http-image-filter libnginx-mod-http-xslt-filter
+  libnginx-mod-mail libnginx-mod-stream libnginx-mod-stream-geoip2 nginx nginx-common nginx-core
+0 upgraded, 9 newly installed, 0 to remove and 290 not upgraded.
+Need to get 706 kB of archives.
+After this operation, 2,431 kB of additional disk space will be used.
+Get:1 https://mirrors.edge.kernel.org/ubuntu jammy-updates/main amd64 nginx-common all 1.18.0-6ubuntu14.24 [41.1 kB]
+Get:2 https://mirrors.edge.kernel.org/ubuntu jammy-updates/main amd64 libnginx-mod-http-geoip2 amd64 1.18.0-6ubuntu14.24 [13.0 kB]
+Get:3 https://mirrors.edge.kernel.org/ubuntu jammy-updates/main amd64 libnginx-mod-http-image-filter amd64 1.18.0-6ubuntu14.24 [16.5 kB]
+Get:4 https://mirrors.edge.kernel.org/ubuntu jammy-updates/main amd64 libnginx-mod-http-xslt-filter amd64 1.18.0-6ubuntu14.24 [14.9 kB]
+Get:5 https://mirrors.edge.kernel.org/ubuntu jammy-updates/main amd64 libnginx-mod-mail amd64 1.18.0-6ubuntu14.24 [47.2 kB]
+Get:6 https://mirrors.edge.kernel.org/ubuntu jammy-updates/main amd64 libnginx-mod-stream amd64 1.18.0-6ubuntu14.24 [74.3 kB]
+Get:7 https://mirrors.edge.kernel.org/ubuntu jammy-updates/main amd64 libnginx-mod-stream-geoip2 amd64 1.18.0-6ubuntu14.24 [10.1 kB]
+Get:8 https://mirrors.edge.kernel.org/ubuntu jammy-updates/main amd64 nginx-core amd64 1.18.0-6ubuntu14.24 [485 kB]
+Get:9 https://mirrors.edge.kernel.org/ubuntu jammy-updates/main amd64 nginx amd64 1.18.0-6ubuntu14.24 [3,880 B]
+Fetched 706 kB in 2s (427 kB/s)
+Preconfiguring packages ...
+Selecting previously unselected package nginx-common.
+(Reading database ... 81560 files and directories currently installed.)
+Preparing to unpack .../0-nginx-common_1.18.0-6ubuntu14.24_all.deb ...
+Unpacking nginx-common (1.18.0-6ubuntu14.24) ...
+Selecting previously unselected package libnginx-mod-http-geoip2.
+Preparing to unpack .../1-libnginx-mod-http-geoip2_1.18.0-6ubuntu14.24_amd64.deb ...
+Unpacking libnginx-mod-http-geoip2 (1.18.0-6ubuntu14.24) ...
+Selecting previously unselected package libnginx-mod-http-image-filter.
+Preparing to unpack .../2-libnginx-mod-http-image-filter_1.18.0-6ubuntu14.24_amd64.deb ...
+Unpacking libnginx-mod-http-image-filter (1.18.0-6ubuntu14.24) ...
+Selecting previously unselected package libnginx-mod-http-xslt-filter.
+Preparing to unpack .../3-libnginx-mod-http-xslt-filter_1.18.0-6ubuntu14.24_amd64.deb ...
+Unpacking libnginx-mod-http-xslt-filter (1.18.0-6ubuntu14.24) ...
+Selecting previously unselected package libnginx-mod-mail.
+Preparing to unpack .../4-libnginx-mod-mail_1.18.0-6ubuntu14.24_amd64.deb ...
+Unpacking libnginx-mod-mail (1.18.0-6ubuntu14.24) ...
+Selecting previously unselected package libnginx-mod-stream.
+Preparing to unpack .../5-libnginx-mod-stream_1.18.0-6ubuntu14.24_amd64.deb ...
+Unpacking libnginx-mod-stream (1.18.0-6ubuntu14.24) ...
+Selecting previously unselected package libnginx-mod-stream-geoip2.
+Preparing to unpack .../6-libnginx-mod-stream-geoip2_1.18.0-6ubuntu14.24_amd64.deb ...
+Unpacking libnginx-mod-stream-geoip2 (1.18.0-6ubuntu14.24) ...
+Selecting previously unselected package nginx-core.
+Preparing to unpack .../7-nginx-core_1.18.0-6ubuntu14.24_amd64.deb ...
+Unpacking nginx-core (1.18.0-6ubuntu14.24) ...
+Selecting previously unselected package nginx.
+Preparing to unpack .../8-nginx_1.18.0-6ubuntu14.24_amd64.deb ...
+Unpacking nginx (1.18.0-6ubuntu14.24) ...
+Setting up nginx-common (1.18.0-6ubuntu14.24) ...
+Created symlink /etc/systemd/system/multi-user.target.wants/nginx.service → /lib/systemd/system/nginx.service.
+Setting up libnginx-mod-http-xslt-filter (1.18.0-6ubuntu14.24) ...
+Setting up libnginx-mod-http-geoip2 (1.18.0-6ubuntu14.24) ...
+Setting up libnginx-mod-mail (1.18.0-6ubuntu14.24) ...
+Setting up libnginx-mod-http-image-filter (1.18.0-6ubuntu14.24) ...
+Setting up libnginx-mod-stream (1.18.0-6ubuntu14.24) ...
+Setting up libnginx-mod-stream-geoip2 (1.18.0-6ubuntu14.24) ...
+Setting up nginx-core (1.18.0-6ubuntu14.24) ...
+ * Upgrading binary nginx                                                                       [ OK ]
+Setting up nginx (1.18.0-6ubuntu14.24) ...
+Processing triggers for man-db (2.10.2-1) ...
+Processing triggers for ufw (0.36.1-4ubuntu0.1) ...
+Scanning processes...
+Scanning linux images...
+
+Running kernel seems to be up-to-date.
+
+No services need to be restarted.
+
+No containers need to be restarted.
+
+No user sessions are running outdated binaries.
+
+No VM guests are running outdated hypervisor (qemu) binaries on this host.
+vagrant@machine:~/ukd_devops_colledge_2026/PR_LAMP$ sudo rm -f /etc/nginx/sites-enabled/default
+vagrant@machine:~/ukd_devops_colledge_2026/PR_LAMP$ sudo nano /etc/nginx/sites-available/wp-lb.conf
+vagrant@machine:~/ukd_devops_colledge_2026/PR_LAMP$ sudo ln -s /etc/nginx/sites-available/wp-lb.conf /etc/nginx/sites-enabled/wp-lb.conf
+vagrant@machine:~/ukd_devops_colledge_2026/PR_LAMP$ sudo nginx -t
+nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+nginx: configuration file /etc/nginx/nginx.conf test is successful
+vagrant@machine:~/ukd_devops_colledge_2026/PR_LAMP$ sudo systemctl restart nginx
+Job for nginx.service failed because the control process exited with error code.
+See "systemctl status nginx.service" and "journalctl -xeu nginx.service" for details.
+vagrant@machine:~/ukd_devops_colledge_2026/PR_LAMP$ sudo ss -tulpn | grep -E ':80|:8080'
+tcp   LISTEN 0      511                 *:8080             *:*    users:(("apache2",pid=21188,fd=4),("apache2",pid=21187,fd=4),("apache2",pid=21186,fd=4),("apache2",pid=21185,fd=4),("apache2",pid=21184,fd=4),("apache2",pid=21183,fd=4))
+vagrant@machine:~/ukd_devops_colledge_2026/PR_LAMP$ sudo grep Listen /etc/apache2/ports.conf
+Listen 8080
+        Listen 443
+        Listen 443
+vagrant@machine:~/ukd_devops_colledge_2026/PR_LAMP$ sudo nano /etc/apache2/ports.conf
+vagrant@machine:~/ukd_devops_colledge_2026/PR_LAMP$ sudo a2dissite wordpress
+Site wordpress already disabled
+vagrant@machine:~/ukd_devops_colledge_2026/PR_LAMP$ sudo a2ensite wordpress-prod
+Site wordpress-prod already enabled
+vagrant@machine:~/ukd_devops_colledge_2026/PR_LAMP$ sudo systemctl restart apache2
+vagrant@machine:~/ukd_devops_colledge_2026/PR_LAMP$ sudo systemctl restart nginx
+vagrant@machine:~/ukd_devops_colledge_2026/PR_LAMP$ sudo ss -tulpn | grep -E ':80|:8080'
+tcp   LISTEN 0      511           0.0.0.0:8080       0.0.0.0:*    users:(("nginx",pid=21840,fd=6),("nginx",pid=21839,fd=6),("nginx",pid=21838,fd=6))                                                          
+tcp   LISTEN 0      511                 *:80               *:*    users:(("apache2",pid=21831,fd=4),("apache2",pid=21830,fd=4),("apache2",pid=21829,fd=4),("apache2",pid=21828,fd=4),("apache2",pid=21827,fd=4),("apache2",pid=21826,fd=4))
+vagrant@machine:~/ukd_devops_colledge_2026/PR_LAMP$ echo "127.0.0.1 wp.prod.local" | sudo tee -a /etc/hosts
+127.0.0.1 wp.prod.local
+vagrant@machine:~/ukd_devops_colledge_2026/PR_LAMP$ sudo mariadb -e "UPDATE wp_prod.wp_options SET option_value = 'http://wp.prod.local:8080' WHERE option_name IN ('siteurl', 'home');"
+vagrant@machine:~/ukd_devops_colledge_2026/PR_LAMP$ curl -I http://wp.prod.local:8080
+HTTP/1.1 200 OK
+Server: nginx/1.18.0 (Ubuntu)
+Date: Sat, 21 Nov 2026 16:43:42 GMT
+Content-Type: text/html; charset=UTF-8
+Connection: keep-alive
+Link: <http://wp.prod.local:8080/index.php/wp-json/>; rel="https://api.w.org/"
+
+vagrant@machine:~/ukd_devops_colledge_2026/PR_LAMP$ mariadb-dump -u wp_prod_user -p wp_prod > ~/wp_backups/wp_prod_backup.sql
+Enter password:
+vagrant@machine:~/ukd_devops_colledge_2026/PR_LAMP$ cp /etc/apache2/sites-available/wordpress-prod.conf ~/ukd_devops_colledge_2026/PR_LAMP/
+vagrant@machine:~/ukd_devops_colledge_2026/PR_LAMP$ cp /etc/nginx/sites-available/wp-lb.conf ~/ukd_devops_colledge_2026/PR_LAMP/
+vagrant@machine:~/ukd_devops_colledge_2026/PR_LAMP$
