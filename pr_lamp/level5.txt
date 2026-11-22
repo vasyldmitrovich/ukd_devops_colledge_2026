@@ -1,0 +1,18 @@
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 127.0.1.1. Set the 'ServerName' directive globally to suppress this message
+Syntax OK
+nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+nginx: configuration file /etc/nginx/nginx.conf test is successful
+active
+active
+active
+tcp   LISTEN 0      511             0.0.0.0:8080      0.0.0.0:*    users:(("nginx",pid=7446,fd=5),("nginx",pid=7445,fd=5),("nginx",pid=7444,fd=5))                                                                                    
+tcp   LISTEN 0      511                   *:80              *:*    users:(("apache2",pid=7471,fd=4),("apache2",pid=7470,fd=4),("apache2",pid=7468,fd=4),("apache2",pid=7467,fd=4),("apache2",pid=7466,fd=4),("apache2",pid=7463,fd=4))
+HTTP/1.1 500 Internal Server Error
+Server: nginx/1.28.3 (Ubuntu)
+Date: Sun, 22 Nov 2026 15:44:43 GMT
+Content-Type: text/html; charset=UTF-8
+Connection: keep-alive
+Expires: Wed, 11 Jan 1984 05:00:00 GMT
+Cache-Control: no-cache, must-revalidate, max-age=0, no-store, private
+
+-rw-rw-r-- 1 ubuntu ubuntu 0 Nov 22 15:44 /home/ubuntu/wp_backups/wp_prod_backup.sql

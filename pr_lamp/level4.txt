@@ -1,0 +1,31 @@
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 127.0.1.1. Set the 'ServerName' directive globally to suppress this message
+Syntax OK
+● apache2.service - The Apache HTTP Server
+     Loaded: loaded (/usr/lib/systemd/system/apache2.service; enabled; preset: enabled)
+     Active: active (running) since Sun 2026-11-22 14:45:10 UTC; 21min ago
+ Invocation: 42cf04b7f65d46dca629d95b496de643
+       Docs: https://httpd.apache.org/docs/2.4/
+   Main PID: 6678 (apache2)
+     Status: "Total requests: 2; Idle/Busy workers 100/0;Requests/sec: 0.00154; Bytes served/sec:   0 B/sec"
+      Tasks: 7 (limit: 1713)
+     Memory: 45.5M (peak: 51M)
+        CPU: 642ms
+     CGroup: /system.slice/apache2.service
+             ├─6678 /usr/sbin/apache2 -k start -DFOREGROUND
+             ├─6681 /usr/sbin/apache2 -k start -DFOREGROUND
+             ├─6683 /usr/sbin/apache2 -k start -DFOREGROUND
+             ├─6684 /usr/sbin/apache2 -k start -DFOREGROUND
+             ├─6685 /usr/sbin/apache2 -k start -DFOREGROUND
+             ├─6686 /usr/sbin/apache2 -k start -DFOREGROUND
+             └─6726 /usr/sbin/apache2 -k start -DFOREGROUND
+
+Nov 22 14:45:09 ubuntu-labs systemd[1]: Starting apache2.service - The Apache HTTP Server...
+Nov 22 14:45:10 ubuntu-labs apachectl[6678]: AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 127.0.1.1. Set the 'ServerName' directive globally to suppress this message
+Nov 22 14:45:10 ubuntu-labs systemd[1]: Started apache2.service - The Apache HTTP Server.
+HTTP/1.1 200 OK
+Date: Sun, 22 Nov 2026 15:06:59 GMT
+Server: Apache/2.4.66 (Ubuntu)
+Link: <http://wp.local:8080/index.php?rest_route=/>; rel="https://api.w.org/"
+Content-Type: text/html; charset=UTF-8
+
+-rw-rw-r-- 1 ubuntu ubuntu 92K Nov 22 15:06 /home/ubuntu/wp_backups/wordpress_backup.sql
