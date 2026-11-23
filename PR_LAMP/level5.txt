@@ -1,0 +1,22 @@
+sort@sortserver:/tmp$ sudo apache2ctl configtest
+sudo nginx -t
+sudo systemctl is-active apache2
+sudo systemctl is-active nginx
+sudo systemctl is-active mariadb
+sudo ss -tulpn | grep -E ':80|:8080'
+curl -I http://wp.prod.local:8080
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 127.0.1.1. Set the 'ServerName' directive globally to suppress this message
+Syntax OK
+nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+nginx: configuration file /etc/nginx/nginx.conf test is successful
+active
+active
+active
+tcp   LISTEN 0      511             0.0.0.0:8080       0.0.0.0:*    users:(("nginx",pid=6403,fd=5),("nginx",pid=6402,fd=5),("nginx",pid=6401,fd=5))
+tcp   LISTEN 0      511                   *:80               *:*    users:(("apache2",pid=6464,fd=4),("apache2",pid=6461,fd=4),("apache2",pid=6451,fd=4),("apache2",pid=6424,fd=4),("apache2",pid=6423,fd=4),("apache2",pid=6422,fd=4),("apache2",pid=6421,fd=4),("apache2",pid=6420,fd=4),("apache2",pid=6418,fd=4))
+HTTP/1.1 200 OK
+Server: nginx/1.24.0 (Ubuntu)
+Date: Mon, 23 Nov 2026 21:48:47 GMT
+Content-Type: text/html; charset=UTF-8
+Connection: keep-alive
+Link: <http://wp.prod.local:8080/index.php?rest_route=/>; rel="https://api.w.org/"
