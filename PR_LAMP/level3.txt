@@ -1,0 +1,19 @@
+php -v
+apache2 -v
+mariadb --version
+sudo systemctl is-active apache2
+sudo systemctl is-active mariadb
+No LSB modules are available.
+Distributor ID:	Ubuntu
+Description:	Ubuntu 24.04.5 LTS
+Release:	24.04
+Codename:	noble
+PHP 8.3.6 (cli) (built: Nov 18 2026 23:42:07) (NTS)
+Copyright (c) The PHP Group
+Zend Engine v4.3.6, Copyright (c) Zend Technologies
+    with Zend OPcache v8.3.6, Copyright (c), by Zend Technologies
+Server version: Apache/2.4.58 (Ubuntu)
+Server built:   2026-11-12T12:58:56
+mariadb  Ver 15.1 Distrib 10.11.14-MariaDB, for debian-linux-gnu (x86_64) using  EditLine wrapper
+active
+active
