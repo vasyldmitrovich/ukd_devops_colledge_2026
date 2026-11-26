@@ -1,0 +1,61 @@
+=== apache2ctl configtest ===
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 127.0.1.1. Set the 'ServerName' directive globally to suppress this message
+Syntax OK
+
+=== nginx -t ===
+nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+nginx: configuration file /etc/nginx/nginx.conf test is successful
+
+=== is-active apache2 ===
+active
+
+=== is-active nginx ===
+active
+
+=== is-active mariadb ===
+active
+
+=== ss -tulpn (порти 80 і 8080) ===
+tcp   LISTEN 0      511             0.0.0.0:8080       0.0.0.0:*    users:(("nginx",pid=2074,fd=5),("nginx",pid=2073,fd=5),("nginx",pid=2072,fd=5))                                                                                                                                                                  
+tcp   LISTEN 0      511                   *:80               *:*    users:(("apache2",pid=2420,fd=4),("apache2",pid=2389,fd=4),("apache2",pid=2376,fd=4),("apache2",pid=2099,fd=4),("apache2",pid=2097,fd=4),("apache2",pid=2096,fd=4),("apache2",pid=2095,fd=4),("apache2",pid=2094,fd=4),("apache2",pid=2091,fd=4))
+
+=== curl -I http://wp.prod.local:8080 ===
+HTTP/1.1 200 OK
+Server: nginx/1.28.3 (Ubuntu)
+Date: Thu, 26 Nov 2026 15:59:23 GMT
+Content-Type: text/html; charset=UTF-8
+Connection: keep-alive
+Link: <http://wp.prod.local:8080/index.php?rest_route=/>; rel="https://api.w.org/"
+
+
+=== curl -I http://wp.prod.local:8080/wp-admin/ ===
+HTTP/1.1 302 Found
+Server: nginx/1.28.3 (Ubuntu)
+Date: Thu, 26 Nov 2026 15:59:23 GMT
+Content-Type: text/html; charset=UTF-8
+Connection: keep-alive
+Expires: Wed, 11 Jan 1984 05:00:00 GMT
+Cache-Control: no-cache, must-revalidate, max-age=0, no-store, private
+X-Redirect-By: WordPress
+Location: http://wp.prod.local:8080/wp-login.php?redirect_to=http%3A%2F%2Fwp.prod.local%3A8080%2Fwp-admin%2F&reauth=1
+
+
+=== Параметри БД у wp-config.php (без пароля) ===
+define( 'DB_NAME', 'wp_prod' );
+define( 'DB_USER', 'wp_prod_user' );
+define( 'DB_HOST', 'localhost' );
+
+=== Резервна копія БД ===
+-rw-rw-r-- 1 kwaidix kwaidix 765K Nov 26 15:52 /home/kwaidix/wp_backups/wp_prod_backup.sql
+/*M!999999\- enable the sandbox mode */ 
+-- MariaDB dump 10.19-11.8.6-MariaDB, for debian-linux-gnu (x86_64)
+--
+-- Host: localhost    Database: wp_prod
+-- ------------------------------------------------------
+
+=== Опис ===
+Схема: браузер -> Nginx (порт 8080, wp-lb.conf) -> Apache (порт 80, wordpress-prod.conf, домен wp.prod.local) -> WordPress -> MariaDB.
+Production-база даних: wp_prod, користувач wp_prod_user (права лише на цю БД). Дані перенесено зі старої БД через SQL-дамп, siteurl і home змінено на http://wp.prod.local:8080.
+Права wp-config.php: власник www-data, режим 640. Файл і SQL-дампи у Git не додаються.
+Резервну копію wp_prod створено командою mariadb-dump (файл wp_prod_backup.sql, зберігається в ~/wp_backups).
+Nginx працює як reverse proxy з одним Apache backend, це не повноцінне балансування навантаження.

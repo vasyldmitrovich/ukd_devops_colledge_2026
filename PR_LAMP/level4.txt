@@ -1,0 +1,47 @@
+=== apache2ctl configtest ===
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 127.0.1.1. Set the 'ServerName' directive globally to suppress this message
+Syntax OK
+
+=== systemctl status apache2 ===
+● apache2.service - The Apache HTTP Server
+     Loaded: loaded (/usr/lib/systemd/system/apache2.service; enabled; preset: enabled)
+     Active: active (running) since Wed 2026-11-25 22:00:02 UTC; 13min ago
+ Invocation: 04b9e28c4821455bb9553cb7d65dbed9
+       Docs: https://httpd.apache.org/docs/2.4/
+   Main PID: 1028 (apache2)
+     Status: "Total requests: 11; Idle/Busy workers 100/0;Requests/sec: 0.0132; Bytes served/sec: 127 B/sec"
+      Tasks: 10 (limit: 1713)
+     Memory: 135.9M (peak: 137.7M)
+        CPU: 4.178s
+     CGroup: /system.slice/apache2.service
+             ├─1028 /usr/sbin/apache2 -k start -DFOREGROUND
+             ├─1292 /usr/sbin/apache2 -k start -DFOREGROUND
+             ├─1293 /usr/sbin/apache2 -k start -DFOREGROUND
+             ├─1294 /usr/sbin/apache2 -k start -DFOREGROUND
+             ├─1295 /usr/sbin/apache2 -k start -DFOREGROUND
+             ├─1297 /usr/sbin/apache2 -k start -DFOREGROUND
+             ├─1626 /usr/sbin/apache2 -k start -DFOREGROUND
+             ├─1728 /usr/sbin/apache2 -k start -DFOREGROUND
+             ├─1729 /usr/sbin/apache2 -k start -DFOREGROUND
+             └─1730 /usr/sbin/apache2 -k start -DFOREGROUND
+
+Nov 25 22:00:01 kwaidix systemd[1]: Starting apache2.service - The Apache HTTP Server...
+Nov 25 22:00:02 kwaidix apachectl[1028]: AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 127.0.1.1. Set the 'ServerName' directive globally to suppress this message
+Nov 25 22:00:02 kwaidix systemd[1]: Started apache2.service - The Apache HTTP Server.
+
+=== curl -I http://wp.local:8080 ===
+HTTP/1.1 200 OK
+Date: Wed, 25 Nov 2026 22:14:02 GMT
+Server: Apache/2.4.66 (Ubuntu)
+Link: <http://wp.local:8080/index.php?rest_route=/>; rel="https://api.w.org/"
+Content-Type: text/html; charset=UTF-8
+
+
+=== Резервна копія БД ===
+total 768K
+-rw-rw-r-- 1 kwaidix kwaidix 765K Nov 25 22:13 wordpress_backup.sql
+
+=== Опис ===
+Налаштовано Apache VirtualHost wp.local на порту 8080 (ports.conf: Listen 8080, сайт 000-default вимкнено, модуль rewrite увімкнено).
+Локальний домен wp.local додано до /etc/hosts (127.0.0.1). Адресу WordPress (home, siteurl) змінено на http://wp.local:8080.
+Резервну копію БД створено командою mariadb-dump: файл wordpress_backup.sql, розмір 765K (зберігається в ~/wp_backups, у Git не додається).

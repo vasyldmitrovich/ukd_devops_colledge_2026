@@ -1,0 +1,42 @@
+=== lsb_release -a ===
+Distributor ID:	Ubuntu
+Description:	Ubuntu 26.04.1 LTS
+Release:	26.04
+Codename:	resolute
+
+=== php -v ===
+PHP 8.5.4 (cli) (built: Nov 19 2026 00:22:49) (NTS)
+Copyright (c) The PHP Group
+Built by Ubuntu
+Zend Engine v4.5.4, Copyright (c) Zend Technologies
+    with Zend OPcache v8.5.4, Copyright (c), by Zend Technologies
+
+=== apache2 -v ===
+Server version: Apache/2.4.66 (Ubuntu)
+Server built:   2026-11-12T12:57:38
+
+=== mariadb --version ===
+mariadb from 11.8.6-MariaDB, client 15.2 for debian-linux-gnu (x86_64) using  EditLine wrapper
+
+=== systemctl is-active apache2 ===
+active
+
+=== systemctl is-active mariadb ===
+active
+
+=== curl -I http://localhost/wordpress ===
+  % Total    % Received % Xferd  Average Speed  Time    Time    Time   Current
+                                 Dload  Upload  Total   Spent   Left   Speed
+  0      0   0      0   0      0      0      0                              0  0      0   0      0   0      0      0      0                              0  0      0   0      0   0      0      0      0                              0  0      0   0      0   0      0      0      0                              0
+HTTP/1.1 301 Moved Permanently
+Date: Wed, 25 Nov 2026 21:48:15 GMT
+Server: Apache/2.4.66 (Ubuntu)
+Location: http://localhost/wordpress/
+Content-Type: text/html; charset=iso-8859-1
+
+
+=== Опис ===
+База даних: wordpress_db, користувач wp_user (права лише на цю БД, доступ з localhost).
+WordPress встановлено в /var/www/html/wordpress, права: каталоги 755, файли 644, власник www-data.
+Перевірка: інсталятор пройдено, головна сторінка сайту відкривається в браузері.
+Під час налаштування Apache не стартував, бо порт 80 був зайнятий nginx; nginx зупинено і вимкнено з автозапуску.
