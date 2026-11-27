@@ -1,0 +1,66 @@
+level 4 completed
+
+=== TERMINAL LOG ===
+vagrant@machine:~$ ls
+backup  data  lab_linux  ukd_devops_colledge_2026  wp_backups
+vagrant@machine:~$ mkdir -p ~/logs ~/logs_backup
+vagrant@machine:~$ echo "app started" > ~/logs/app.log
+vagrant@machine:~$ echo "error 404" > ~/logs/error.log
+vagrant@machine:~$ rsync -av --delete ~/logs/ ~/logs_backup/
+sending incremental file list
+./
+app.log
+error.log
+
+sent 218 bytes  received 57 bytes  550.00 bytes/sec
+total size is 22  speedup is 0.08
+vagrant@machine:~$ rm ~/logs/error.log
+vagrant@machine:~$ rsync -av --delete ~/logs/ ~/logs_backup/
+sending incremental file list
+deleting error.log
+./
+
+sent 88 bytes  received 28 bytes  232.00 bytes/sec
+total size is 12  speedup is 0.10
+vagrant@machine:~$ ls ~/logs_backup
+app.log
+vagrant@machine:~$ crontab -e
+no crontab for vagrant - using an empty one
+
+Select an editor.  To change later, run 'select-editor'.
+  1. /usr/bin/vim.nox
+  2. /bin/nano        <---- easiest
+  3. /usr/bin/vim.basic
+  4. /usr/bin/vim.tiny
+  5. /bin/ed
+
+Choose 1-5 [2]: 2
+crontab: installing new crontab
+vagrant@machine:~$ crontab -l
+# Edit this file to introduce tasks to be run by cron.
+#
+# Each task to run has to be defined through a single line
+# indicating with different fields when the task will be run
+# and what command to run for the task
+#
+# To define the time you can provide concrete values for
+# minute (m), hour (h), day of month (dom), month (mon),
+# and day of week (dow) or use '*' in these fields (for 'any').
+#
+# Notice that tasks will be started based on the cron's system
+# daemon's notion of time and timezones.
+#
+# Output of the crontab jobs (including errors) is sent through
+# email to the user the crontab file belongs to (unless redirected).
+#
+# For example, you can run a backup of all your user accounts
+# at 5 a.m every week with:
+# 0 5 * * 1 tar -zcf /var/backups/home.tgz /home/
+#
+# For more information see the manual pages of crontab(5) and cron(8)
+#
+# m h  dom mon dow   command
+* * * * * /usr/bin/rsync -av /home/vagrant/data/ /home/vagrant/backup/
+vagrant@machine:~$ touch ~/data/cron_test.txt
+vagrant@machine:~$ ls ~/backup
+cron_test.txt  file1.txt  file2.txt
