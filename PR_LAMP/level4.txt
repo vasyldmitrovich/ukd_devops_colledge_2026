@@ -1,0 +1,26 @@
+=== APACHE SECURITY HEADERS ===
+HTTP/1.1 301 Moved Permanently
+Server: Apache/2.4.52 (Ubuntu)
+Location: http://localhost/wordpress/
+
+=== WP-CONFIG PERMISSIONS ===
+
+
+=== FIREWALL STATUS ===
+Status: active
+
+To                         Action      From
+--                         ------      ----
+OpenSSH                    ALLOW       Anywhere                  
+Apache Full                ALLOW       Anywhere                  
+OpenSSH (v6)               ALLOW       Anywhere (v6)             
+Apache Full (v6)           ALLOW       Anywhere (v6)             
+
+=== BACKUPS ===
+total 34M
+-rw-r--r-- 1 root root 1.4K Nov 20 12:42 wordpress_db_2026-11-20.sql
+-rw-r--r-- 1 root root  34M Nov 20 12:42 wordpress_files_2026-11-20.tar.gz
+
+=== SUMMARY ===
+Приховано версію Apache (ServerTokens Prod, ServerSignature Off), вимкнено індексацію директорій, увімкнено mod_rewrite.
+Обмежено права на wp-config.php (640), активовано UFW для SSH та Apache, створено резервні копії БД та файлів сайту.

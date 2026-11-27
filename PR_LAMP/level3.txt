@@ -1,0 +1,28 @@
+=== SYSTEM & VERSIONS ===
+Distributor ID:	Ubuntu
+Description:	Ubuntu 22.04.3 LTS
+Release:	22.04
+Codename:	jammy
+PHP 8.1.2-1ubuntu2.29 (cli) (built: Nov 19 2026 10:51:56) (NTS)
+Copyright (c) The PHP Group
+Zend Engine v4.1.2, Copyright (c) Zend Technologies
+    with Zend OPcache v8.1.2-1ubuntu2.29, Copyright (c), by Zend Technologies
+Server version: Apache/2.4.52 (Ubuntu)
+Server built:   2026-11-12T13:00:12
+mariadb  Ver 15.1 Distrib 10.6.23-MariaDB, for debian-linux-gnu (x86_64) using  EditLine wrapper
+
+=== SERVICES STATUS ===
+apache2: active
+mariadb: active
+
+=== HTTP CHECK ===
+HTTP/1.1 301 Moved Permanently
+Date: Fri, 20 Nov 2026 12:39:51 GMT
+Server: Apache/2.4.52 (Ubuntu)
+Location: http://localhost/wordpress/
+Content-Type: text/html; charset=iso-8859-1
+
+
+=== SUMMARY ===
+Створено базу даних wordpress_db та користувача wp_user з повними правами на цю БД.
+WordPress завантажено в /var/www/html/wordpress, налаштовано права www-data та успішно виконано початкове встановлення через браузер.
