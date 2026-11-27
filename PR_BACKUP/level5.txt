@@ -1,0 +1,201 @@
+level 5 completed 
+
+=== TERMINAL LOG ===
+vagrant@machine:~/ukd_devops_colledge_2026/PR_BACKUP$ git checkout -b backup-lab
+Switched to a new branch 'backup-lab'
+vagrant@machine:~/ukd_devops_colledge_2026/PR_BACKUP$ mkdir -p backup_task
+vagrant@machine:~/ukd_devops_colledge_2026/PR_BACKUP$ ls
+backup_task  level3.txt  level4.txt
+vagrant@machine:~/ukd_devops_colledge_2026/PR_BACKUP$ rm -rf backup_task
+vagrant@machine:~/ukd_devops_colledge_2026/PR_BACKUP$ cd ..
+vagrant@machine:~/ukd_devops_colledge_2026$ mkdir backup_task
+vagrant@machine:~/ukd_devops_colledge_2026$ ls
+backup_task  PR_Apache  PR_CISCOPT  PR_NET-TB  PR_WINDOWS
+LICENSE      PR_BACKUP  PR_LAMP     PR_NOSQL   README.md
+PR3          PR_BASH    PR_LINUX    PR_RDBMS   sound.txt
+vagrant@machine:~/ukd_devops_colledge_2026$ git branch
+* backup-lab
+  dmytro_hrytsiuk
+  main
+vagrant@machine:~/ukd_devops_colledge_2026$ nano ~/ukd_devops_colledge_2026/backup_task/backup.sh
+vagrant@machine:~/ukd_devops_colledge_2026$ micro ~/ukd_devops_colledge_2026/backup_task/backup.sh
+vagrant@machine:~/ukd_devops_colledge_2026$ chmod +x ~/ukd_devops_colledge_2026/backup_task/backup.sh
+vagrant@machine:~/ukd_devops_colledge_2026$ ~/ukd_devops_colledge_2026/backup_task/backup.sh
+vagrant@machine:~/ukd_devops_colledge_2026$ rsync -av --dry-run ~/data/ ~/backup/
+sending incremental file list
+
+sent 137 bytes  received 12 bytes  298.00 bytes/sec
+total size is 21  speedup is 0.14 (DRY RUN)
+vagrant@machine:~/ukd_devops_colledge_2026$ cat backup_task/backup.sh
+#!/bin/bash
+
+# directories for backup
+SOURCES=("/home/vagrant/data" "/home/vagrant/logs")
+
+
+BACKUP_ROOT="/home/vagrant/backups_versioned"
+
+# store exact date & time
+TIMESTAMP=$(date +"%Y-%m-%d_%H-%M-%S")
+
+# combined root path + timestamp to make unqiue backup folder
+DEST="$BACKUP_ROOT/backup_$TIMESTAMP"
+
+# logfile path
+LOG_FILE="/home/vagrant/ukd_devops_colledge_2026/backup_task/backup.log"
+
+mkdir -p "$DEST"
+
+echo "=== Backup started at $TIMESTAMP ===" >> "$LOG_FILE"
+
+# loop through every dir in SOURCES
+for SRC in "${SOURCES[@]}"; do
+        # check if it's a valid folder and get a path
+    if [ -d "$SRC" ]; then
+        # get folder name stripping away the path
+        FOLDER_NAME=$(basename "$SRC")
+        # backup files and fill in logs (errors are shown in the backup log as well)
+        rsync -av --exclude='*.tmp' "$SRC/" "$DEST/$FOLDER_NAME/" >> "$LOG_FILE" 2>&1
+        echo "[OK] Backed up $SRC to $DEST/$FOLDER_NAME" >> "$LOG_FILE"
+    else
+        echo "[WARNING] Directory $SRC does not exist. Skipping." >> "$LOG_FILE"
+    fi
+done
+
+echo "=== Backup finished ===" >> "$LOG_FILE"
+echo "" >> "$LOG_FILE"
+vagrant@machine:~/ukd_devops_colledge_2026$ crontab -e
+
+
+crontab: installing new crontab
+vagrant@machine:~/ukd_devops_colledge_2026$ cat backup_task/backup.log
+=== Backup started at 2026-11-27_11-48-23 ===
+sending incremental file list
+created directory /home/vagrant/backups_versioned/backup_2026-11-27_11-48-23/data
+./
+cron_test.txt
+file1.txt
+file2.txt
+
+sent 290 bytes  received 162 bytes  904.00 bytes/sec
+total size is 21  speedup is 0.05
+[OK] Backed up /home/vagrant/data to /home/vagrant/backups_versioned/backup_2026-11-27_11-48-23/data
+sending incremental file list
+created directory /home/vagrant/backups_versioned/backup_2026-11-27_11-48-23/logs
+./
+app.log
+
+sent 147 bytes  received 124 bytes  542.00 bytes/sec
+total size is 12  speedup is 0.04
+[OK] Backed up /home/vagrant/logs to /home/vagrant/backups_versioned/backup_2026-11-27_11-48-23/logs
+=== Backup finished ===
+
+=== Backup started at 2026-11-27_11-51-01 ===
+sending incremental file list
+created directory /home/vagrant/backups_versioned/backup_2026-11-27_11-51-01/data
+./
+cron_test.txt
+file1.txt
+file2.txt
+
+sent 290 bytes  received 162 bytes  904.00 bytes/sec
+total size is 21  speedup is 0.05
+[OK] Backed up /home/vagrant/data to /home/vagrant/backups_versioned/backup_2026-11-27_11-51-01/data
+sending incremental file list
+created directory /home/vagrant/backups_versioned/backup_2026-11-27_11-51-01/logs
+./
+app.log
+
+sent 147 bytes  received 124 bytes  542.00 bytes/sec
+total size is 12  speedup is 0.04
+[OK] Backed up /home/vagrant/logs to /home/vagrant/backups_versioned/backup_2026-11-27_11-51-01/logs
+=== Backup finished ===
+
+=== Backup started at 2026-11-27_11-52-01 ===
+sending incremental file list
+created directory /home/vagrant/backups_versioned/backup_2026-11-27_11-52-01/data
+./
+cron_test.txt
+file1.txt
+file2.txt
+
+sent 290 bytes  received 162 bytes  904.00 bytes/sec
+total size is 21  speedup is 0.05
+[OK] Backed up /home/vagrant/data to /home/vagrant/backups_versioned/backup_2026-11-27_11-52-01/data
+sending incremental file list
+created directory /home/vagrant/backups_versioned/backup_2026-11-27_11-52-01/logs
+./
+app.log
+
+sent 147 bytes  received 124 bytes  542.00 bytes/sec
+total size is 12  speedup is 0.04
+[OK] Backed up /home/vagrant/logs to /home/vagrant/backups_versioned/backup_2026-11-27_11-52-01/logs
+=== Backup finished ===
+
+vagrant@machine:~/ukd_devops_colledge_2026$ cd ../
+vagrant@machine:~$ ls
+backup             data       logs         ukd_devops_colledge_2026
+backups_versioned  lab_linux  logs_backup  wp_backups
+vagrant@machine:~$ cd backup_versioned
+-bash: cd: backup_versioned: No such file or directory
+vagrant@machine:~$ cd backups_versioned
+vagrant@machine:~/backups_versioned$ ls
+backup_2026-11-27_11-48-23  backup_2026-11-27_11-53-01
+backup_2026-11-27_11-51-01  backup_2026-11-27_11-54-01
+backup_2026-11-27_11-52-01
+vagrant@machine:~/backups_versioned$ ls -alh
+total 28K
+drwxrwxr-x  7 vagrant vagrant 4.0K Nov 27 11:54 .
+drwxr-x--- 15 vagrant vagrant 4.0K Nov 27 11:48 ..
+drwxrwxr-x  4 vagrant vagrant 4.0K Nov 27 11:48 backup_2026-11-27_11-48-23
+drwxrwxr-x  4 vagrant vagrant 4.0K Nov 27 11:51 backup_2026-11-27_11-51-01
+drwxrwxr-x  4 vagrant vagrant 4.0K Nov 27 11:52 backup_2026-11-27_11-52-01
+drwxrwxr-x  4 vagrant vagrant 4.0K Nov 27 11:53 backup_2026-11-27_11-53-01
+drwxrwxr-x  4 vagrant vagrant 4.0K Nov 27 11:54 backup_2026-11-27_11-54-01
+vagrant@machine:~/backups_versioned$ du
+8       ./backup_2026-11-27_11-48-23/logs
+12      ./backup_2026-11-27_11-48-23/data
+24      ./backup_2026-11-27_11-48-23
+8       ./backup_2026-11-27_11-53-01/logs
+12      ./backup_2026-11-27_11-53-01/data
+24      ./backup_2026-11-27_11-53-01
+8       ./backup_2026-11-27_11-54-01/logs
+12      ./backup_2026-11-27_11-54-01/data
+24      ./backup_2026-11-27_11-54-01
+8       ./backup_2026-11-27_11-51-01/logs
+12      ./backup_2026-11-27_11-51-01/data
+24      ./backup_2026-11-27_11-51-01
+8       ./backup_2026-11-27_11-52-01/logs
+12      ./backup_2026-11-27_11-52-01/data
+24      ./backup_2026-11-27_11-52-01
+124     .
+vagrant@machine:~/backups_versioned$ du -h
+8.0K    ./backup_2026-11-27_11-48-23/logs
+12K     ./backup_2026-11-27_11-48-23/data
+24K     ./backup_2026-11-27_11-48-23
+8.0K    ./backup_2026-11-27_11-53-01/logs
+12K     ./backup_2026-11-27_11-53-01/data
+24K     ./backup_2026-11-27_11-53-01
+8.0K    ./backup_2026-11-27_11-54-01/logs
+12K     ./backup_2026-11-27_11-54-01/data
+24K     ./backup_2026-11-27_11-54-01
+8.0K    ./backup_2026-11-27_11-51-01/logs
+12K     ./backup_2026-11-27_11-51-01/data
+24K     ./backup_2026-11-27_11-51-01
+8.0K    ./backup_2026-11-27_11-52-01/logs
+12K     ./backup_2026-11-27_11-52-01/data
+24K     ./backup_2026-11-27_11-52-01
+124K    .
+vagrant@machine:~/backups_versioned$ ls
+backup_2026-11-27_11-48-23  backup_2026-11-27_11-53-01
+backup_2026-11-27_11-51-01  backup_2026-11-27_11-54-01
+backup_2026-11-27_11-52-01
+vagrant@machine:~/backups_versioned$ ls -alh
+total 28K
+drwxrwxr-x  7 vagrant vagrant 4.0K Nov 27 11:54 .
+drwxr-x--- 15 vagrant vagrant 4.0K Nov 27 11:48 ..
+drwxrwxr-x  4 vagrant vagrant 4.0K Nov 27 11:48 backup_2026-11-27_11-48-23
+drwxrwxr-x  4 vagrant vagrant 4.0K Nov 27 11:51 backup_2026-11-27_11-51-01
+drwxrwxr-x  4 vagrant vagrant 4.0K Nov 27 11:52 backup_2026-11-27_11-52-01
+drwxrwxr-x  4 vagrant vagrant 4.0K Nov 27 11:53 backup_2026-11-27_11-53-01
+drwxrwxr-x  4 vagrant vagrant 4.0K Nov 27 11:54 backup_2026-11-27_11-54-01
