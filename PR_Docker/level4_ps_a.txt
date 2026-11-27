@@ -1,0 +1,5 @@
+CONTAINER ID   IMAGE         COMMAND                  CREATED          STATUS                      PORTS                                     NAMES
+48d139dad20b   nginx         "/docker-entrypoint.…"   29 seconds ago   Up 28 seconds               0.0.0.0:8092->80/tcp, [::]:8092->80/tcp   focused_nightingale
+ebe26eeeab12   nginx         "/docker-entrypoint.…"   10 minutes ago   Up About a minute           0.0.0.0:8090->80/tcp, [::]:8090->80/tcp   friendly_elion
+883c99cb83d3   hello-world   "/hello"                 14 minutes ago   Exited (0) 14 minutes ago                                             nice_tu
+ba2510f9865d   hello-world   "/hello"                 58 minutes ago   Exited (0) 58 minutes ago                                             determined_torvalds

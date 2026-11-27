@@ -1,0 +1,2 @@
+CONTAINER ID   IMAGE     COMMAND                  CREATED         STATUS         PORTS                                     NAMES
+ebe26eeeab12   nginx     "/docker-entrypoint.…"   2 minutes ago   Up 2 minutes   0.0.0.0:8090->80/tcp, [::]:8090->80/tcp   friendly_elion

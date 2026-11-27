@@ -1,0 +1,3 @@
+IMAGE                ID             DISK USAGE   CONTENT SIZE   EXTRA
+hello-world:latest   1e4c05b897a7       25.9kB         9.49kB   U    
+nginx:latest         6a3df739b631        243MB         66.8MB   U    
