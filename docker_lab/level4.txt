@@ -1,0 +1,5 @@
+  116  sudo docker build -t mynginx .
+  117  sudo docker run -d -p 8081:80 mynginx
+curl localhost:8081
+<h1>My Docker App</h1>
+<p>Adrian Tsybukh</p>
