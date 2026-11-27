@@ -1,0 +1,23 @@
+Distributor ID:	Ubuntu
+Description:	Ubuntu 26.04.1 LTS
+Release:	26.04
+Codename:	resolute
+PHP 8.5.4 (cli) (built: Nov 19 2026 00:22:49) (NTS)
+Copyright (c) The PHP Group
+Built by Ubuntu
+Zend Engine v4.5.4, Copyright (c) Zend Technologies
+    with Zend OPcache v8.5.4, Copyright (c), by Zend Technologies
+Server version: Apache/2.4.66 (Ubuntu)
+Server built:   2026-11-25T23:19:13
+mariadb from 11.8.6-MariaDB, client 15.2 for debian-linux-gnu (x86_64) using  EditLine wrapper
+active
+active
+  % Total    % Received % Xferd  Average Speed  Time    Time    Time   Current
+                                 Dload  Upload  Total   Spent   Left   Speed
+  0      0   0      0   0      0      0      0                              0  0      0   0      0   0      0      0      0                              0  0      0   0      0   0      0      0      0                              0  0      0   0      0   0      0      0      0                              0
+HTTP/1.1 301 Moved Permanently
+Date: Fri, 27 Nov 2026 09:46:19 GMT
+Server: Apache/2.4.66 (Ubuntu)
+Location: http://localhost/wordpress/
+Content-Type: text/html; charset=iso-8859-1
+
