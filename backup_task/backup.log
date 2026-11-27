@@ -66,3 +66,54 @@ sent 174 bytes  received 148 bytes  644.00 bytes/sec
 total size is 36  speedup is 0.11
 Backup completed successfully: /home/student/ukd_devops_colledge_2026/backup_task/backups/2026-11-27_12-34-01
 ===== Backup finished: Fri Nov 27 12:34:01 PM UTC 2026 =====
+===== Backup started: Fri Nov 27 12:35:01 PM UTC 2026 =====
+sending incremental file list
+created directory /home/student/ukd_devops_colledge_2026/backup_task/backups/2026-11-27_12-35-01/documents
+./
+document.txt
+
+sent 153 bytes  received 149 bytes  604.00 bytes/sec
+total size is 19  speedup is 0.06
+sending incremental file list
+created directory /home/student/ukd_devops_colledge_2026/backup_task/backups/2026-11-27_12-35-01/projects
+./
+project.txt
+
+sent 174 bytes  received 148 bytes  644.00 bytes/sec
+total size is 36  speedup is 0.11
+Backup completed successfully: /home/student/ukd_devops_colledge_2026/backup_task/backups/2026-11-27_12-35-01
+===== Backup finished: Fri Nov 27 12:35:01 PM UTC 2026 =====
+===== Backup started: Fri Nov 27 12:36:01 PM UTC 2026 =====
+sending incremental file list
+created directory /home/student/ukd_devops_colledge_2026/backup_task/backups/2026-11-27_12-36-01/documents
+./
+document.txt
+
+sent 153 bytes  received 149 bytes  604.00 bytes/sec
+total size is 19  speedup is 0.06
+sending incremental file list
+created directory /home/student/ukd_devops_colledge_2026/backup_task/backups/2026-11-27_12-36-01/projects
+./
+project.txt
+
+sent 174 bytes  received 148 bytes  644.00 bytes/sec
+total size is 36  speedup is 0.11
+Backup completed successfully: /home/student/ukd_devops_colledge_2026/backup_task/backups/2026-11-27_12-36-01
+===== Backup finished: Fri Nov 27 12:36:01 PM UTC 2026 =====
+===== Backup started: Fri Nov 27 12:37:01 PM UTC 2026 =====
+sending incremental file list
+created directory /home/student/ukd_devops_colledge_2026/backup_task/backups/2026-11-27_12-37-01/documents
+./
+document.txt
+
+sent 153 bytes  received 149 bytes  201.33 bytes/sec
+total size is 19  speedup is 0.06
+sending incremental file list
+created directory /home/student/ukd_devops_colledge_2026/backup_task/backups/2026-11-27_12-37-01/projects
+./
+project.txt
+
+sent 174 bytes  received 148 bytes  644.00 bytes/sec
+total size is 36  speedup is 0.11
+Backup completed successfully: /home/student/ukd_devops_colledge_2026/backup_task/backups/2026-11-27_12-37-01
+===== Backup finished: Fri Nov 27 12:37:02 PM UTC 2026 =====
