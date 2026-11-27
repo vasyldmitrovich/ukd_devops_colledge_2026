@@ -1,0 +1,20 @@
+========================================
+[2026-11-27_10-23-50] Старт резервного копіювання
+[2026-11-27_10-23-50] Копіювання /home/vagrant/data -> /home/vagrant/versioned_backups/backup_2026-11-27_10-23-50/data
+sending incremental file list
+created directory /home/vagrant/versioned_backups/backup_2026-11-27_10-23-50/data
+./
+file1.txt
+file2.txt
+
+sent 216 bytes  received 143 bytes  718.00 bytes/sec
+total size is 21  speedup is 0.06
+[2026-11-27_10-23-50] Копіювання /home/vagrant/logs -> /home/vagrant/versioned_backups/backup_2026-11-27_10-23-50/logs
+sending incremental file list
+created directory /home/vagrant/versioned_backups/backup_2026-11-27_10-23-50/logs
+./
+log1.txt
+
+sent 131 bytes  received 124 bytes  510.00 bytes/sec
+total size is 0  speedup is 0.00
+[2026-11-27_10-23-50] Завершено.
