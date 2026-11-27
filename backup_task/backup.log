@@ -1,0 +1,231 @@
+=== Backup started at 2026-11-27_11-48-23 ===
+sending incremental file list
+created directory /home/vagrant/backups_versioned/backup_2026-11-27_11-48-23/data
+./
+cron_test.txt
+file1.txt
+file2.txt
+
+sent 290 bytes  received 162 bytes  904.00 bytes/sec
+total size is 21  speedup is 0.05
+[OK] Backed up /home/vagrant/data to /home/vagrant/backups_versioned/backup_2026-11-27_11-48-23/data
+sending incremental file list
+created directory /home/vagrant/backups_versioned/backup_2026-11-27_11-48-23/logs
+./
+app.log
+
+sent 147 bytes  received 124 bytes  542.00 bytes/sec
+total size is 12  speedup is 0.04
+[OK] Backed up /home/vagrant/logs to /home/vagrant/backups_versioned/backup_2026-11-27_11-48-23/logs
+=== Backup finished ===
+
+=== Backup started at 2026-11-27_11-51-01 ===
+sending incremental file list
+created directory /home/vagrant/backups_versioned/backup_2026-11-27_11-51-01/data
+./
+cron_test.txt
+file1.txt
+file2.txt
+
+sent 290 bytes  received 162 bytes  904.00 bytes/sec
+total size is 21  speedup is 0.05
+[OK] Backed up /home/vagrant/data to /home/vagrant/backups_versioned/backup_2026-11-27_11-51-01/data
+sending incremental file list
+created directory /home/vagrant/backups_versioned/backup_2026-11-27_11-51-01/logs
+./
+app.log
+
+sent 147 bytes  received 124 bytes  542.00 bytes/sec
+total size is 12  speedup is 0.04
+[OK] Backed up /home/vagrant/logs to /home/vagrant/backups_versioned/backup_2026-11-27_11-51-01/logs
+=== Backup finished ===
+
+=== Backup started at 2026-11-27_11-52-01 ===
+sending incremental file list
+created directory /home/vagrant/backups_versioned/backup_2026-11-27_11-52-01/data
+./
+cron_test.txt
+file1.txt
+file2.txt
+
+sent 290 bytes  received 162 bytes  904.00 bytes/sec
+total size is 21  speedup is 0.05
+[OK] Backed up /home/vagrant/data to /home/vagrant/backups_versioned/backup_2026-11-27_11-52-01/data
+sending incremental file list
+created directory /home/vagrant/backups_versioned/backup_2026-11-27_11-52-01/logs
+./
+app.log
+
+sent 147 bytes  received 124 bytes  542.00 bytes/sec
+total size is 12  speedup is 0.04
+[OK] Backed up /home/vagrant/logs to /home/vagrant/backups_versioned/backup_2026-11-27_11-52-01/logs
+=== Backup finished ===
+
+=== Backup started at 2026-11-27_11-53-01 ===
+sending incremental file list
+created directory /home/vagrant/backups_versioned/backup_2026-11-27_11-53-01/data
+./
+cron_test.txt
+file1.txt
+file2.txt
+
+sent 290 bytes  received 162 bytes  904.00 bytes/sec
+total size is 21  speedup is 0.05
+[OK] Backed up /home/vagrant/data to /home/vagrant/backups_versioned/backup_2026-11-27_11-53-01/data
+sending incremental file list
+created directory /home/vagrant/backups_versioned/backup_2026-11-27_11-53-01/logs
+./
+app.log
+
+sent 147 bytes  received 124 bytes  542.00 bytes/sec
+total size is 12  speedup is 0.04
+[OK] Backed up /home/vagrant/logs to /home/vagrant/backups_versioned/backup_2026-11-27_11-53-01/logs
+=== Backup finished ===
+
+=== Backup started at 2026-11-27_11-54-01 ===
+sending incremental file list
+created directory /home/vagrant/backups_versioned/backup_2026-11-27_11-54-01/data
+./
+cron_test.txt
+file1.txt
+file2.txt
+
+sent 290 bytes  received 162 bytes  904.00 bytes/sec
+total size is 21  speedup is 0.05
+[OK] Backed up /home/vagrant/data to /home/vagrant/backups_versioned/backup_2026-11-27_11-54-01/data
+sending incremental file list
+created directory /home/vagrant/backups_versioned/backup_2026-11-27_11-54-01/logs
+./
+app.log
+
+sent 147 bytes  received 124 bytes  542.00 bytes/sec
+total size is 12  speedup is 0.04
+[OK] Backed up /home/vagrant/logs to /home/vagrant/backups_versioned/backup_2026-11-27_11-54-01/logs
+=== Backup finished ===
+
+=== Backup started at 2026-11-27_11-55-01 ===
+sending incremental file list
+created directory /home/vagrant/backups_versioned/backup_2026-11-27_11-55-01/data
+./
+cron_test.txt
+file1.txt
+file2.txt
+
+sent 290 bytes  received 162 bytes  904.00 bytes/sec
+total size is 21  speedup is 0.05
+[OK] Backed up /home/vagrant/data to /home/vagrant/backups_versioned/backup_2026-11-27_11-55-01/data
+sending incremental file list
+created directory /home/vagrant/backups_versioned/backup_2026-11-27_11-55-01/logs
+./
+app.log
+
+sent 147 bytes  received 124 bytes  542.00 bytes/sec
+total size is 12  speedup is 0.04
+[OK] Backed up /home/vagrant/logs to /home/vagrant/backups_versioned/backup_2026-11-27_11-55-01/logs
+=== Backup finished ===
+
+=== Backup started at 2026-11-27_11-56-01 ===
+sending incremental file list
+created directory /home/vagrant/backups_versioned/backup_2026-11-27_11-56-01/data
+./
+cron_test.txt
+file1.txt
+file2.txt
+
+sent 290 bytes  received 162 bytes  904.00 bytes/sec
+total size is 21  speedup is 0.05
+[OK] Backed up /home/vagrant/data to /home/vagrant/backups_versioned/backup_2026-11-27_11-56-01/data
+sending incremental file list
+created directory /home/vagrant/backups_versioned/backup_2026-11-27_11-56-01/logs
+./
+app.log
+
+sent 147 bytes  received 124 bytes  542.00 bytes/sec
+total size is 12  speedup is 0.04
+[OK] Backed up /home/vagrant/logs to /home/vagrant/backups_versioned/backup_2026-11-27_11-56-01/logs
+=== Backup finished ===
+
+=== Backup started at 2026-11-27_11-57-01 ===
+sending incremental file list
+created directory /home/vagrant/backups_versioned/backup_2026-11-27_11-57-01/data
+./
+cron_test.txt
+file1.txt
+file2.txt
+
+sent 290 bytes  received 162 bytes  904.00 bytes/sec
+total size is 21  speedup is 0.05
+[OK] Backed up /home/vagrant/data to /home/vagrant/backups_versioned/backup_2026-11-27_11-57-01/data
+sending incremental file list
+created directory /home/vagrant/backups_versioned/backup_2026-11-27_11-57-01/logs
+./
+app.log
+
+sent 147 bytes  received 124 bytes  542.00 bytes/sec
+total size is 12  speedup is 0.04
+[OK] Backed up /home/vagrant/logs to /home/vagrant/backups_versioned/backup_2026-11-27_11-57-01/logs
+=== Backup finished ===
+
+=== Backup started at 2026-11-27_11-58-01 ===
+sending incremental file list
+created directory /home/vagrant/backups_versioned/backup_2026-11-27_11-58-01/data
+./
+cron_test.txt
+file1.txt
+file2.txt
+
+sent 290 bytes  received 162 bytes  904.00 bytes/sec
+total size is 21  speedup is 0.05
+[OK] Backed up /home/vagrant/data to /home/vagrant/backups_versioned/backup_2026-11-27_11-58-01/data
+sending incremental file list
+created directory /home/vagrant/backups_versioned/backup_2026-11-27_11-58-01/logs
+./
+app.log
+
+sent 147 bytes  received 124 bytes  542.00 bytes/sec
+total size is 12  speedup is 0.04
+[OK] Backed up /home/vagrant/logs to /home/vagrant/backups_versioned/backup_2026-11-27_11-58-01/logs
+=== Backup finished ===
+
+=== Backup started at 2026-11-27_11-59-01 ===
+sending incremental file list
+created directory /home/vagrant/backups_versioned/backup_2026-11-27_11-59-01/data
+./
+cron_test.txt
+file1.txt
+file2.txt
+
+sent 290 bytes  received 162 bytes  904.00 bytes/sec
+total size is 21  speedup is 0.05
+[OK] Backed up /home/vagrant/data to /home/vagrant/backups_versioned/backup_2026-11-27_11-59-01/data
+sending incremental file list
+created directory /home/vagrant/backups_versioned/backup_2026-11-27_11-59-01/logs
+./
+app.log
+
+sent 147 bytes  received 124 bytes  542.00 bytes/sec
+total size is 12  speedup is 0.04
+[OK] Backed up /home/vagrant/logs to /home/vagrant/backups_versioned/backup_2026-11-27_11-59-01/logs
+=== Backup finished ===
+
+=== Backup started at 2026-11-27_12-00-01 ===
+sending incremental file list
+created directory /home/vagrant/backups_versioned/backup_2026-11-27_12-00-01/data
+./
+cron_test.txt
+file1.txt
+file2.txt
+
+sent 290 bytes  received 162 bytes  904.00 bytes/sec
+total size is 21  speedup is 0.05
+[OK] Backed up /home/vagrant/data to /home/vagrant/backups_versioned/backup_2026-11-27_12-00-01/data
+sending incremental file list
+created directory /home/vagrant/backups_versioned/backup_2026-11-27_12-00-01/logs
+./
+app.log
+
+sent 147 bytes  received 124 bytes  542.00 bytes/sec
+total size is 12  speedup is 0.04
+[OK] Backed up /home/vagrant/logs to /home/vagrant/backups_versioned/backup_2026-11-27_12-00-01/logs
+=== Backup finished ===
+
