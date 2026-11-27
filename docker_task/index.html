@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="uk">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Docker-lab</title>
+        <style>
+            body {
+                font-family: system-ui, -apple-system, sans-serif;
+                background-color: #1e1e2e;
+                color: #cdd6f4;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin: 0;
+            }
+
+            h1 {
+                opacity: 0;
+                transform: translateY(20px);
+                transition: opacity 1.5s ease-out, transform 1.5s ease-out;
+            }
+
+            .fade-in-active {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Dmytro Hrytsiuk: My Docker App</h1>
+        
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                const heading = document.querySelector("h1");
+                console.log("Waiting for the delay...");
+
+                setTimeout(() => {
+                    heading.classList.add("fade-in-active");
+                    console.log("Animation triggered!");
+                }, 500);
+            });
+        </script>
+    </body>
+</html>
