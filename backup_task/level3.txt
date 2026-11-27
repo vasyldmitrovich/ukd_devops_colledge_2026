@@ -1,0 +1,5 @@
+total 8
+-rw-rw-r-- 1 natalia natalia 15 Nov 27 10:09 file1.txt
+-rw-rw-r-- 1 natalia natalia  6 Nov 27 10:08 file2.txt
+file1
+new line
